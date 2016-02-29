@@ -25,4 +25,13 @@ Expected URL: www.lapostoj.fr
 
 ## How To Use:
 ### Gulp
-* Run 'gulp' in the 'src' folder to get the css files from the less ones.
+All commands must be executed in the 'src' folder.
+
+[FIRST TIME]
+```sh
+$ npm install gulp gulp-less gulp-minify-css
+```
+[THEN] to get the css files from the less ones.
+```sh
+$ gulp
+```
