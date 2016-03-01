@@ -2,6 +2,8 @@
  * Start Bootstrap - Freelancer Bootstrap Theme (http://startbootstrap.com)
  * Code licensed under the Apache License v2.0.
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ * 
+ * Modified by lapostoj to fit the needs for http://www.lapostoj.fr.
  */
 
 // jQuery for page scrolling feature - requires jQuery Easing plugin
