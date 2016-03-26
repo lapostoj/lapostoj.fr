@@ -1,10 +1,10 @@
 /*!
- * Start Bootstrap - Freelancer Bootstrap Theme (http://startbootstrap.com)
- * Code licensed under the Apache License v2.0.
- * For details, see http://www.apache.org/licenses/LICENSE-2.0.
- * 
- * Modified by lapostoj to fit the needs for http://www.lapostoj.fr.
- */
+* Start Bootstrap - Freelancer Bootstrap Theme (http://startbootstrap.com)
+* Code licensed under the Apache License v2.0.
+* For details, see http://www.apache.org/licenses/LICENSE-2.0.
+* 
+* Modified by lapostoj to fit the needs for http://www.lapostoj.fr.
+*/
 
 // jQuery for page scrolling feature - requires jQuery Easing plugin
 $(function() {
@@ -42,3 +42,35 @@ $('.navbar-collapse ul li a').click(function() {
 $("a").mouseup(function(){
     $(this).blur();
 })
+
+// Send the contact form to the server
+function send() {
+    var captchaResponse = grecaptcha.getResponse()
+    if (captchaResponse) {
+        var form = {
+            captcha : captchaResponse,
+            name: document.getElementById("contactForm").elements[0].value,
+            email: document.getElementById("contactForm").elements[1].value,
+            phone: document.getElementById("contactForm").elements[2].value,
+            message: document.getElementById("contactForm").elements[3].value
+        }
+        var request = new XMLHttpRequest();     
+        var url = "http://lapostoj-rest.appspot.com/gunmail";
+        var params = JSON.stringify(form);
+        request.open("POST", url, true);
+
+        //Send the proper header information along with the request
+        request.setRequestHeader("Content-type", "application/json;charset=UTF-8");
+
+        request.onreadystatechange = function() { //Call a function when the state changes.
+            if(request.readyState == 4 && request.status == 200) {
+                alert(request.responseText);
+            }
+        }
+        console.log("Sending form...")
+        request.send(params);
+        console.log("Form sent.")
+        document.getElementById("contactForm").reset();
+        grecaptcha.reset()
+    }
+}
