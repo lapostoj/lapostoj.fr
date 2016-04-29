@@ -1,6 +1,6 @@
 var gulp = require('gulp');
 var less = require('gulp-less');
-var minifyCSS = require('gulp-minify-css');
+var minifyCSS = require('gulp-clean-css');
 var path = require('path');
 
 gulp.task('default', ['develop']);
@@ -22,6 +22,6 @@ gulp.task('less', function () {
     .pipe(less({
       paths: [ path.join(__dirname, 'less', 'includes') ]
     }))
-    .pipe(minifyCSS())
+    .pipe(cleanCSS())
     .pipe(gulp.dest('../install/css'));
 });

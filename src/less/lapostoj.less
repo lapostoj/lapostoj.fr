@@ -4,6 +4,8 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  *
  * Modified by lapostoj to fit the needs for http://www.lapostoj.fr.
+ *
+ * 'card' part inspired from https://codyhouse.co/gem/project-cards-template/
  */
  
 @import "variables.less";
@@ -26,7 +28,7 @@ a:hover,
 a:focus,
 a:active,
 a.active {
-	color: @brand-success;
+	color: @color-main;
 	outline: none;
 }
 
@@ -62,17 +64,17 @@ hr.star-light {
 }
 
 hr.star-light:after {
-    background-color: @brand-success;
+    background-color: @color-main;
     color: white;
 }
 
 hr.star-primary {
-    border-color: @brand-primary;
+    border-color: @color-dark;
 }
 
 hr.star-primary:after {
     background-color: white;
-    color: @brand-primary;
+    color: @color-dark;
 }
 
 .img-centered {
@@ -82,7 +84,7 @@ hr.star-primary:after {
 
 header {
 	text-align: center;
-	background: @brand-success;
+	background: @color-main;
 	color: white;
 	.container {
 		padding-top: 100px;
@@ -112,53 +114,15 @@ header {
     -moz-transition: 1s ease-in-out;
     transition: 1s ease-in-out;
     .panel-body {
-        color: #2c3e50;
+        color: @color-darker;
     }
-}
-
-@media(min-width:768px) {
-	header {
-		.container {
-			padding-top: 150px;
-			padding-bottom: 100px;
-		}
-		.intro-text {
-			.name {
-				font-size: 3.5em;
-			}
-			.skills {
-				font-size: 1.75em;
-			}
-		}
-	}
-}
-
-@media(min-width:768px) {
-    .navbar-fixed-top {
-        padding: 15px 0;
-        -webkit-transition: padding 0.3s;
-        -moz-transition: padding 0.3s;
-        transition: padding 0.3s;
-	    .navbar-brand {
-	        font-size: 1.8em;
-	        -webkit-transition: all 0.3s;
-	        -moz-transition: all 0.3s;
-	        transition: all 0.3s;
-	    }
-    }
-    .navbar-fixed-top.navbar-shrink {
-        padding: 3px 0;
-		.navbar-brand {
-	        font-size: 1.5em;
-	    }
-	}
 }
 
 .navbar {
 	font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	text-transform: uppercase;
 	font-weight: 700;
-    background-color: @brand-primary;
+    background-color: @color-dark;
 	a:focus {
 		outline: none;
 	}
@@ -180,7 +144,7 @@ header {
 .navbar-default {
     .navbar-brand:hover,
     .navbar-brand:focus {
-        color: @brand-success;
+        color: @color-main;
         background-color: transparent;
     }
     .navbar-nav {
@@ -189,13 +153,13 @@ header {
             a:hover,
             a:focus {
                 color: white;
-                background-color: darken(@brand-primary, 5%);
+                background-color: @color-darker;
             }
         }
         li {
             a:hover,
             a:focus {
-                color: @brand-success;
+                color: @color-main;
                 background-color: transparent;
             }
         }
@@ -211,7 +175,7 @@ section {
 }
 
 section.success {
-	background: @brand-success;
+	background: @color-main;
 	color: white;
 
     a,
@@ -219,18 +183,9 @@ section.success {
     a:focus,
     a:active,
     a.active {
-      color: @brand-primary;
+      color: @color-dark;
       outline: none;
     }
-}
-
-@media(max-width:767px) {
-	section {
-		padding: 75px 0;
-	}
-	section.first {
-		padding-top: 75px;
-	}
 }
 
 #portfolio {
@@ -243,7 +198,7 @@ section.success {
             max-width: 400px;
             margin: 0 auto;
             .caption {
-                background: fade(@brand-success, 90%);
+                background: fade(@color-main, 90%);
                 position: absolute;
                 width: 100%;
                 height: 100%;
@@ -279,14 +234,6 @@ section.success {
     }
 }
 
-@media(min-width:767px) {
-    #portfolio {
-        .portfolio-item {
-            margin: 0 0 30px;
-        }
-    }
-}
-
 .btn-outline {
 	color: white;
 	font-size: 20px;
@@ -298,7 +245,7 @@ section.success {
 	&:focus,
 	&:active,
 	&.active {
-		color: @brand-success;
+		color: @color-main;
 		background: white;
 		border: solid 2px white;
 	}
@@ -306,18 +253,18 @@ section.success {
 
 .btn-dark {
     margin-top: 15px;
-    border: solid 2px @brand-success;
+    border: solid 2px @color-main;
     font-size: 20px;
     color: white;
-    background: @brand-success;
+    background: @color-main;
     transition: all .3s ease-in-out;
     &:hover,
     &:active,
     &:focus,
     &.active {
-        border: solid 2px @brand-primary;
+        border: solid 2px @color-dark;
         color: white;
-        background: @brand-primary;
+        background: @color-dark;
     }
 }
 
@@ -370,7 +317,7 @@ section.success {
 
 .floating-label-form-group-with-focus {
 	label {
-	    color: @brand-success;
+	    color: @color-main;
 	}
 }
 
@@ -385,14 +332,14 @@ footer {
 	}
 	.footer-above {
 		padding-top: 50px;
-		background-color: @brand-primary;
+		background-color: @color-dark;
 	}
 	.footer-col {
 		margin-bottom: 50px;
 	}
 	.footer-below {
 		padding: 25px 0;
-		background-color: darken(@brand-primary, 5%);
+		background-color: @color-darker;
 	}
 }
 
@@ -469,22 +416,22 @@ footer {
             height:75px;
             width:1px;
             margin-left:35px;
-            background-color:@brand-primary;
+            background-color:@color-dark;
             transform: rotate(45deg);
             -ms-transform: rotate(45deg);
-            /* IE 9 */
+            // IE 9
             -webkit-transform: rotate(45deg);
-            /* Safari and Chrome */
+            // Safari and Chrome
             z-index:1051;
             .rl {
                 height:75px;
                 width:1px;
-                background-color:@brand-primary;
+                background-color:@color-dark;
                 transform: rotate(90deg);
                 -ms-transform: rotate(90deg);
-                /* IE 9 */
+                // IE 9
                 -webkit-transform: rotate(90deg);
-                /* Safari and Chrome */
+                // Safari and Chrome
                 z-index:1052;
             }
         }
@@ -500,6 +447,345 @@ footer {
     text-justify: inter-word;
 }
 
-.well {
-    background-color: lighten(@brand-success, 10%)
+.card-section {
+    font-size: 1.25em;
+    font-weight: 400;
+    padding: 1em 0 0.5em;
+}
+
+.card {
+    border-radius: 0.25em;
+    background: white;
+    box-shadow: 0 3px 0 @color-dark;
+    margin-bottom: 1em;
+    height: 500px;
+    position: relative;
+    overflow: hidden;
+
+    ul {
+        list-style: none;
+    }
+    
+    .single-item {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        height: 100%;
+        width: 100%;
+        cursor: pointer;
+        -webkit-transition: -webkit-transform 0.4s;
+        -moz-transition: -moz-transform 0.4s;
+        transition: transform 0.4s;
+        // Force hardware acceleration
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        -webkit-transform: translateZ(0);
+        -moz-transform: translateZ(0);
+        -ms-transform: translateZ(0);
+        -o-transform: translateZ(0);
+        transform: translateZ(0);
+    }
+    
+    .single-item:nth-of-type(2) {
+        -webkit-transform: translateY(33.3333333333%);
+        -moz-transform: translateY(33.3333333333%);
+        -ms-transform: translateY(33.3333333333%);
+        -o-transform: translateY(33.3333333333%);
+        transform: translateY(33.3333333333%);
+    }
+    
+    .single-item:nth-of-type(3) {
+        -webkit-transform: translateY(66.6666666667%);
+        -moz-transform: translateY(66.6666666667%);
+        -ms-transform: translateY(66.6666666667%);
+        -o-transform: translateY(66.6666666667%);
+        transform: translateY(66.6666666667%);
+    }
+    
+    .single-item.selected {
+        // selected project
+        cursor: auto;
+        -webkit-transform: translateY(0);
+        -moz-transform: translateY(0);
+        -ms-transform: translateY(0);
+        -o-transform: translateY(0);
+        transform: translateY(0);
+    }
+    
+    .single-item.selected ~ li {
+        // hide siblings projects
+        -webkit-transform: translateY(100%);
+        -moz-transform: translateY(100%);
+        -ms-transform: translateY(100%);
+        -o-transform: translateY(100%);
+        transform: translateY(100%);
+    }
+}
+
+.card-header {
+    position: relative;
+    height: 33.3333333333%;
+    width: 100%;
+    background-color: white;
+    border-top: 1px solid @color-darker;
+    border-radius: 0.25em;
+    
+    // line below title -  visible on hover
+    &::after {
+        content: '';
+        position: absolute;
+        left: 62.5%;
+        top: calc(50% + 20px);  
+        -webkit-transform: translateX(-50%) translateY(-50%) scaleX(0);
+        -moz-transform: translateX(-50%) translateY(-50%) scaleX(0);
+        -ms-transform: translateX(-50%) translateY(-50%) scaleX(0);
+        -o-transform: translateX(-50%) translateY(-50%) scaleX(0);
+        transform: translateX(-50%) translateY(-50%) scaleX(0);
+        height: 1px;
+        width: 60px;
+        background-color: @color-darker;
+        -webkit-transition: -webkit-transform 0.2s;
+        -moz-transition: -moz-transform 0.2s;
+        transition: transform 0.2s;
+    }
+    
+    &:hover::after {
+        -webkit-transition: -webkit-transform 0.4s;
+        -moz-transition: -moz-transform 0.4s;
+        transition: transform 0.4s;
+        -webkit-transform: translateX(-50%) translateY(-50%) scaleX(1);
+        -moz-transform: translateX(-50%) translateY(-50%) scaleX(1);
+        -ms-transform: translateX(-50%) translateY(-50%) scaleX(1);
+        -o-transform: translateX(-50%) translateY(-50%) scaleX(1);
+        transform: translateX(-50%) translateY(-50%) scaleX(1);
+    }
+}
+
+.card-close-button {
+    position: absolute;
+    top: 4%;
+    right: 3%;
+    z-index: 2;
+    height: 44px;
+    width: 44px;
+    border: 0;
+    border-radius: 50%;
+    visibility: hidden;
+    background-color: rgba(0, 0, 0, 0.6);
+    -webkit-transition: background 0.2s;
+    -moz-transition: background 0.2s;
+    transition: background 0.2s;
+    // image replacement
+    overflow: hidden;
+    text-indent: 100%;
+    white-space: nowrap;
+    color: transparent;
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+    
+    .cd-icon,
+    .cd-icon::after {
+        // icon created in CSS
+        position: absolute;
+        background-color: #FFFFFF;
+        border-radius: 2px;
+        // Force Hardware Acceleration in WebKit
+        -webkit-transform: translateZ(0);
+        -moz-transform: translateZ(0);
+        -ms-transform: translateZ(0);
+        -o-transform: translateZ(0);
+        transform: translateZ(0);
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+    }
+    
+    // first line
+    .cd-icon {
+        display: inline-block;
+        width: 18px;
+        height: 2px;
+        left: 50%;
+        top: 50%;
+        bottom: auto;
+        right: auto;
+        -webkit-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+        -moz-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+        -ms-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+        -o-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+        transform: translateX(-50%) translateY(-50%) rotate(45deg);
+        -webkit-transition: -webkit-transform 0.3s, background-color 0.3s;
+        -moz-transition: -moz-transform 0.3s, background-color 0.3s;
+        transition: transform 0.3s, background-color 0.3s;
+    }
+    
+    // second line to get a cross
+    .cd-icon::after {
+        content: '';
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        -webkit-transform: rotate(-90deg);
+        -moz-transform: rotate(-90deg);
+        -ms-transform: rotate(-90deg);
+        -o-transform: rotate(-90deg);
+        transform: rotate(-90deg);
+        -webkit-transition: -webkit-transform 0.3s;
+        -moz-transition: -moz-transform 0.3s;
+        transition: transform 0.3s;
+    }
+
+    // user selects a projects - display the 'X' icon    
+    &.project-open {
+        visibility: visible;
+    }
+}
+
+.card-icon {
+    width: 25%;
+    height: 100%;
+    padding: 1em;
+    margin: 0;
+    position: absolute;
+    display: block;
+    border-right: 1px solid @color-darker;
+}
+
+.card-title {
+    margin-left: 25%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 75%;
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: @color-darker;
+    text-transform: uppercase;
+    padding: 0.25em;
+}
+
+.card-item-details {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    text-align: left;
+    -webkit-transition: opacity 0.4s, visibility 0.4s;
+    -moz-transition: opacity 0.4s, visibility 0.4s;
+    transition: opacity 0.4s, visibility 0.4s;
+    
+    &::before {
+        // use to push the .content-wrapper below the intro project image
+        content: '';
+        display: block;
+        height: 33%;
+        width: 100%;
+        visibility: hidden;
+        pointer-events: none;
+    }
+    .content-wrapper {
+        position: relative;
+        padding: 1em 0 2em;
+        background-color: #FFFFFF;
+        border-top: 1px solid @color-darker;
+        height: 67%;
+        p {
+            margin-bottom: 1em;
+            line-height: 1.5;
+            font-size: 18px;
+        }
+        ul {
+            font-size: 18px;
+            list-style: disc;
+        }
+        > * {
+            width: 90%;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #253031;
+        }
+    }
+}
+
+.selected {
+    .card-header:hover::after {
+        -webkit-transition: -webkit-transform 0s;
+        -moz-transition: -moz-transform 0s;
+        transition: transform 0s;
+        -webkit-transform: translateX(-50%) translateY(-50%) scaleX(0);
+        -moz-transform: translateX(-50%) translateY(-50%) scaleX(0);
+        -ms-transform: translateX(-50%) translateY(-50%) scaleX(0);
+        -o-transform: translateX(-50%) translateY(-50%) scaleX(0);
+        transform: translateX(-50%) translateY(-50%) scaleX(0);
+    }
+    
+    .card-item-details {
+        -webkit-overflow-scrolling: touch;
+        opacity: 1;
+        visibility: visible;
+        -webkit-transition: opacity 0s, visibility 0s;
+        -moz-transition: opacity 0s, visibility 0s;
+        transition: opacity 0s, visibility 0s;
+    }
+}
+
+@media(max-width:767px) {
+	section {
+		padding: 75px 0;
+	}
+	section.first {
+		padding-top: 75px;
+	}
+}
+
+@media(min-width:768px) {
+	header {
+		.container {
+			padding-top: 150px;
+			padding-bottom: 100px;
+		}
+		.intro-text {
+			.name {
+				font-size: 3.5em;
+			}
+			.skills {
+				font-size: 1.75em;
+			}
+		}
+	}
+    
+    .card-section {
+    	font-size: 2.25em;
+    }
+    
+    .navbar-fixed-top {
+        padding: 15px 0;
+        -webkit-transition: padding 0.3s;
+        -moz-transition: padding 0.3s;
+        transition: padding 0.3s;
+	    .navbar-brand {
+	        font-size: 1.8em;
+	        -webkit-transition: all 0.3s;
+	        -moz-transition: all 0.3s;
+	        transition: all 0.3s;
+	    }
+    }
+    .navbar-fixed-top.navbar-shrink {
+        padding: 3px 0;
+		.navbar-brand {
+	        font-size: 1.5em;
+	    }
+	}
+
+    #portfolio {
+        .portfolio-item {
+            margin: 0 0 30px;
+        }
+    }
 }
