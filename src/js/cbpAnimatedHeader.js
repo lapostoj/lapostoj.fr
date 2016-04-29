@@ -9,8 +9,7 @@ var cbpAnimatedHeader = (function() {
 		navbar = document.querySelector( '.navbar-fixed-top' ),
         scrollTopBtn = document.querySelector( '.scroll-top' ),
         header = document.querySelector( '.main-header' ),
-        education = document.querySelector( '#education' ),
-        experience = document.querySelector( '#experience' ),
+        about = document.querySelector( '#about' ),
 		didScroll = false,
 		changeNavbarOn = 802;
         
@@ -26,17 +25,12 @@ var cbpAnimatedHeader = (function() {
 
     function moveHeader() {
         classie.remove( header, 'col-lg-12' );
-        classie.add( header, 'col-lg-4' );
-        setTimeout( displayEducation, 1000);
+        classie.add( header, 'col-lg-8' );
+        setTimeout( displayAboutMe, 1000);
     }
     
-    function displayEducation() {
-        classie.remove( education, 'invisible' );
-        setTimeout( displayExperience, 500);
-    }
-    
-    function displayExperience() {
-        classie.remove( experience, 'invisible' );
+    function displayAboutMe() {
+        classie.remove( about, 'invisible' );
     }
     
 	function scrollPage() {
