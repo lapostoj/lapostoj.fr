@@ -71,7 +71,7 @@
         <div class="container">
             <div class="row">
                 <div class="main-header col-lg-12">            
-                    <img class="img-responsive" src="img/lapostoj.png" alt="">
+                    <img class="img-responsive img-circle" src="img/lapostoj.png" alt="">
                     <div class="intro-text">
                         <span class="name">Jérôme Lapostolet</span>
                         <hr class="star-light">
@@ -84,7 +84,7 @@
                         <h2>About Me</h2>
                     </div>
                     <p class="justify">I am currently a 5th-year student in Computer Science & Finance at Ensimag (Grenoble Institute of Technology,
-                            France). From July to January I wil be doing my final-year internship at TranferWise in Tallinn.</p>
+                            France). From July to January I am doing my final-year internship at TranferWise in Tallinn.</p>
                     <p class="justify">I am really interested in new technology and new projects, which leads me to follow intensively the
                             start-up ecosystem not only about finance but about every innovating field.</p>
                     <p class="text-center">Feel free to contact me for more information!</p>
@@ -108,13 +108,35 @@
                 </div>
             </div>
             <div class="row">
-                                <div id="experience" class="col-lg-6">
+                <div id="experience" class="col-lg-6">
                     <div class="intro-text">
                         <!--<div class="card-name">Professional Experience</div>-->
                         <h3 class="text-center">Professional Experience</h3>
                         <div class="card">
                             <button class="card-close-button"><span aria-hidden="true" class="cd-icon"></span></button>
                             <ul>
+                                <li class="single-item">
+                                    <div class="card-header">
+                                        <img src="img/transferwise.svg" class="card-icon">
+                                        <div class="card-title">
+                                            TransferWise
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="card-item-details">			
+                                        <div class="content-wrapper">
+                                            <p>
+                                                6-month Internship in Product Engineering.
+                                            </p>
+                                            <p>
+                                                Member of one of the product engineering team in TransferWise office in Tallinn.
+                                            </p>
+                                            <p>
+                                                <a href="https://transferwise.com/">TransferWise's website</a>.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </li>
                                 <li class="single-item">
                                     <div class="card-header">
                                         <img src="img/morganstanley.svg" class="card-icon">
@@ -130,6 +152,9 @@
                                             </p>
                                             <p>
                                                 I reshaped part of the UI of an OTC products confirmation system from C# to a web-based one using the common pattern HTML/CSS and AngularJS. It also implied building a REST server in Java with the Spring framework.
+                                            </p>
+                                            <p>
+                                                <a href="http://www.morganstanley.com/people-opportunities/students-graduates/programs/technology/summer-analyst-emea/">Morgan Stanley Summer Analyst Programme</a>.
                                             </p>
                                         </div>
                                     </div>
@@ -150,24 +175,8 @@
                                             <p>
                                                 I took part in a mission to help a client improve an existing Android application. During short “sprints”, I delivered several features to improve the UX and helped make the architecture more efficient and scalable.
                                             </p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="single-item">
-                                    <div class="card-header">
-                                        <img src="img/ibm.svg" class="card-icon">
-                                        <div class="card-title">
-                                            IBM
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="card-item-details">			
-                                        <div class="content-wrapper">
                                             <p>
-                                                Internship - Manuel workforce experience.
-                                            </p>
-                                            <p>
-                                                I helped maintain some test and demonstrations servers and set up benchmarks rooms. This gave me the opportunity to learn more about datacentres and to be close to the technology used by IBM in this area.
+                                                <a href="http://www.nsigma.fr/">Nsigmas website</a>.
                                             </p>
                                         </div>
                                     </div>
@@ -263,6 +272,16 @@
             </div>
             <div class="row">
                 <div class="col-sm-4 portfolio-item">
+                    <a href="#java" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="img/portfolio/java.png" class="img-responsive img-centered" alt="Java">
+                    </a>
+                </div>
+                <div class="col-sm-4 portfolio-item">
                     <a href="#angular" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
@@ -283,26 +302,6 @@
                     </a>
                 </div>
                 <div class="col-sm-4 portfolio-item">
-                    <a href="#ionic" class="portfolio-link" data-toggle="modal">
-                        <div class="caption">
-                            <div class="caption-content">
-                                <i class="fa fa-search-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="img/portfolio/ionic.png" class="img-responsive img-centered" alt="Ionic">
-                    </a>
-                </div>
-                <div class="col-sm-4 portfolio-item">
-                    <a href="#java" class="portfolio-link" data-toggle="modal">
-                        <div class="caption">
-                            <div class="caption-content">
-                                <i class="fa fa-search-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="img/portfolio/java.png" class="img-responsive img-centered" alt="Java">
-                    </a>
-                </div>
-                <div class="col-sm-4 portfolio-item">
                     <a href="#golang" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
@@ -310,6 +309,16 @@
                             </div>
                         </div>
                         <img src="img/portfolio/golang.png" class="img-responsive img-centered" alt="Golang">
+                    </a>
+                </div>
+                <div class="col-sm-4 portfolio-item">
+                    <a href="#ionic" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="img/portfolio/ionic.png" class="img-responsive img-centered" alt="Ionic">
                     </a>
                 </div>
                 <div class="col-sm-4 portfolio-item">
@@ -340,7 +349,6 @@
                     <h3 class="text-center">Contact Details</h3>
                     <p><i class="fa fa-user"></i>: Jérôme Lapostolet</p>
                     <p><i class="fa fa-at"></i>: <a href="mailto:jerome.laposotlet@gmail.com">jerome.laposotlet@gmail.com</a></p>
-                    <p><i class="fa fa-phone"></i> [FR]: +33 6 67 94 47 56</p>
                     <p><i class="fa fa-skype"></i>: jerome.lapostolet</p>
                 </div>
                 <div class="row text-center">
@@ -453,20 +461,9 @@
                             <h2>Angular</h2>
                             <hr class="star-primary">
                             <img src="img/portfolio/angular.png" class="img-responsive img-centered" alt="Angular">
-                            <p>I have worked with Angular for several projects, first <a href="https://angularjs.org/">Angular JS 1</a>
-                                for a total of 7 months and now I am learning <a href="https://angular.io/">Angular 2</a> in order to stay up to date.
-                                This is one of the reason I've done this website in order to be able to host small projects to try technologies.</p>
-                            <ul class="list-inline item-details">
-                                <li>Context:
-                                    <strong><a href="https://github.com/lapostoj/lapostoj.fr">Perso</a></strong>
-                                </li>
-                                <li>Date & length:
-                                    <strong>February 2016, ongoing</strong>
-                                </li>
-                                <li>Description:
-                                    <strong>One version of lapostoj.fr using Angular 2.</strong>
-                                </li>
-                            </ul>
+                            <p>I have worked with Angular for several projects, if <a href="https://angularjs.org/">Angular JS 1</a>
+                               was a real obvious solution at its time. <a href="https://angular.io/">Angular 2</a>, like most people, 
+                               has not really convinced me so far...</p>
                             <ul class="list-inline item-details">
                                 <li>Context:
                                     <strong>Morgan Stanley</strong>
@@ -564,13 +561,13 @@
                             </p>
                             <ul class="list-inline item-details">
                                 <li>Context:
-                                    <strong>Perso (githb link coming)</strong>
+                                    <strong>Perso</strong>
                                 </li>
                                 <li>Date:
                                     <strong>November 2015, ongoing</strong>
                                 </li>
                                 <li>Description:
-                                    <strong>Cards Game (quiz to learn). I need to finish this little app... On the side at the moment.</strong>
+                                    <strong>Cards Game (learning game using quiz format). Unfinished work.</strong>
                                 </li>
                             </ul>
                             <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
@@ -598,13 +595,24 @@
                             <p>This is the language I have used the most so far, both in an school and profesionnal context.</p>
                             <ul class="list-inline item-details">
                                 <li>Context:
+                                    <strong>TransferWise</strong>
+                                </li>
+                                <li>Date:
+                                    <strong>July 2016, 6 months</strong>
+                                </li>
+                                <li>Description:
+                                    <strong>Implementation of various services and REST API using a Spring stack.</strong>
+                                </li>
+                            </ul>
+                            <ul class="list-inline item-details">
+                                <li>Context:
                                     <strong>Morgan Stanley</strong>
                                 </li>
                                 <li>Date:
                                     <strong>July 2015, 6 months</strong>
                                 </li>
                                 <li>Description:
-                                    <strong></strong>
+                                    <strong>Implementation of a server with a REST API using a rather classic Spring stack.</strong>
                                 </li>
                             </ul>
                             <ul class="list-inline item-details">
@@ -615,7 +623,7 @@
                                     <strong>September 2014, 1 year</strong>
                                 </li>
                                 <li>Description:
-                                    <strong>Several projects: fire-fighting robots simulation, compiler for a subset of Java</strong>
+                                    <strong>Several projects: fire-fighting robots simulation, compiler for a subset of Java.</strong>
                                 </li>
                             </ul>
                             <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
