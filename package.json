@@ -1,0 +1,14 @@
+{
+  "name": "lapostoj-website",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-less": "^3.3.0",
+    "gulp-clean-css": "^3.0.4"
+  },
+  "scripts": {
+    "start": "gulp",
+    "build": "gulp prod"
+  }
+}

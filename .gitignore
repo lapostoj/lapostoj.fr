@@ -1,6 +1,5 @@
-install/
-img-original/
-src/node_modules/
+dist/
+node_modules/
 src/css/lapostoj.css
-src/app/*.js
-src/app/*.js.map
+src/css/mixins.css
+src/css/variables.css
