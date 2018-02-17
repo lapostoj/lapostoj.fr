@@ -1,0 +1,21 @@
+{
+  "hosting": {
+    "public": "src",
+    "ignore": [
+      "**/node_modules/**",
+      ".firebaserc",
+      "firebase.json"
+    ],
+    "headers": [
+      {
+        "source" : "**/*.@(jpg|jpeg|gif|png|svg)",
+        "headers" : [
+          {
+            "key" : "Cache-Control",
+            "value" : "max-age=604800"
+          }
+        ]
+      }
+    ]
+  }
+}
