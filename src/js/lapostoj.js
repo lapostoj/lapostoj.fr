@@ -55,7 +55,7 @@ function send() {
             message: document.getElementById("contactForm").elements[3].value
         }
         var request = new XMLHttpRequest();     
-        var url = "http://lapostoj-rest.appspot.com/gunmail";
+        var url = "https://lapostoj-rest.appspot.com/gunmail";
         var params = JSON.stringify(form);
         request.open("POST", url, true);
 
