@@ -1,5 +1,4 @@
-dist/
+.cache/
+public/
 node_modules/
-src/css/lapostoj.css
-src/css/mixins.css
-src/css/variables.css
+package-lock.json
