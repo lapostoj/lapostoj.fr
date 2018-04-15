@@ -13,7 +13,7 @@ class IndexRoute extends React.Component {
     });
 
     return (
-      <div>
+      <div className="grid-wrapper">
         <Helmet>
           <title>{title}</title>
           <meta name="description" content={subtitle} />

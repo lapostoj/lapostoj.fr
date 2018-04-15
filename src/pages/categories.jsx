@@ -10,7 +10,7 @@ class CategoriesRoute extends React.Component {
     const categories = this.props.data.allMarkdownRemark.group;
 
     return (
-      <div>
+      <div className="grid-wrapper">
         <Helmet title={`All Categories - ${title}`} />
         <Sidebar {...this.props} />
         <div className="content">

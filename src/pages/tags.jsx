@@ -10,7 +10,7 @@ class TagsRoute extends React.Component {
     const tags = this.props.data.allMarkdownRemark.group;
 
     return (
-      <div>
+      <div className="grid-wrapper">
         <Helmet title={`All Tags - ${title}`} />
         <Sidebar {...this.props} />
         <div className="content">

@@ -9,7 +9,7 @@ class CategoryTemplate extends React.Component {
     const { category } = this.props.pathContext;
 
     return (
-      <div>
+      <div className="grid-wrapper">
         <Helmet title={`${category} - ${title}`} />
         <Sidebar {...this.props} />
         <CategoryTemplateDetails {...this.props} />

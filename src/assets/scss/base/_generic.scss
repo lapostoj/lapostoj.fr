@@ -16,6 +16,8 @@ body {
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    margin-right: 1em;
+    margin-left: 1em;
 }
 
 h1,
@@ -142,17 +144,31 @@ figcaption {
     text-align: center;
 }
 
-.layout {
-    lost-center: $layout-width;
+.grid-wrapper {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-areas:
+        "sidebar"
+        "content";
 }
 
 .content {
+    grid-area: content;
     &__inner {
         padding: 25px 20px;
     }
 }
 
 @include breakpoint-sm {
+    body {
+        margin-right: 2em;
+        margin-left: 2em;
+    }
+    .grid-wrapper {
+        grid-template-columns: 2fr 4fr;
+        grid-template-areas:
+            "sidebar content";
+    }
     figure.float-left,
     figure.float-right {
         max-width: 310px;
@@ -165,7 +181,6 @@ figcaption {
         float: left;
     }
     .content {
-        lost-column: 7/12;
         &__inner {
             padding: 30px 20px;
         }
@@ -174,7 +189,21 @@ figcaption {
 
 @include breakpoint-md {
     .content {
-        lost-column: 2/3;
+        &__inner {
+            padding: 40px 35px;
+        }
+    }
+}
+
+@include breakpoint-lg {
+    body {
+        margin-right: 5em;
+        margin-left: 5em;
+    }
+    .grid-wrapper {
+        grid-template-columns: 3fr 7fr;
+    }
+    .content {
         &__inner {
             padding: 40px 35px;
         }

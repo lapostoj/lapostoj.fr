@@ -4,7 +4,7 @@ import Sidebar from '../components/Sidebar';
 class NotFoundRoute extends React.Component {
   render() {
     return (
-      <div>
+      <div className="grid-wrapper">
         <Sidebar {...this.props} />
         <div className="content">
           <div className="content__inner">

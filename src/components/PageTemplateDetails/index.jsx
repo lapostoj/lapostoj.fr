@@ -7,7 +7,7 @@ class PageTemplateDetails extends React.Component {
     const page = this.props.data.markdownRemark;
 
     return (
-      <div>
+      <div className="grid-wrapper">
         <Sidebar {...this.props} />
         <div className="content">
           <div className="content__inner">
