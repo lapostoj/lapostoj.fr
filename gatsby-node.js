@@ -1,9 +1,13 @@
-const _ = require('lodash');
-const Promise = require('bluebird');
 const path = require('path');
 const lost = require('lost');
 const pxtorem = require('postcss-pxtorem');
 const slash = require('slash');
+
+function convertToKebabCase(string) {
+  return string.replace(/([a-z])([A-Z])/g, '$1-$2')
+    .replace(/\s+/g, '-')
+    .toLowerCase();
+}
 
 exports.createPages = ({ graphql, boundActionCreators }) => {
   const { createPage } = boundActionCreators;
@@ -40,14 +44,14 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
         reject(result.errors);
       }
 
-      _.each(result.data.allMarkdownRemark.edges, (edge) => {
-        if (_.get(edge, 'node.frontmatter.layout') === 'page') {
+      result.data.allMarkdownRemark.edges.forEach((edge) => {
+        if (edge.node.frontmatter.layout === 'page') {
           createPage({
             path: edge.node.fields.slug,
             component: slash(pageTemplate),
             context: { slug: edge.node.fields.slug }
           });
-        } else if (_.get(edge, 'node.frontmatter.layout') === 'post') {
+        } else if (edge.node.frontmatter.layout === 'post') {
           createPage({
             path: edge.node.fields.slug,
             component: slash(postTemplate),
@@ -55,13 +59,13 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
           });
 
           let tags = [];
-          if (_.get(edge, 'node.frontmatter.tags')) {
+          if (edge.node.frontmatter.tags) {
             tags = tags.concat(edge.node.frontmatter.tags);
           }
 
-          tags = _.uniq(tags);
-          _.each(tags, (tag) => {
-            const tagPath = `/tags/${_.kebabCase(tag)}/`;
+          tags = [...new Set(tags)];
+          tags.forEach((tag) => {
+            const tagPath = `/tags/${convertToKebabCase(tag)}/`;
             createPage({
               path: tagPath,
               component: tagTemplate,
@@ -70,13 +74,13 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
           });
 
           let categories = [];
-          if (_.get(edge, 'node.frontmatter.category')) {
+          if (edge.node.frontmatter.category) {
             categories = categories.concat(edge.node.frontmatter.category);
           }
 
-          categories = _.uniq(categories);
-          _.each(categories, (category) => {
-            const categoryPath = `/categories/${_.kebabCase(category)}/`;
+          categories = [...new Set(categories)];
+          categories.forEach((category) => {
+            const categoryPath = `/categories/${convertToKebabCase(category)}/`;
             createPage({
               path: categoryPath,
               component: categoryTemplate,
@@ -114,12 +118,12 @@ exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
     });
 
     if (node.frontmatter.tags) {
-      const tagSlugs = node.frontmatter.tags.map(tag => `/tags/${_.kebabCase(tag)}/`);
+      const tagSlugs = node.frontmatter.tags.map(tag => `/tags/${convertToKebabCase(tag)}/`);
       createNodeField({ node, name: 'tagSlugs', value: tagSlugs });
     }
 
     if (typeof node.frontmatter.category !== 'undefined') {
-      const categorySlug = `/categories/${_.kebabCase(node.frontmatter.category)}/`;
+      const categorySlug = `/categories/${convertToKebabCase(node.frontmatter.category)}/`;
       createNodeField({ node, name: 'categorySlug', value: categorySlug });
     }
   }
