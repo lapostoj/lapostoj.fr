@@ -9,7 +9,7 @@
     "clean": "npm run clean:public",
     "deploy": "firebase deploy",
     "lint": "./node_modules/.bin/eslint --cache --ext .js,.jsx --ignore-pattern public .",
-    "start": "gatsby develop",
+    "start": "npm run clean:public && gatsby develop",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": "git+https://github.com/lapostoj/lapostoj.fr.git",

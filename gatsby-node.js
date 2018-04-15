@@ -11,6 +11,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
   const { createPage } = boundActionCreators;
 
   return new Promise((resolve, reject) => {
+    const index = path.resolve('./src/pages/index.jsx');
     const postTemplate = path.resolve('./src/templates/post-template.jsx');
     const pageTemplate = path.resolve('./src/templates/page-template.jsx');
     const tagTemplate = path.resolve('./src/templates/tag-template.jsx');
@@ -19,8 +20,8 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
     graphql(`
     {
       allMarkdownRemark(
-        limit: 1000,
-        filter: { frontmatter: { draft: { ne: true } } },
+        limit: 50
+        filter: { frontmatter: { draft: { ne: true } } }
       ) {
         edges {
           node {
@@ -43,7 +44,12 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
       }
 
       result.data.allMarkdownRemark.edges.forEach((edge) => {
-        if (edge.node.frontmatter.layout === 'page') {
+        if (edge.node.frontmatter.layout === 'index') {
+          createPage({
+            path: edge.node.fields.slug,
+            component: slash(index),
+          });
+        } else if (edge.node.frontmatter.layout === 'page') {
           createPage({
             path: edge.node.fields.slug,
             component: slash(pageTemplate),

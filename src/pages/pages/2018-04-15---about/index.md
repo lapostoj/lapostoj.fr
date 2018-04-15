@@ -1,7 +1,7 @@
 ---
 title: "About me"
-layout: page
-path: "/about"
+layout: index
+path: "/"
 ---
 
 I am currently a full-stack software engineer at TransferWise in a team working on the borderless account opened to the public in May 2017. The debit Mastercard® currently in beta testing is soon to be open to the public.

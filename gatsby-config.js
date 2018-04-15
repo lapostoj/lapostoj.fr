@@ -7,11 +7,11 @@ module.exports = {
     menu: [
       {
         label: 'About me',
-        path: '/about/'
+        path: '/'
       },
       {
         label: 'Posts',
-        path: '/'
+        path: '/posts/'
       },
     ],
     author: {
