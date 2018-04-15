@@ -13,7 +13,7 @@ class PostsRoute extends React.Component {
     });
 
 
-    const itemsBlock = items.length === 0 ? ( <h2>No post yet...</h2> ) : items;
+    const itemsBlock = items.length === 0 ? <h2>No post yet...</h2> : items;
 
     return (
       <div className="grid-wrapper">

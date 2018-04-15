@@ -53,13 +53,13 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
           createPage({
             path: edge.node.fields.slug,
             component: slash(pageTemplate),
-            context: { slug: edge.node.fields.slug }
+            context: { slug: edge.node.fields.slug },
           });
         } else if (edge.node.frontmatter.layout === 'post') {
           createPage({
             path: edge.node.fields.slug,
             component: slash(postTemplate),
-            context: { slug: edge.node.fields.slug }
+            context: { slug: edge.node.fields.slug },
           });
 
           let tags = [];
@@ -73,7 +73,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
             createPage({
               path: tagPath,
               component: tagTemplate,
-              context: { tag }
+              context: { tag },
             });
           });
 
@@ -88,7 +88,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
             createPage({
               path: categoryPath,
               component: categoryTemplate,
-              context: { category }
+              context: { category },
             });
           });
         }
@@ -118,7 +118,7 @@ exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
     createNodeField({
       node,
       name: 'slug',
-      value: slug
+      value: slug,
     });
 
     if (node.frontmatter.tags) {

@@ -7,10 +7,8 @@ import './style.scss';
 
 class Sidebar extends React.Component {
   render() {
-    const { location } = this.props;
-    const { author, subtitle, copyright, menu } = this.props.data.site.siteMetadata;
+    const { author, copyright, menu } = this.props.data.site.siteMetadata;
 
-    /* eslint-disable jsx-a11y/img-redundant-alt */
     const authorBlock = (
       <div>
         <Link to="/">
@@ -36,7 +34,6 @@ class Sidebar extends React.Component {
         </div>
       </div>
     );
-    /* eslint-enable jsx-a11y/img-redundant-alt */
 
     return (
       <div className="sidebar">

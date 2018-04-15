@@ -7,11 +7,11 @@ module.exports = {
     menu: [
       {
         label: 'About me',
-        path: '/'
+        path: '/',
       },
       {
         label: 'Posts',
-        path: '/posts/'
+        path: '/posts/',
       },
     ],
     author: {
@@ -32,8 +32,8 @@ module.exports = {
       resolve: 'gatsby-source-filesystem',
       options: {
         path: `${__dirname}/src/pages`,
-        name: 'pages'
-      }
+        name: 'pages',
+      },
     },
     {
       resolve: 'gatsby-transformer-remark',
@@ -41,27 +41,23 @@ module.exports = {
         plugins: [
           {
             resolve: 'gatsby-remark-images',
-            options: {
-              maxWidth: 960
-            }
+            options: { maxWidth: 960 },
           },
           {
             resolve: 'gatsby-remark-responsive-iframe',
-            options: { wrapperStyle: 'margin-bottom: 1.0725rem' }
+            options: { wrapperStyle: 'margin-bottom: 1.0725rem' },
           },
           'gatsby-remark-prismjs',
           'gatsby-remark-copy-linked-files',
-          'gatsby-remark-smartypants'
-        ]
-      }
+          'gatsby-remark-smartypants',
+        ],
+      },
     },
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     {
-      resolve: `gatsby-plugin-google-fonts`,
-      options: {
-        fonts: [`roboto\:400,400i,500,700`]
-      }
+      resolve: 'gatsby-plugin-google-fonts',
+      options: { fonts: ['roboto:400,400i,500,700'] },
     },
     {
       resolve: 'gatsby-plugin-sitemap',
@@ -87,18 +83,16 @@ module.exports = {
           }`,
         output: '/sitemap.xml',
         serialize: ({ site, allSitePage }) =>
-          allSitePage.edges.map((edge) => {
-            return {
-              url: site.siteMetadata.url + edge.node.path,
-              changefreq: 'daily',
-              priority: 0.7
-            };
-          })
-      }
+          allSitePage.edges.map(edge => ({
+            url: site.siteMetadata.url + edge.node.path,
+            changefreq: 'daily',
+            priority: 0.7,
+          })),
+      },
     },
     'gatsby-plugin-offline',
     'gatsby-plugin-catch-links',
     'gatsby-plugin-react-helmet',
-    'gatsby-plugin-sass'
-  ]
+    'gatsby-plugin-sass',
+  ],
 };

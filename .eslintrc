@@ -1,0 +1,21 @@
+{
+    "parser": "babel-eslint",
+    "extends": "airbnb",
+    "plugins": [
+        "react",
+        "jsx-a11y",
+        "import"
+    ],
+    "globals": {
+        "graphql": true
+    },
+    "rules": {
+        "react/prefer-stateless-function": [0],
+        "react/prop-types": [0],
+        "import/no-extraneous-dependencies": [0],
+        "jsx-a11y/anchor-is-valid": [0],
+        "prefer-destructuring": [0],
+        "object-curly-newline": ["error", { "multiline": true, "minProperties": 5 }],
+        "no-console": "off"
+    }
+}

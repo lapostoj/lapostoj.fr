@@ -29,6 +29,7 @@ class PageTemplateDetails extends React.Component {
       </div>
     );
 
+    /* eslint-disable react/no-danger */
     return (
       <div className="grid-wrapper">
         <Sidebar {...this.props} />
@@ -44,6 +45,7 @@ class PageTemplateDetails extends React.Component {
         </div>
       </div>
     );
+    /* eslint-enable react/no-danger */
   }
 }
 

@@ -7,7 +7,7 @@ class Links extends React.Component {
     const author = this.props.data;
     const links = {
       github: author.github,
-      email: author.email
+      email: author.email,
     };
 
     return (
