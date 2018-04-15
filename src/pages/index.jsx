@@ -35,10 +35,10 @@ export const pageQuery = graphql`
   query IndexQuery {
     ...site
     allMarkdownRemark(
-        limit: 1000,
-        filter: { frontmatter: { layout: { eq: "post" }, draft: { ne: true } } },
-        sort: { order: DESC, fields: [frontmatter___date] }
-      ){
+      limit: 50
+      filter: { frontmatter: { layout: { eq: "post" }, draft: { ne: true } } }
+      sort: { order: DESC, fields: [frontmatter___date] }
+    ) {
       edges {
         node {
           fields {

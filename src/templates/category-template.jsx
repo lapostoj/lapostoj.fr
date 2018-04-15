@@ -24,10 +24,10 @@ export const pageQuery = graphql`
   query CategoryPage($category: String) {
     ...site
     allMarkdownRemark(
-        limit: 1000,
-        filter: { frontmatter: { category: { eq: $category }, layout: { eq: "post" }, draft: { ne: true } } },
-        sort: { order: DESC, fields: [frontmatter___date] }
-      ){
+      limit: 50
+      filter: { frontmatter: { category: { eq: $category }, layout: { eq: "post" }, draft: { ne: true } } }
+      sort: { order: DESC, fields: [frontmatter___date] }
+    ) {
       edges {
         node {
           fields {

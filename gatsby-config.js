@@ -6,24 +6,26 @@ module.exports = {
     copyright: '© All rights reserved.',
     menu: [
       {
-        label: 'Articles',
-        path: '/'
-      },
-      {
         label: 'About me',
         path: '/about/'
       },
       {
-        label: 'Contact me',
-        path: '/contact/'
-      }
+        label: 'Posts',
+        path: '/'
+      },
     ],
     author: {
       name: 'Jerome Lapostolet - lapostoj',
       email: 'jerome.lapostolet@gmail.com',
       github: 'lapostoj',
-      subtitle: 'This is a subtitle about me.',
-    }
+      subtitle: '[WORK IN PROGRESS]',
+      location: 'London',
+      job: {
+        title: 'Software Engineer',
+        company: 'TransferWise',
+        url: 'https://transferwise.com',
+      },
+    },
   },
   plugins: [
     {

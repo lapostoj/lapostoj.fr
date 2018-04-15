@@ -17,15 +17,23 @@ class Sidebar extends React.Component {
           <img
             src={profilePic}
             className="sidebar__author-photo"
-            width="75"
-            height="75"
+            width="100"
+            height="100"
             alt={author.name}
           />
         </Link>
         <h2 className="sidebar__author-title">
           <Link className="sidebar__author-title-link" to="/">{author.name}</Link>
         </h2>
-        <p className="sidebar__author-subtitle">{author.subtitle}</p>
+        <div className="sidebar__author-details">
+          <div className="sidebar__author-details-job">
+            {author.job.title} at <a className="sidebar__author-details-job-link" href={author.job.url} target="_blank">{author.job.company}</a>.
+          </div>
+          <div className="sidebar__author-details-location">
+            Currently in {author.location}.
+          </div>
+          <p className="sidebar__author-details-subtitle">{author.subtitle}</p>
+        </div>
       </div>
     );
     /* eslint-enable jsx-a11y/img-redundant-alt */
@@ -66,6 +74,12 @@ export const siteQuery = graphql`
           name
           email
           github
+          job {
+            title
+            company
+            url
+          }
+          location
           subtitle
         }
       }

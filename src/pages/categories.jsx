@@ -44,7 +44,7 @@ export const pageQuery = graphql`
   query CategoryesQuery {
     ...site
     allMarkdownRemark(
-      limit: 2000
+      limit: 50
       filter: { frontmatter: { layout: { eq: "post" }, draft: { ne: true } } }
     ) {
       group(field: frontmatter___category) {
