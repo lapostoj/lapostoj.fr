@@ -4,10 +4,18 @@ layout: page
 path: "/about"
 ---
 
-Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.
+I am currently a full-stack software engineer at TransferWise in a team working on the borderless account opened to the public in May 2017. The debit Mastercard® currently in beta testing is soon to be open to the public.
 
-![Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi.](./1.jpg)
+In the team we work following a Domain Driven Design approach to build flexible, realistic, maintanable and easy to make evolve software. Over the near 2 years I have spent in the team that has enabled us to have one of the most stable service in the company while keeping a fast pace of itearation.
 
-*Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi.*
+This is needed as the domain managed by the team plays a key role in the borderless account product.
 
-Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus
+If you want to take part of it, <a href="https://transferwise.com/jobs/position/971107-full-stack-developer-borderless-accounts" target="_blank">we're hiring!</a>
+
+![The TransferWise borderless account enables people to get paid, hold their money and pay in most of the currencies in the world. Any exchange is made using the mid market rate.](./borderless-account.jpg)
+
+## Professional Experience
+
+## Education
+
+## Interests

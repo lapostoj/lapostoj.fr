@@ -7,10 +7,13 @@ class IndexRoute extends React.Component {
   render() {
     const items = [];
     const { title, subtitle } = this.props.data.site.siteMetadata;
-    const posts = this.props.data.allMarkdownRemark.edges;
+    const posts = this.props.data.allMarkdownRemark ? this.props.data.allMarkdownRemark.edges : [];
     posts.forEach((post) => {
       items.push(<Post data={post} key={post.node.fields.slug} />);
     });
+
+
+    const itemsBlock = items.length === 0 ? ( <h2>No post yet...</h2> ) : items;
 
     return (
       <div className="grid-wrapper">
@@ -21,7 +24,7 @@ class IndexRoute extends React.Component {
         <Sidebar {...this.props} />
         <div className="content">
           <div className="content__inner">
-            {items}
+            {itemsBlock}
           </div>
         </div>
       </div>
