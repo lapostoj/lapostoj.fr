@@ -8,7 +8,13 @@ class Layout extends React.Component {
 
     return (
       <div className="layout">
-        <Helmet defaultTitle="Blog by John Doe" />
+        <Helmet
+          title="lapostoj - Jerome Lapostolet"
+          meta={[
+            { name: 'description', content: 'CV, Portfolio and Blog website for lapostoj.' },
+            { name: 'keywords', content: 'lapostoj, developper, software, engineer, cv, portfolio, blog, resume' },
+          ]}
+        />
         {children()}
       </div>
     );

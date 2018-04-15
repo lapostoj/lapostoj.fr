@@ -57,11 +57,6 @@
         @include line-height(1);
         @include margin-top(1);
         @include margin-bottom(2);
-        &-text {
-            & a {
-                text-decoration: underline;
-            }
-        }
     }
     &__date {
         max-width: $layout-post-single-width;

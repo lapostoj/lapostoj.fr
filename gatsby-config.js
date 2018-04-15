@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    url: 'https://lumen.netlify.com',
-    title: 'Blog by John Doe',
-    subtitle: 'Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu.',
+    url: 'https://www.lapostoj.com',
+    title: 'lapostoj - Jerome Lapostolet',
+    subtitle: 'CV, Portfolio and Blog website for lapostoj.',
     copyright: '© All rights reserved.',
     menu: [
       {
@@ -19,12 +19,9 @@ module.exports = {
       }
     ],
     author: {
-      name: 'John Doe',
-      email: '#',
-      telegram: '#',
-      twitter: '#',
-      github: '#',
-      vk: '#'
+      name: 'Jerome Lapostolet - lapostoj',
+      email: 'jerome.lapostolet@gmail.com',
+      github: 'lapostoj',
     }
   },
   plugins: [

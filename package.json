@@ -4,13 +4,13 @@
   "description": "CV and Portfolio and Blog website for lapostoj",
   "main": "n/a",
   "scripts": {
-    "develop": "gatsby develop",
-    "build": "gatsby build",
+    "build": "npm run clean:public && gatsby build",
     "clean:public": "rm -rf public",
     "clean": "npm run clean:public",
+    "deploy": "firebase deploy",
     "lint": "./node_modules/.bin/eslint --cache --ext .js,.jsx --ignore-pattern public .",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "gatsby build --prefix-paths && gh-pages -d public"
+    "start": "gatsby develop",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": "git+https://github.com/lapostoj/lapostoj.fr.git",
   "keywords": [
