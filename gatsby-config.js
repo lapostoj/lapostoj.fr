@@ -22,6 +22,7 @@ module.exports = {
       name: 'Jerome Lapostolet - lapostoj',
       email: 'jerome.lapostolet@gmail.com',
       github: 'lapostoj',
+      subtitle: 'This is a subtitle about me.',
     }
   },
   plugins: [

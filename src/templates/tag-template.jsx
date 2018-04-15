@@ -22,22 +22,7 @@ export default TagTemplate;
 
 export const pageQuery = graphql`
   query TagPage($tag: String) {
-    site {
-      siteMetadata {
-        title
-        subtitle
-        copyright
-        menu {
-          label
-          path
-        }
-        author {
-          name
-          email
-          github
-        }
-      }
-    }
+    ...site
     allMarkdownRemark(
         limit: 1000,
         filter: { frontmatter: { tags: { in: [$tag] }, layout: { eq: "post" }, draft: { ne: true } } },

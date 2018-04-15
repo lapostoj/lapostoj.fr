@@ -25,7 +25,7 @@ class Sidebar extends React.Component {
         <h2 className="sidebar__author-title">
           <Link className="sidebar__author-title-link" to="/">{author.name}</Link>
         </h2>
-        <p className="sidebar__author-subtitle">{subtitle}</p>
+        <p className="sidebar__author-subtitle">{author.subtitle}</p>
       </div>
     );
     /* eslint-enable jsx-a11y/img-redundant-alt */
@@ -50,3 +50,25 @@ class Sidebar extends React.Component {
 }
 
 export default Sidebar;
+
+export const siteQuery = graphql`
+  fragment site on RootQueryType {
+    site {
+      siteMetadata {
+        title
+        subtitle
+        copyright
+        menu {
+          label
+          path
+        }
+        author {
+          name
+          email
+          github
+          subtitle
+        }
+      }
+    }
+  }
+`;

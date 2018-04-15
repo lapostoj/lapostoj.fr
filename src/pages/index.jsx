@@ -33,22 +33,7 @@ export default IndexRoute;
 
 export const pageQuery = graphql`
   query IndexQuery {
-    site {
-      siteMetadata {
-        title
-        subtitle
-        copyright
-        menu {
-          label
-          path
-        }
-        author {
-          name
-          email
-          github
-        }
-      }
-    }
+    ...site
     allMarkdownRemark(
         limit: 1000,
         filter: { frontmatter: { layout: { eq: "post" }, draft: { ne: true } } },

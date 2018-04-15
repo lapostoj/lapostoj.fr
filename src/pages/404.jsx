@@ -25,21 +25,6 @@ export default NotFoundRoute;
 
 export const pageQuery = graphql`
   query NotFoundQuery {
-    site {
-      siteMetadata {
-        title
-        subtitle
-        copyright
-        menu {
-          label
-          path
-        }
-        author {
-          name
-          email
-          github
-        }
-      }
-    }
+    ...site
   }
 `;

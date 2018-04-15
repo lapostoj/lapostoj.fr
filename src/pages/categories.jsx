@@ -42,22 +42,7 @@ export default CategoriesRoute;
 
 export const pageQuery = graphql`
   query CategoryesQuery {
-    site {
-      siteMetadata {
-        title
-        subtitle
-        copyright
-        menu {
-          label
-          path
-        }
-        author {
-          name
-          email
-          github
-        }
-      }
-    }
+    ...site
     allMarkdownRemark(
       limit: 2000
       filter: { frontmatter: { layout: { eq: "post" }, draft: { ne: true } } }
