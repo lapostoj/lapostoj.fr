@@ -47,28 +47,28 @@ h2 {
 h3 {
     font-size: $typographic-base-font-size * 1.375;
     @include line-height(1);
-    @include margin-top(2);
+    @include margin-top(1);
     @include margin-bottom(.5);
 }
 
 h4 {
     font-size: $typographic-base-font-size * 1.2;
     @include line-height(1);
-    @include margin-top(1.5);
-    @include margin-bottom(.5);
+    @include margin-top(0.75);
+    @include margin-bottom(.25);
 }
 
 h5 {
     font-size: $typographic-base-font-size;
     @include line-height(1);
-    @include margin-top(2.5);
+    @include margin-top(1);
     @include margin-bottom(.5);
 }
 
 h6 {
     font-size: $typographic-base-font-size;
     @include line-height(1);
-    @include margin-top(2.5);
+    @include margin-top(1);
     @include margin-bottom(.5);
 }
 
@@ -109,7 +109,7 @@ strong {
 }
 
 ul {
-    list-style: square;
+    list-style: disc;
     @include margin-bottom(1);
     & li {
         padding: 0 5px;
@@ -130,6 +130,8 @@ blockquote {
 
 figure {
     display: block;
+    margin-left: auto;
+    margin-right: auto;
     width: 100%;
     height: auto;
 }
@@ -142,6 +144,17 @@ figcaption {
     font-style: italic;
     margin-bottom: 0;
     text-align: center;
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+
+    td, th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
 }
 
 .grid-wrapper {
@@ -169,17 +182,6 @@ figcaption {
         grid-template-areas:
             "sidebar content";
     }
-    figure.float-left,
-    figure.float-right {
-        max-width: 310px;
-        @include padding(0, 1, 0, 1);
-    }
-    .float-right {
-        float: right;
-    }
-    .float-left {
-        float: left;
-    }
     .content {
         &__inner {
             padding: 30px 20px;
@@ -188,6 +190,17 @@ figcaption {
 }
 
 @include breakpoint-md {
+    figure.float-left,
+    figure.float-right {
+        max-width: 310px;
+        @include padding(0, 1.25, 0, 1);
+    }
+    .float-right {
+        float: right;
+    }
+    .float-left {
+        float: left;
+    }
     .content {
         &__inner {
             padding: 40px 35px;
