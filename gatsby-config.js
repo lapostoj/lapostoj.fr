@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    url: 'https://www.lapostoj.com',
+    url: 'https://www.lapostoj.fr',
     title: 'lapostoj - Jerome Lapostolet',
     subtitle: 'CV, Portfolio and Blog website for lapostoj.',
     copyright: '© All rights reserved.',
