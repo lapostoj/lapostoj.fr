@@ -18,7 +18,7 @@ module.exports = {
       name: 'Jerome Lapostolet - lapostoj',
       email: 'jerome.lapostolet@gmail.com',
       github: 'lapostoj',
-      subtitle: '[WORK IN PROGRESS]',
+      subtitle: '',
       location: 'London',
       job: {
         title: 'Software Engineer',
