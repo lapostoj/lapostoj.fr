@@ -4,8 +4,9 @@ import Post from '../Post';
 class TagTemplateDetails extends React.Component {
   render() {
     const items = [];
-    const tagTitle = this.props.pathContext.tag;
-    const posts = this.props.data.allMarkdownRemark.edges;
+    const { data, pathContext } = this.props;
+    const { tag } = pathContext;
+    const posts = data.allMarkdownRemark.edges;
     posts.forEach((post) => {
       items.push(<Post data={post} key={post.node.fields.slug} />);
     });
@@ -15,7 +16,7 @@ class TagTemplateDetails extends React.Component {
         <div className="content__inner">
           <div className="page">
             <h1 className="page__title">
-              All posts tagged as &quot;{tagTitle}&quot;
+              All posts tagged as &quot;{tag}&quot;
             </h1>
             <div className="page__body">
               {items}

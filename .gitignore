@@ -1,5 +1,4 @@
 .cache/
 .eslintcache
-package-lock.json
 node_modules/
 public/

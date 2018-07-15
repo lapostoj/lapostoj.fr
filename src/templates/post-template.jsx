@@ -4,8 +4,9 @@ import PageTemplateDetails from '../components/PageTemplateDetails';
 
 class PostTemplate extends React.Component {
   render() {
-    const { title, subtitle } = this.props.data.site.siteMetadata;
-    const post = this.props.data.markdownRemark;
+    const { data } = this.props;
+    const { title, subtitle } = data.site.siteMetadata;
+    const post = data.markdownRemark;
     const { title: postTitle, description: postDescription } = post.frontmatter;
     const description = postDescription !== null ? postDescription : subtitle;
 

@@ -6,7 +6,8 @@ import './style.scss';
 
 class PageTemplateDetails extends React.Component {
   render() {
-    const page = this.props.data.markdownRemark;
+    const { data } = this.props;
+    const page = data.markdownRemark;
     const tags = page.fields ? page.fields.tagSlugs : [];
 
     const dateBlock = page.frontmatter.date ? (

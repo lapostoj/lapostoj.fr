@@ -6,12 +6,12 @@ import Sidebar from '../components/Sidebar';
 class PostsRoute extends React.Component {
   render() {
     const items = [];
-    const { title, subtitle } = this.props.data.site.siteMetadata;
-    const posts = this.props.data.allMarkdownRemark ? this.props.data.allMarkdownRemark.edges : [];
+    const { data } = this.props;
+    const { title, subtitle } = data.site.siteMetadata;
+    const posts = data.allMarkdownRemark ? data.allMarkdownRemark.edges : [];
     posts.forEach((post) => {
       items.push(<Post data={post} key={post.node.fields.slug} />);
     });
-
 
     const itemsBlock = items.length === 0 ? <h2>No post yet...</h2> : items;
 

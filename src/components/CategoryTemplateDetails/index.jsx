@@ -4,8 +4,9 @@ import Post from '../Post';
 class CategoryTemplateDetails extends React.Component {
   render() {
     const items = [];
-    const { category } = this.props.pathContext;
-    const posts = this.props.data.allMarkdownRemark.edges;
+    const { data, pathContext } = this.props;
+    const { category } = pathContext;
+    const posts = data.allMarkdownRemark.edges;
     posts.forEach((post) => {
       items.push(<Post data={post} key={post.node.fields.slug} />);
     });

@@ -4,8 +4,9 @@ import PageTemplateDetails from '../components/PageTemplateDetails';
 
 class IndexRoute extends React.Component {
   render() {
-    const { title, subtitle } = this.props.data.site.siteMetadata;
-    const page = this.props.data.markdownRemark;
+    const { data } = this.props;
+    const { title, subtitle } = data.site.siteMetadata;
+    const page = data.markdownRemark;
     const { title: pageTitle, description: pageDescription } = page.frontmatter;
     const description = pageDescription !== null ? pageDescription : subtitle;
 

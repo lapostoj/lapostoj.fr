@@ -5,8 +5,9 @@ import CategoryTemplateDetails from '../components/CategoryTemplateDetails';
 
 class CategoryTemplate extends React.Component {
   render() {
-    const { title } = this.props.data.site.siteMetadata;
-    const { category } = this.props.pathContext;
+    const { data, pathContext } = this.props;
+    const { title } = data.site.siteMetadata;
+    const { category } = pathContext;
 
     return (
       <div className="grid-wrapper">

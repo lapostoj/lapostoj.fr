@@ -7,7 +7,8 @@ import './style.scss';
 
 class Sidebar extends React.Component {
   render() {
-    const { author, copyright, menu } = this.props.data.site.siteMetadata;
+    const { data } = this.props;
+    const { author, copyright, menu } = data.site.siteMetadata;
 
     const authorBlock = (
       <div>
@@ -25,7 +26,10 @@ class Sidebar extends React.Component {
         </h2>
         <div className="sidebar__author-details">
           <div className="sidebar__author-details-job">
-            {author.job.title} at <a className="sidebar__author-details-job-link" href={author.job.url} target="_blank">{author.job.company}</a>.
+            {`${author.job.title} at `}
+            <a className="sidebar__author-details-job-link" href={author.job.url} target="_blank" rel="noopener noreferrer">
+              {author.job.company}
+            </a>.
           </div>
           <div className="sidebar__author-details-location">
             Currently in {author.location}.

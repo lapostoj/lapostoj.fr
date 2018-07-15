@@ -5,8 +5,9 @@ import TagTemplateDetails from '../components/TagTemplateDetails';
 
 class TagTemplate extends React.Component {
   render() {
-    const { title } = this.props.data.site.siteMetadata;
-    const { tag } = this.props.pathContext;
+    const { data, pathContext } = this.props;
+    const { title } = data.site.siteMetadata;
+    const { tag } = pathContext;
 
     return (
       <div className="grid-wrapper">

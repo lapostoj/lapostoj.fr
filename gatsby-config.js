@@ -82,12 +82,11 @@ module.exports = {
               }
           }`,
         output: '/sitemap.xml',
-        serialize: ({ site, allSitePage }) =>
-          allSitePage.edges.map(edge => ({
-            url: site.siteMetadata.url + edge.node.path,
-            changefreq: 'daily',
-            priority: 0.7,
-          })),
+        serialize: ({ site, allSitePage }) => allSitePage.edges.map(edge => ({
+          url: site.siteMetadata.url + edge.node.path,
+          changefreq: 'daily',
+          priority: 0.7,
+        })),
       },
     },
     'gatsby-plugin-offline',
