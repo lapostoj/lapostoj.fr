@@ -1,13 +1,14 @@
 import React from 'react';
 import Helmet from 'react-helmet';
+import { graphql } from 'gatsby'
 import Sidebar from '../components/Sidebar';
 import TagTemplateDetails from '../components/TagTemplateDetails';
 
 class TagTemplate extends React.Component {
   render() {
-    const { data, pathContext } = this.props;
+    const { data, pageContext } = this.props;
     const { title } = data.site.siteMetadata;
-    const { tag } = pathContext;
+    const { tag } = pageContext;
 
     return (
       <div className="grid-wrapper">
@@ -22,7 +23,7 @@ class TagTemplate extends React.Component {
 export default TagTemplate;
 
 export const pageQuery = graphql`
-  query TagPage($tag: String) {
+  query($tag: String) {
     ...site
     allMarkdownRemark(
       limit: 50

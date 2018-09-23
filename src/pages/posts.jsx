@@ -1,5 +1,7 @@
 import React from 'react';
 import Helmet from 'react-helmet';
+import { graphql } from 'gatsby'
+import Layout from '../components/layout';
 import Post from '../components/Post';
 import Sidebar from '../components/Sidebar';
 
@@ -16,18 +18,20 @@ class PostsRoute extends React.Component {
     const itemsBlock = items.length === 0 ? <h2>No post yet...</h2> : items;
 
     return (
-      <div className="grid-wrapper">
-        <Helmet>
-          <title>{title}</title>
-          <meta name="description" content={subtitle} />
-        </Helmet>
-        <Sidebar {...this.props} />
-        <div className="content">
-          <div className="content__inner">
-            {itemsBlock}
+      <Layout>
+        <div className="grid-wrapper">
+          <Helmet>
+            <title>{title}</title>
+            <meta name="description" content={subtitle} />
+          </Helmet>
+          <Sidebar {...this.props} />
+          <div className="content">
+            <div className="content__inner">
+              {itemsBlock}
+            </div>
           </div>
         </div>
-      </div>
+      </Layout>
     );
   }
 }
@@ -35,7 +39,7 @@ class PostsRoute extends React.Component {
 export default PostsRoute;
 
 export const pageQuery = graphql`
-  query PostsQuery {
+  {
     ...site
     allMarkdownRemark(
       limit: 50

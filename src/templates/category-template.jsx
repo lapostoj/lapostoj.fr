@@ -1,13 +1,14 @@
 import React from 'react';
 import Helmet from 'react-helmet';
+import { graphql } from 'gatsby'
 import Sidebar from '../components/Sidebar';
 import CategoryTemplateDetails from '../components/CategoryTemplateDetails';
 
 class CategoryTemplate extends React.Component {
   render() {
-    const { data, pathContext } = this.props;
+    const { data, pageContext } = this.props;
     const { title } = data.site.siteMetadata;
-    const { category } = pathContext;
+    const { category } = pageContext;
 
     return (
       <div className="grid-wrapper">
@@ -22,7 +23,7 @@ class CategoryTemplate extends React.Component {
 export default CategoryTemplate;
 
 export const pageQuery = graphql`
-  query CategoryPage($category: String) {
+  query($category: String) {
     ...site
     allMarkdownRemark(
       limit: 50

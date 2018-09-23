@@ -1,5 +1,7 @@
 import React from 'react';
 import Helmet from 'react-helmet';
+import { graphql } from 'gatsby'
+import Layout from '../components/layout';
 import PageTemplateDetails from '../components/PageTemplateDetails';
 
 class IndexRoute extends React.Component {
@@ -11,13 +13,13 @@ class IndexRoute extends React.Component {
     const description = pageDescription !== null ? pageDescription : subtitle;
 
     return (
-      <div>
+      <Layout>
         <Helmet>
           <title>{`${pageTitle} - ${title}`}</title>
           <meta name="description" content={description} />
         </Helmet>
         <PageTemplateDetails {...this.props} />
-      </div>
+      </Layout>
     );
   }
 }
@@ -25,7 +27,7 @@ class IndexRoute extends React.Component {
 export default IndexRoute;
 
 export const pageQuery = graphql`
-  query Index {
+  {
     ...site
     markdownRemark(fields: { slug: { eq: "/" } }) {
       id

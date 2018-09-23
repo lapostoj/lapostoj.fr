@@ -1,6 +1,6 @@
 import moment from 'moment';
 import React from 'react';
-import Link from 'gatsby-link';
+import { Link } from 'gatsby';
 import Sidebar from '../Sidebar';
 import './style.scss';
 
