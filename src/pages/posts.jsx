@@ -5,7 +5,7 @@ import Layout from '../components/layout';
 import Post from '../components/Post';
 import Sidebar from '../components/Sidebar';
 
-class PostsRoute extends React.Component {
+export default class PostsRoute extends React.Component {
   render() {
     const items = [];
     const { data } = this.props;
@@ -35,8 +35,6 @@ class PostsRoute extends React.Component {
     );
   }
 }
-
-export default PostsRoute;
 
 export const pageQuery = graphql`
   {

@@ -3,7 +3,7 @@ import { Link } from 'gatsby';;
 import moment from 'moment';
 import './style.scss';
 
-class Post extends React.Component {
+export default class Post extends React.Component {
   render() {
     const { data } = this.props;
     const { title, date, category, description } = data.node.frontmatter;
@@ -31,5 +31,3 @@ class Post extends React.Component {
     );
   }
 }
-
-export default Post;

@@ -4,7 +4,7 @@ import { graphql } from 'gatsby'
 import Layout from '../components/layout';
 import PageTemplateDetails from '../components/PageTemplateDetails';
 
-class IndexRoute extends React.Component {
+export default class IndexRoute extends React.Component {
   render() {
     const { data } = this.props;
     const { title, subtitle } = data.site.siteMetadata;
@@ -23,8 +23,6 @@ class IndexRoute extends React.Component {
     );
   }
 }
-
-export default IndexRoute;
 
 export const pageQuery = graphql`
   {

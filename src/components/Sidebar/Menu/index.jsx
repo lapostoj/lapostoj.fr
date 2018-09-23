@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 import './style.scss';
 
-class Menu extends React.Component {
+export default class Menu extends React.Component {
   render() {
     const { data: menu } = this.props;
 
@@ -29,5 +29,3 @@ class Menu extends React.Component {
     );
   }
 }
-
-export default Menu;

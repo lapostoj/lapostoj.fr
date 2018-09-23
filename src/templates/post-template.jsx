@@ -3,7 +3,7 @@ import Helmet from 'react-helmet';
 import { graphql } from 'gatsby'
 import PageTemplateDetails from '../components/PageTemplateDetails';
 
-class PostTemplate extends React.Component {
+export default class PostTemplate extends React.Component {
   render() {
     const { data } = this.props;
     const { title, subtitle } = data.site.siteMetadata;
@@ -22,8 +22,6 @@ class PostTemplate extends React.Component {
     );
   }
 }
-
-export default PostTemplate;
 
 export const pageQuery = graphql`
   query($slug: String!) {

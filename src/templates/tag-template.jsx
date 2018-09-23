@@ -4,7 +4,7 @@ import { graphql } from 'gatsby'
 import Sidebar from '../components/Sidebar';
 import TagTemplateDetails from '../components/TagTemplateDetails';
 
-class TagTemplate extends React.Component {
+export default class TagTemplate extends React.Component {
   render() {
     const { data, pageContext } = this.props;
     const { title } = data.site.siteMetadata;
@@ -19,8 +19,6 @@ class TagTemplate extends React.Component {
     );
   }
 }
-
-export default TagTemplate;
 
 export const pageQuery = graphql`
   query($tag: String) {

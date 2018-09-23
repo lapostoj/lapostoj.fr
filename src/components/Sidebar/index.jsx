@@ -5,7 +5,7 @@ import Links from './Links';
 import profilePic from './photo.jpg';
 import './style.scss';
 
-class Sidebar extends React.Component {
+export default class Sidebar extends React.Component {
   render() {
     const { data } = this.props;
     const { author, copyright, menu } = data.site.siteMetadata;
@@ -57,8 +57,6 @@ class Sidebar extends React.Component {
     );
   }
 }
-
-export default Sidebar;
 
 export const siteQuery = graphql`
   fragment site on Query {
