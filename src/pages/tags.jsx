@@ -5,7 +5,7 @@ import { convertToKebabCase } from '../utils';
 import Layout from '../components/layout';
 import Sidebar from '../components/Sidebar';
 
-class TagsRoute extends React.Component {
+export default class TagsRoute extends React.Component {
   render() {
     const { data } = this.props;
     const { title } = data.site.siteMetadata;
@@ -41,8 +41,6 @@ class TagsRoute extends React.Component {
     );
   }
 }
-
-export default TagsRoute;
 
 export const pageQuery = graphql`
   {

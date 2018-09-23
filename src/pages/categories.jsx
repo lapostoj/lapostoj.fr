@@ -5,7 +5,7 @@ import { convertToKebabCase } from '../utils';
 import Layout from '../components/layout';
 import Sidebar from '../components/Sidebar';
 
-class CategoriesRoute extends React.Component {
+export default class CategoriesRoute extends React.Component {
   render() {
     const { data } = this.props;
     const { title } = data.site.siteMetadata;
@@ -41,8 +41,6 @@ class CategoriesRoute extends React.Component {
     );
   }
 }
-
-export default CategoriesRoute;
 
 export const pageQuery = graphql`
   {

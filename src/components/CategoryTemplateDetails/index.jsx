@@ -1,7 +1,7 @@
 import React from 'react';
 import Post from '../Post';
 
-class CategoryTemplateDetails extends React.Component {
+export default class CategoryTemplateDetails extends React.Component {
   render() {
     const items = [];
     const { data, pageContext } = this.props;
@@ -27,5 +27,3 @@ class CategoryTemplateDetails extends React.Component {
     );
   }
 }
-
-export default CategoryTemplateDetails;

@@ -2,7 +2,7 @@ import React from 'react';
 import './style.scss';
 import '../../../assets/fonts/fontello-771c82e0/css/fontello.css';
 
-class Links extends React.Component {
+export default class Links extends React.Component {
   render() {
     const { data: author } = this.props;
 
@@ -24,5 +24,3 @@ class Links extends React.Component {
     );
   }
 }
-
-export default Links;

@@ -4,7 +4,7 @@ import { graphql } from 'gatsby'
 import Sidebar from '../components/Sidebar';
 import CategoryTemplateDetails from '../components/CategoryTemplateDetails';
 
-class CategoryTemplate extends React.Component {
+export default class CategoryTemplate extends React.Component {
   render() {
     const { data, pageContext } = this.props;
     const { title } = data.site.siteMetadata;
@@ -19,8 +19,6 @@ class CategoryTemplate extends React.Component {
     );
   }
 }
-
-export default CategoryTemplate;
 
 export const pageQuery = graphql`
   query($category: String) {

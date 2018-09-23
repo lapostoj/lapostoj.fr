@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 import Layout from '../components/layout';
 import Sidebar from '../components/Sidebar';
 
-class NotFoundRoute extends React.Component {
+export default class NotFoundRoute extends React.Component {
   render() {
     return (
       <Layout>
@@ -24,8 +24,6 @@ class NotFoundRoute extends React.Component {
     );
   }
 }
-
-export default NotFoundRoute;
 
 export const pageQuery = graphql`
   {

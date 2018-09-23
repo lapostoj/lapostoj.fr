@@ -4,7 +4,7 @@ import { Link } from 'gatsby';
 import Sidebar from '../Sidebar';
 import './style.scss';
 
-class PageTemplateDetails extends React.Component {
+export default class PageTemplateDetails extends React.Component {
   render() {
     const { data } = this.props;
     const page = data.markdownRemark;
@@ -49,5 +49,3 @@ class PageTemplateDetails extends React.Component {
     /* eslint-enable react/no-danger */
   }
 }
-
-export default PageTemplateDetails;
