@@ -1,5 +1,6 @@
 import React from 'react';
 import Helmet from 'react-helmet';
+import { graphql } from 'gatsby'
 import PageTemplateDetails from '../components/PageTemplateDetails';
 
 class PostTemplate extends React.Component {
@@ -25,7 +26,7 @@ class PostTemplate extends React.Component {
 export default PostTemplate;
 
 export const pageQuery = graphql`
-  query PostBySlug($slug: String!) {
+  query($slug: String!) {
     ...site
     markdownRemark(fields: { slug: { eq: $slug } }) {
       id

@@ -15,7 +15,7 @@ class Layout extends React.Component {
             { name: 'keywords', content: 'lapostoj, developper, software, engineer, cv, portfolio, blog, resume' },
           ]}
         />
-        {children()}
+        {children}
       </div>
     );
   }

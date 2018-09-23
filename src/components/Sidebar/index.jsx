@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from 'gatsby-link';
+import { graphql, Link } from 'gatsby'
 import Menu from './Menu';
 import Links from './Links';
 import profilePic from './photo.jpg';
@@ -61,7 +61,7 @@ class Sidebar extends React.Component {
 export default Sidebar;
 
 export const siteQuery = graphql`
-  fragment site on RootQueryType {
+  fragment site on Query {
     site {
       siteMetadata {
         title
