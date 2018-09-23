@@ -1,24 +1,21 @@
 import React from 'react';
 import Helmet from 'react-helmet';
-import { graphql } from 'gatsby'
+import { graphql } from 'gatsby';
 import Sidebar from '../components/Sidebar';
 import TagTemplateDetails from '../components/TagTemplateDetails';
 
-export default class TagTemplate extends React.Component {
-  render() {
-    const { data, pageContext } = this.props;
-    const { title } = data.site.siteMetadata;
-    const { tag } = pageContext;
+export default ({ data, pageContext }) => {
+  const { title } = data.site.siteMetadata;
+  const { tag } = pageContext;
 
-    return (
-      <div className="grid-wrapper">
-        <Helmet title={`All Posts tagged as "${tag}" - ${title}`} />
-        <Sidebar {...this.props} />
-        <TagTemplateDetails {...this.props} />
-      </div>
-    );
-  }
-}
+  return (
+    <div className="grid-wrapper">
+      <Helmet title={`All Posts tagged as "${tag}" - ${title}`} />
+      <Sidebar data={data} />
+      <TagTemplateDetails data={data} tag={tag} />
+    </div>
+  );
+};
 
 export const pageQuery = graphql`
   query($tag: String) {

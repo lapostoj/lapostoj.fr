@@ -1,24 +1,21 @@
 import React from 'react';
 import Helmet from 'react-helmet';
-import { graphql } from 'gatsby'
+import { graphql } from 'gatsby';
 import Sidebar from '../components/Sidebar';
 import CategoryTemplateDetails from '../components/CategoryTemplateDetails';
 
-export default class CategoryTemplate extends React.Component {
-  render() {
-    const { data, pageContext } = this.props;
-    const { title } = data.site.siteMetadata;
-    const { category } = pageContext;
+export default ({ data, pageContext }) => {
+  const { title } = data.site.siteMetadata;
+  const { category } = pageContext;
 
-    return (
-      <div className="grid-wrapper">
-        <Helmet title={`${category} - ${title}`} />
-        <Sidebar {...this.props} />
-        <CategoryTemplateDetails {...this.props} />
-      </div>
-    );
-  }
-}
+  return (
+    <div className="grid-wrapper">
+      <Helmet title={`${category} - ${title}`} />
+      <Sidebar data={data} />
+      <CategoryTemplateDetails data={data} category={category} />
+    </div>
+  );
+};
 
 export const pageQuery = graphql`
   query($category: String) {
