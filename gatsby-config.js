@@ -22,8 +22,8 @@ module.exports = {
       location: 'London',
       job: {
         title: 'Software Engineer',
-        company: 'TransferWise',
-        url: 'https://transferwise.com',
+        company: 'Marshmallow',
+        url: 'https://marshmallow.com',
       },
     },
   },

@@ -4,18 +4,10 @@ layout: index
 path: "/"
 ---
 
-I am currently a full-stack software engineer at TransferWise in a team working on the borderless account opened to the public in May 2017. The debit Mastercard® currently in beta testing is soon to be open to the public.
+I am currently a backend engineer at Marshmallow.
 
-In the team we work following a Domain Driven Design approach to build flexible, realistic, maintanable and easy to make evolve software. Over the near 2 years I have spent in the team that has enabled us to have one of the most stable service in the company while keeping a fast pace of itearation.
+We are working on providing expats a car insurance which takes into account their driving experience wherever it was and not only in the UK as other insurers usually do. If you're a foreign driver in the United Kingdom, <a href="https://www.marshmallow.com/car-insurance-quote/start-quote" target="_blank">check our quote</a>, you might be interested!
 
-This is needed as the domain managed by the team plays a key role in the borderless account product.
+Longer term we want to allow people to get fairer access to insurance and financial services, and there is still a lot to do to see some meaningful change there! If you want to take part of it, <a href="https://www.marshmallow.com/jobs" target="_blank">we're hiring!</a>
 
-If you want to take part of it, <a href="https://transferwise.com/jobs/position/971107-full-stack-developer-borderless-accounts" target="_blank">we're hiring!</a>
-
-![The TransferWise borderless account enables people to get paid, hold their money and pay in most of the currencies in the world. Any exchange is made using the mid market rate.](./borderless-account.jpg)
-
-## Professional Experience
-
-## Education
-
-## Interests
+![Marshmallow's car insurance allows you to get a fair price based on your driving experience even if it was abroad.](./marshmallow.png)
