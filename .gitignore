@@ -1,4 +1,5 @@
 .cache/
 .eslintcache
+.firebase/
 node_modules/
 public/
