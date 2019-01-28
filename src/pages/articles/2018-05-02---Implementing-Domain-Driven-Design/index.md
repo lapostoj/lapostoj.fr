@@ -18,28 +18,33 @@ description: "Explanation and examples about the principles and methods to follo
 </figure>
 
 ## Summary
+
 In this book, Vaughn Vernon builds on top of Domain-Driven Design, Eric J Evans in order to provide the reader with a deep understanding of what is a Domain-Driven Design, how to implement it and why or why not choose this. The book is built in order to mix both technical sections and higher level ones about how to define and understand the business you are evolving in.
 
 ## Detailed notes
+
 ### Introduction
+
 The two pillars on which a Domain-Driven Desgin is built are:
-  - Ubiquitous Language: shared team language, from code to business.
-  - Bounded Context: conceptual boundary around a whole application or finite system.
+
+- Ubiquitous Language: shared team language, from code to business.
+- Bounded Context: conceptual boundary around a whole application or finite system.
 
 ### Chapter 1 - Getting Started
+
 Avoid *anemic domain model*!
 
 It misses most of the benefit of a domain model. It is likely just a data model. A domain object is not a data holder.
 
 Methods should have a clear purpose so that they are easy to test and easy to understand (both about what they are doing and when they should be used). You should not have to look too far away from the code to understand that (e.g database constraints or clients of the application).
 
-You should expose the behaviours of an object not the shape (data attributes) of it.
+You should expose the behaviors of an object not the shape (data attributes) of it.
 
 ### Chapter 2 - Domains, Subdomains and Bounded Contexts
+
 Know your domain, subdomains, bounded contexts.
 
 Ideally one subdomain per bounded context?
-
 
 | Problem space                             | Solution space  |
 |-------------------------------------------|-----------------|
@@ -50,13 +55,14 @@ Good to have one to one mapping for clearer separation but not absolutely necess
 Bounded context is primarily a linguistic boundary.
 
 ### Chapter 3 - Context Maps
+
 Drawing a context map before starting to see the relation (upstream/downstream) between the bounded contexts (including ones outside of the project). Start with current state, not future one.
 Often good to keep an anticorruption layer between upstream dependency and your domain.
 
 Be careful for your representation not to reflect the domain of your upstream dependency but your own domain! You don't have to take all the properties sent to you!
 
-
 ### Chapter 4 - Architecture
+
 Always look for the clear justification of an architecture or architectural pattern used (what risks it mitigates for the project/business). If there is none, drop it.
 
 **Layer architecture:** design where each layer is cohesive and depends only on layer below it.
@@ -82,7 +88,7 @@ Examples of ports: HTTP, messaging queues, …
 | 7- Service Discoverability  | Services are described with metadata to allow discovery and to make their Service Contract understood, allowing them to be (re)usable assets |
 | 8- Service Composability    | Services may be composed within more coarse-grained services no matter the size and complexity of the composition they fall within |
 
-**REpresentational State Transfer (REST):** each URI should point to one resource. Stateless communication. HTTP verbs do not translate to CRUD, it is common to have resources encapsulating behaviors. GET, PUT, DELETE are idempotent. RESTful server enables the discovery of related resources (links in the response). Hypermedia As The Engine Of Application State (HATEOAS).
+**Representational State Transfer (REST):** each URI should point to one resource. Stateless communication. HTTP verbs do not translate to CRUD, it is common to have resources encapsulating behaviors. GET, PUT, DELETE are idempotent. RESTful server enables the discovery of related resources (links in the response). Hypermedia As The Engine Of Application State (HATEOAS).
 
 **Command-Query Responsibility Segregation (CQRS):** Every method should be either a command that performs an action or a query that returns data to the caller but not both. 
 Query model (one table per view for example) and Command model. One modification to the command model must lead to eventual consistency (synchronous or not) of the query model.
@@ -94,6 +100,7 @@ Query model (one table per view for example) and Command model. One modification
 **Data fabric and grid based distributed computing:** replicated cache shared by several nodes to enable distributed processing.
 
 ### Chapter 5 - Entities
+
 DDD Entities should not just be a mass of getters and setters.
 If the data is not crucial to keep entity might not be the best. CRUD approach could be better and simpler.
 
@@ -112,6 +119,7 @@ Some entities might be better off hidden from the clients and just used internal
 *Note: MySQL has a maximum row (not column!) width of 65,535 bytes. Doesn't apply to TEXT and BLOB as they are stored in separate segments.*
 
 ### Chapter 6 - Value Objects
+
 Domain should be centered around values not entities (meaning even entities should be centered around their value side).
 
 <figure>
@@ -135,6 +143,7 @@ Don't let your data model influence the domain model. It should be the opposite.
 If you have to store a list of values, it can be constraining to have them in the same row as your entity (classic way would be a string but they have length limit). Then it's a sign you would need them as entity on the data model level but that should still not influence the fact they are values in the domain model.
 
 ### Chapter 7 - Services
+
 If something doesn't fit as a method on a entity, aggregate or value, then definitely a service exposing method using the ubiquitous language to do what you wanted.
 Especially makes sense if during the execution you need several of these objects.
 
@@ -148,6 +157,7 @@ If your service instantiate a domain object as a response, it definitely should 
 Tests should show how to use the service both in happy and unhappy flow.
 
 ### Chapter 8 - Domain Events
+
 Domain events capture an occurence of something in the domain.
 For some commands they execute, aggregates should emit a domain event (named as the past of the command) containing the relevant information about the command executed.
 Don't expose the domain events to the messaging infrastructure level!
@@ -165,6 +175,7 @@ If events are stored in a event store they can then be exposed in different ways
 When possible try to make action executed by subscribers/listeners idempotent, that way in case of duplication everything is fine without much need of de-duplication logic.
 
 ### Chapter 9 - Modules
+
 Name your modules using the ubiquitous language, they should *tell the story*. There should be low coupling between different modules.
 Typically one module contains a few aggregates that are related at least by reference.
 Do not do one module per type (aggregate, services, factories, …). It would defeat the purpose, do use submodules to create coherent independent gatherings.
@@ -172,21 +183,24 @@ If there is a dependency between 2 modules, try to keep it unidirectional.
 Be mindful of separation, depending of the relationship between objects, splitting into modules might not be what you want but actually they could be objects from different bounded context. Do not split bounded context too lightly though, it has to make sense and be of a clear value.
 
 ### Chapter 10 - Aggregates
+
 When designing aggregates, keep in mind the pros and cons of bigger vs smaller ones. Smaller ones could help solve concurrency issues but be less convenient to use.
 
 Rules of thumb:
-  - Model true invariants in consistency boundaries. (This is about transaction consistency).
-  - A proper Bounded Context modifies only one aggregate per transaction.
-  - Design small aggregates.
-  - Don't abuse of entities in aggregates, most os the time just having value-types properties can work.
-  - Reference other aggregates by identity.
-  - Use eventual consistency outside of the boundary. (If it is the job of the user executing the task to make the data consistent, make it transactional, if it is the job of another user or of the system, make is eventually consistent, aka asynchronous).
+
+- Model true invariants in consistency boundaries. (This is about transaction consistency).
+- A proper Bounded Context modifies only one aggregate per transaction.
+- Design small aggregates.
+- Don't abuse of entities in aggregates, most os the time just having value-types properties can work.
+- Reference other aggregates by identity.
+- Use eventual consistency outside of the boundary. (If it is the job of the user executing the task to make the data consistent, make it transactional, if it is the job of another user or of the system, make is eventually consistent, aka asynchronous).
 
 Acceptable exceptions:
-  - User interface convenience. (Example with batches of creation).
-  - Lack of technical mechanism.
-  - Global transaction.
-  - Query performance.
+
+- User interface convenience. (Example with batches of creation).
+- Lack of technical mechanism.
+- Global transaction.
+- Query performance.
 
 To find correct aggregates sizes, also consider calculating the costs of the different alternative for both the most common cases and the worst ones.
 
@@ -197,6 +211,7 @@ To find correct aggregates sizes, also consider calculating the costs of the dif
 Avoid dependency injections of a repository or domain service in an aggregate.
 
 ### Chapter 11 - Factories
+
 Factories can be used in order to extract the responsibilities of creating complex objects or aggregates.
 One aggregate could have factory methods named as actions (done by the user) which create another object held by the aggregate.
 The caller would then have to make sure to persist that new object return by the factory.
@@ -205,6 +220,7 @@ Factories can also live in domain services, converting date from one type to the
 Keep in mind for simplicity that factories don't need to have guards already in places in the constructors they use.
 
 ### Chapter 12 - Repositories
+
 Only aggregates should have repositories, but all of them should have one.
 
 Collection-oriented repositories do not hint anything about the persistence mechanism in the way they are designed. The vocabulary of methods will be about the same which is used for collections in Java (add/remove rather than save/delete). The most similar would be the hashset.
@@ -227,21 +243,24 @@ Transactionality should be addressed in the application layer not in the reposit
 ⚠️ A repository is not a DAO.
 
 ### Chapter 13 - Integrating Bounded Contexts
+
 Integration between bounded contexts can be done through several ways:
-  - Exposing an API
-  - Publish/subscribe messaging
-  - REST HTTP API
-  - ...
+
+- Exposing an API
+- Publish/subscribe messaging
+- REST HTTP API
+- ...
 
 Principles of Distributed Computing:
-  - The network is not reliable.
-  - There is always latency, and maybe a lot.
-  - Bandwidth is not infinite.
-  - Do not assume that the network is secure.
-  - Network topology changes.
-  - Knowledge and policies are spread across multiple administrators.
-  - Network transport has cost.
-  - The network is heterogeneous.
+
+- The network is not reliable.
+- There is always latency, and maybe a lot.
+- Bandwidth is not infinite.
+- Do not assume that the network is secure.
+- Network topology changes.
+- Knowledge and policies are spread across multiple administrators.
+- Network transport has cost.
+- The network is heterogeneous.
 
 Whenever integrating two bounded context, be careful not to use feature from on into another and shield your domain against changes in the other one (anti-corruption layers).
 In case of events you can try to define a generic structure for the base and then more specific one for the actual payload. The base will be known by the consumers and stable and the payload would be likely to evolve with time and should ideally not break clients when doing so. If no interface is exposed, clients might even manage not to have to update any dependency and recompile/redeploy.
@@ -251,9 +270,11 @@ If using messaging, always keep in mind that the order of delivery might (will?)
 If long running processes rely on messaging, it is probably better to have a tracking/retry/failure mechanism to handle the different possible outcomes gracefully.
 
 ### Chapter 14 - Application
+
 The domain is usually there to enable the features of an application. Meaning a coherent mixture of User Interface, Applications Services, Domain Model and Infrastructure organized given a specific architecture.
 
 #### User Interfaces
+
 To render data in the UI you can use DTOs. Be careful not to couple too much client and domain doing so. The building of the DTOs should probably not imply deep navigation of the domain.
 Other option: Mediator (or Double-Dispatch and Callback) interfaces.
 A possible improvement of DTOs are Domain Payload Objects (DPOs), which gather several aggregates in one object.
@@ -263,6 +284,7 @@ Build representation for the use cases, not based on your domain.
 To decouple more easily it can be convenient to use a presentation model.
 
 #### Application Services
+
 Direct clients of the model. Place where the db transactions and security are controlled.
 Keep application services thin and use them only to coordinated actions on the model.
 Applications services can shields completely the presentation from the domain but it's not a necessity. If they do so the presentation would call them using primitives or command objects for example.
@@ -272,9 +294,11 @@ Applications services could either returns the domain object of their action or 
 Sometimes the representation can compose different domains, that can be done in the application layer.
 
 #### Infrastructure
+
 Infrastructure should depend on the interface of the other parts (presentation, model, application) if it needs, but not import objects directly from there.
 
 ### Appendix - Aggregates and Event Sourcing (A+ES)
+
 Event sourcing can be used to store any modification done to an aggregate and then build the aggregate by replaying the story of these modifications.
 
 Read model projections can be used to calculate query results on each domain event and store them in a specific read model.
