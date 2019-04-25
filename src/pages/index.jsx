@@ -15,6 +15,7 @@ export default class IndexRoute extends React.Component {
     return (
       <Layout>
         <Helmet>
+          <html lang="en" />
           <title>{`${pageTitle} - ${title}`}</title>
           <meta name="description" content={description} />
         </Helmet>

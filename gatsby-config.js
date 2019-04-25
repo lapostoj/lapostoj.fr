@@ -56,8 +56,15 @@ module.exports = {
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     {
-      resolve: 'gatsby-plugin-google-fonts',
-      options: { fonts: ['roboto:400,400i,500,700'] },
+      resolve: 'gatsby-plugin-prefetch-google-fonts',
+      options: {
+        fonts: [
+          {
+            family: 'Roboto',
+            variants: ['400', '400i', '500', '700'],
+          },
+        ],
+      },
     },
     {
       resolve: 'gatsby-plugin-sitemap',
