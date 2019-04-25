@@ -28,33 +28,20 @@ module.exports = {
     },
   },
   plugins: [
+    'gatsby-plugin-catch-links',
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: 'gatsby-plugin-manifest',
       options: {
-        path: `${__dirname}/src/pages`,
-        name: 'pages',
+        name: 'lapostoj.fr',
+        short_name: 'lapostoj.fr',
+        start_url: '/',
+        background_color: '#ffffff',
+        theme_color: '#5d93ff',
+        display: 'standalone',
+        icon: 'src/images/icon.svg',
       },
     },
-    {
-      resolve: 'gatsby-transformer-remark',
-      options: {
-        plugins: [
-          {
-            resolve: 'gatsby-remark-images',
-            options: { maxWidth: 960 },
-          },
-          {
-            resolve: 'gatsby-remark-responsive-iframe',
-            options: { wrapperStyle: 'margin-bottom: 1.0725rem' },
-          },
-          'gatsby-remark-prismjs',
-          'gatsby-remark-copy-linked-files',
-          'gatsby-remark-smartypants',
-        ],
-      },
-    },
-    'gatsby-transformer-sharp',
-    'gatsby-plugin-sharp',
+    'gatsby-plugin-offline',
     {
       resolve: 'gatsby-plugin-prefetch-google-fonts',
       options: {
@@ -66,6 +53,7 @@ module.exports = {
         ],
       },
     },
+    'gatsby-plugin-sharp',
     {
       resolve: 'gatsby-plugin-sitemap',
       options: {
@@ -96,9 +84,33 @@ module.exports = {
         })),
       },
     },
-    'gatsby-plugin-offline',
-    'gatsby-plugin-catch-links',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sass',
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/src/pages`,
+        name: 'pages',
+      },
+    },
+    {
+      resolve: 'gatsby-transformer-remark',
+      options: {
+        plugins: [
+          {
+            resolve: 'gatsby-remark-images',
+            options: { maxWidth: 960 },
+          },
+          {
+            resolve: 'gatsby-remark-responsive-iframe',
+            options: { wrapperStyle: 'margin-bottom: 1.0725rem' },
+          },
+          'gatsby-remark-prismjs',
+          'gatsby-remark-copy-linked-files',
+          'gatsby-remark-smartypants',
+        ],
+      },
+    },
+    'gatsby-transformer-sharp',
   ],
 };
