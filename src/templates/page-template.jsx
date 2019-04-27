@@ -12,6 +12,7 @@ export default ({ data }) => {
   return (
     <div>
       <Helmet>
+        <html lang="en" />
         <title>{`${pageTitle} - ${title}`}</title>
         <meta name="description" content={description} />
       </Helmet>

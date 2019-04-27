@@ -21,6 +21,7 @@ export default class PostsRoute extends React.Component {
       <Layout>
         <div className="grid-wrapper">
           <Helmet>
+            <html lang="en" />
             <title>{title}</title>
             <meta name="description" content={subtitle} />
           </Helmet>
