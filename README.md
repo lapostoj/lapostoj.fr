@@ -7,6 +7,7 @@ Author: lapostoj
 Contact: jerome.lapostolet@gmail.com
 
 ## Description
+
 Personal website used as an online CV, portfolio and blog.
 The goals is to have a lightweight, fast website where adding content is relatively easy and straightforward.
 
@@ -14,26 +15,31 @@ I ended up using [Gatsby](https://www.gatsbyjs.org/) and the [Lumen](https://git
 
 Expected URL: www.lapostoj.fr
 
-## Features:
+## Features
+
 * Online CV
 * Portfolio
 * Blog
 * Summary of books
 
+## Technology
 
-## Technology:
 * [Gatsby](https://www.gatsbyjs.org/)
 * [React](https://reactjs.org/)
 * [Firebase](https://firebase.google.com/)
 
-## How To Use:
+## How To Use
+
 ### Running in Development
+
 `gatsby develop`
 
 ### Building
+
 `gatsby build`
 
 ### Deploy with Firebase
+
 `npm install -g firebase-tools`
 
 `firebase login`
@@ -44,11 +50,13 @@ Expected URL: www.lapostoj.fr
 
 To generate a favicon.ico based on png files of different sizes
 Generate the png files with the desired sizes (for example using an online tool like https://cloudconvert.com/svg-to-png), then run:
-```sh
+
+```bash
 convert favicon16.png favicon32.png favicon152.png favicon.ico
 ```
 
 ## License
+
 The MIT License (MIT)
 
 Copyright (c) 2018 Jerome Lapostolet

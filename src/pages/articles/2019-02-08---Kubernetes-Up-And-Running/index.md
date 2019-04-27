@@ -1,5 +1,5 @@
 ---
-title: Kubernetes Up & Running by Brendan Burns, Joe Beda, and Kelsey Hightower
+title: Kubernetes Up & Running by Brendan Burns, Joe Beda and Kelsey Hightower
 date: "2019-04-03T00:00:00.000Z"
 layout: post
 draft: false
@@ -14,7 +14,7 @@ description: "The authors provide with this book a very good practical introduct
 
 <figure class="float-left" style="width: 240px">
   <img src="./kubernetes-up-and-running-cover.jpg" alt="Kubernetes Up & Running cover">
-  <figcaption>Kubernetes Up & Running by Brendan Burns, Joe Beda, and Kelsey Hightower</figcaption>
+  <figcaption>Kubernetes Up & Running by Brendan Burns, Joe Beda and Kelsey Hightower</figcaption>
 </figure>
 
 ## Summary
@@ -63,8 +63,10 @@ Images are most commonly built based on previously existing images by just addin
 One thing to keep in mind is that one layer cannot "physically" change a previous one. For example if you remove a file which was created upstream, that file will still count as weight in the final image, it just won't be accessible in a straightforward way.
 One you have the image you want, you would commonly host it on a docker registry to be able to fetch it from anywhere and then run it. When running the image you can define useful resources limit as show in this command example.
 
-```sh
-docker run -d --name <image-name> --publish 8080:8080 --memory 200m --memory-swap 1G --cpu-shares 1024 <image>
+```bash
+docker run -d --name <image-name> --publish 8080:8080 \
+  --memory 200m --memory-swap 1G --cpu-shares 1024 \
+  <image>
 ```
 
 ### Chapter 3 - Deploying a Kubernetes Cluster
@@ -74,42 +76,42 @@ Locally you can use _minikube_, but one limitation is that it only creates a sin
 
 One the cluster created, you interact with it using the Kubernetes client _kubectl_. Some useful commands
 
-```sh
+```bash
 kubectl version
 ```
 
 Provides both the version of the _kubectl_ tool and of the Kubernetes API server, backward and forward compatibility is guaranteed only within 2 minors versions, so try to keep the update of these two rather close.
 
-```sh
+```bash
 kubectl get componentstatuses
 ```
 
 Runs a diagnostic on the cluster; useful to get an idea of the general health status of the cluster.
 
-```sh
+```bash
 kubectl get nodes
 ```
 
-```sh
+```bash
 kubectl describe nodes node-1
 ```
 
 Gets the list of nodes and then gives details about one specific nodes.
 
-```sh
+```bash
 kubectl get daemonSets --namespace--kube-system kube-proxy
 ```
 
 Gives the list of proxies.
 
-```sh
+```bash
 kubectl get deployments --namespace--kube-system kube-dns
 kubectl get services --namespace--kube-system kube-dns
 ```
 
 Gives the DNS and of the service performing the load-balancing for the DNS
 
-```sh
+```bash
 kubectl get deployments --namespace--kube-system kube-dashboard
 kubectl get services --namespace--kube-system kube-dashboard
 ```
@@ -124,11 +126,14 @@ By default _kubectl_ interacts with the default namespace, the `--namespace=<nam
 
 Default namespaces, clusters and users can de defined in contexts.
 
-```sh
-kubectl config set-context <context-name> --namespace=<name> --users=<users> --clusters=<clusters>
+```bash
+kubectl config set-context <context-name>
+  --namespace=<name> \
+  --users=<users> \
+  --clusters=<clusters>
 ```
 
-```sh
+```bash
 kubectl config use-context <context-name>
 ```
 
@@ -136,13 +141,13 @@ Any kind of object in Kubernetes is a resource and can be seen as we saw earlier
 
 For a list
 
-```sh
+```bash
 kubectl get <resource-name>
 ```
 
 For a specific object
 
-```sh
+```bash
 kubectl get <resource-name> <object-name>
 ```
 
@@ -152,19 +157,19 @@ The flag `--watch` keeps the get command running and update the output if the li
 
 For details about an object
 
-```sh
+```bash
 kubectl describe <resource-name> <object-name>
 ```
 
 To create or update an object, define the desired state in JSON or YAML file and run
 
-```sh
+```bash
 kubectl apply -f object.yaml
 ```
 
 You can edit a config in an interactive way with
 
-```sh
+```bash
 kubectl edit <resource-name> <object-name>
 ```
 
@@ -172,38 +177,38 @@ But it should probably be used only for testing purposes since you lose most of 
 
 To delete an object
 
-```sh
+```bash
 kubectl delete -f obj.yaml
 ```
 
 or
 
-```sh
+```bash
 kubectl delete <resource-name> <object-name>
 ```
 
 But it goes on without confirmation, so to use carefully!
 Even more carefully you can delete all instances of a given resource
 
-```sh
+```bash
 kubectl delete <resource-name> --all
 ```
 
 To add a label
 
-```sh
+```bash
 kubectl label <resource-name> <object-name> <label-name>=<label-value>
 ```
 
 To remove a label
 
-```sh
+```bash
 kubectl label <resource-name> <object-name> <label-name>-
 ```
 
 Debugging commands seem similar to Docker ones
 
-```sh
+```bash
 kubectl logs (-f) <pod-name> (-c <container-name)
 ```
 
@@ -212,13 +217,13 @@ The `--previous` flag will get the logs from the previous instance of the contai
 
 Execute a command in a running container
 
-```sh
+```bash
 kubectl exec -it <pod-name> -- bash
 ```
 
 Copy files from a container with
 
-```sh
+```bash
 kubectl cp <pod-name>:/path/to/file /local/path
 ```
 
@@ -244,19 +249,19 @@ To manage multiple instance you can submit several time the same _Pod_ manifest 
 
 Creating a _Pod_ (through a deployment) can be done with
 
-```sh
+```bash
 kubectl run <pod-name> --image=<image-name>
 ```
 
 But the normal way would be to create a _Pod_ manifest in YAML or JSON and make Kubernetes apply it with
 
-```sh
+```bash
 kubectl apply -f config-file.yaml
 ```
 
 In order to access a _Pod_ you can forward one of its port to a port of your machine with
 
-```sh
+```bash
 kubetctl port-forward <pod-name> <loalhost-port>:<pod-pord>
 ```
 
@@ -274,7 +279,7 @@ This can be used for sharing data across containers, persisting a cache which sh
 
 Based on the previously mentioned concepts the _Pod_ manifest would look something like the following file.
 
-```yaml
+```yaml{numberLines: true}
 apiVersion: v1
 kind: Pod
 metadata:
@@ -329,19 +334,22 @@ Labels can be queried through _selectors_ and are used to identify objects while
 
 Applying a label to a deployment can be done with a command like
 
-```sh
-kubectl run alpaca-prod --image=<image> --replicas=2 --labels="ver=1,app=alpaca,env=prod"
+```bash
+kubectl run <pod-name> \
+  --image=<image> \
+  --replicas=2 \
+  --labels="ver=1,app=<app-name>,env=prod"
 ```
 
 You can then add the `--show-label` to a get command
 
-```sh
+```bash
 kubectl get deployments --show-labels
 ```
 
 To modify labels on a deployment run
 
-```sh
+```bash
 kubectl label deployments <deployment-name> "<label-name>=<label-value>"
 ```
 
@@ -351,20 +359,20 @@ The `-L <label-name>` flag on a get command, shows the label as a column.
 
 Remove a label with
 
-```sh
+```bash
 kubectl label deployments <deployment-name> "<label-name>-"
 ```
 
 To use selectors
 
-```sh
+```bash
 kubectl get pods --selector="<label-name>=<label-value>,<label-name>=<label-value>"
 kubectl get pods --selector="<label-name> in (<label-value>,<label-value>)"
 ```
 
 The `,` is an **AND**
 
-```sh
+```bash
 kubectl get deployments --selector="<label-name>"
 ```
 
@@ -375,7 +383,7 @@ A YAML syntax would look like
 ```yaml
 selector:
   matchLabels:
-    app: alpaca
+    app: <app-name>
   matchExpressions:
     - {key: ver, operator: In, values: [1, 2]}
 ```
@@ -398,7 +406,7 @@ Two main use cases are:
 The service discovery is based on the _Service_ objects. A Service is a named label selector.
 You can create a service bu running
 
-```sh
+```bash
 kubectl expose deployment <deployment-name>
 ```
 
@@ -443,7 +451,7 @@ spec:
 
 Submitting a _ReplicaSet_ to Kubernetes would look like
 
-```sh
+```bash
 $ kubectl apply -f config.yaml
 replicaset "<replicaset-name>" created
 ```
@@ -454,14 +462,14 @@ For a given pod, you can find if it is managed by a _ReplicaSet_ by looking into
 
 Scaling _ReplicaSets_ can be done with
 
-```sh
+```bash
 kubectl scale replicasets <replicaset-name> --replicas=4
 ```
 
 But is much better done by updating the manifest directly in order to prevent misalignment between the config files and the cluster version of the desired state.
 You would update the _ReplicaSet_ with
 
-```sh
+```bash
 kubectl apply -f config.yaml replicaset "<replicaset-name>" configured
 ```
 
@@ -469,13 +477,13 @@ Autoscaling (_horizontal pod autoscaling_) can be configured (but you should the
 For it to work you need to have the `heapster` _Pod_ running on your cluster as it provided the needed metrics about pods.
 You should see it in the list returned by
 
-```sh
+```bash
 kubectl get pods --namespace=kube-system
 ```
 
 You can then create an autoscale with
 
-```sh
+```bash
 kubectl autoscale rs <replicaset-name> --min=2 --max=5 --cpu-percent=80
 ```
 
@@ -483,7 +491,7 @@ It is another kind of object (accessible through `hpa` or `horizontalpodautoscal
 
 As mentioned the _ReplicaSet_ is not coupled with the pods, but by default deleting it will also delete the pods it manages. You can prevent that with the flag `--cascade=false`
 
-```sh
+```bash
 kubectl delete rs <replicaset-name> --cascade=false
 ```
 
@@ -530,14 +538,14 @@ spec:
 
 You can submit it similarly to ReplicaSet
 
-```sh
+```bash
 $ kubectl apply -f config.yaml
 daemonset "<daemonset-name>" created
 ```
 
 If the main use case might be to run one copy of the _Pod_ on each node you can also limit the nodes to which a DaemonSet should apply. You need to add labels to node and define a _NodeSelector_ (as shown in the example above).
 
-```sh
+```bash
 kubectl label nodes <node-name> <label-name>=<label-value>
 ```
 
@@ -545,7 +553,7 @@ To define how a daemon will update the pods, use `spec.updateStrategy.type`, it 
 
 Delete a DaemonSet with
 
-```sh
+```bash
 kubectl delete -f config.yaml
 ```
 
@@ -598,7 +606,7 @@ In order to keep you application decoupled with the infrastructure, you will wan
 
 Config is meant to be create by command line as follows
 
-```sh
+```bash
 kubectl create configmap my-config --from-file=my-config.txt --from-literal=key=value
 ```
 
@@ -648,7 +656,7 @@ Depending your setup, the main piece of config you expect to pass to you applica
 
 Secrets are created in a similar way
 
-```sh
+```bash
 kubectl create secret generic my-secret --from-file=secret.txt
 ```
 
@@ -671,7 +679,7 @@ spec:
 
 One special kind of secret are the docker credential to access private registries, they can be created and used as follows
 
-```sh
+```bash
 kubectl create secret docker-registry my-image-pull-secret \
   --docker-username=<username> \
   --docker-password=<password> \
@@ -736,25 +744,25 @@ The `revisionHistoryLimit` is useful as otherwise the Deployment can grow out of
 
 To monitor the creation of a new Deployment, you can use
 
-```sh
+```bash
 kubectl rollout status deployments <deployment-name>
 ```
 
 To the see the history, with revisions and change-causes from the annotations.
 
-```sh
+```bash
 kubectl rollout history deployment <deployment-name>
 ```
 
 To roll back a deployment
 
-```sh
+```bash
 kubectl rollout undo deployments nginx
 ```
 
 It will basically do a new rollout but based on the previous revisions, and that will override the history, for example rolling back from 3 to 2 would make history change from
 
-```txt
+```bash
 REVISION        CHANGE-CAUSE
 1               <none>
 2               Update nginx to 1.9.10
@@ -763,7 +771,7 @@ REVISION        CHANGE-CAUSE
 
 to
 
-```txt
+```bash
 REVISION        CHANGE-CAUSE
 1               <none>
 3               Update nginx to 1.10.2
