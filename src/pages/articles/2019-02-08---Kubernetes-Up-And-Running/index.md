@@ -21,7 +21,7 @@ description: "The authors provide with this book a very good practical introduct
 
 Kubernetes is the new default choice in term of container management tool. It has proven its capacity to solve a wide range of issues around autoscaling, automated deployment without downtime, high availability and speed of iteration. Moreover, the backing it receives from most cloud providers and other big tech actors as well as the wide community of developers who get involved gives it all the chances to stick around and get even better in the coming years.
 
-This book is a great way to get to discover, understand and use the main concepts in Kubernetes while getting used to the specific way of thinking around infrastructure needed to make the most out of it. The examples are mostly basic setups, but they provide most of what is needed to get started. More resources can be found on the <a href="https://kubernetes.io/docs/home/" target="_blank">Kubernetes documentation</a>.
+This book is a great way to get to discover, understand and use the main concepts in Kubernetes while getting used to the specific way of thinking around infrastructure needed to make the most out of it. The examples are mostly basic setups, but they provide most of what is needed to get started. More resources can be found on the <a href="https://kubernetes.io/docs/home/" target="_blank" rel="noopener noreferrer">Kubernetes documentation</a>.
 
 ## Detailed Summary
 
