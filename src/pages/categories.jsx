@@ -5,42 +5,40 @@ import { convertToKebabCase } from '../utils';
 import Layout from '../components/layout';
 import Sidebar from '../components/Sidebar';
 
-export default class CategoriesRoute extends React.Component {
-  render() {
-    const { data } = this.props;
-    const { title } = data.site.siteMetadata;
-    const categories = data.allMarkdownRemark ? data.allMarkdownRemark.group : [];
+export default (props) => {
+  const { data } = props;
+  const { title } = data.site.siteMetadata;
+  const categories = data.allMarkdownRemark ? data.allMarkdownRemark.group : [];
 
-    return (
-      <Layout>
-        <div className="grid-wrapper">
-          <Helmet title={`All Categories - ${title}`} />
-          <Sidebar {...this.props} />
-          <div className="content">
-            <div className="content__inner">
-              <div className="page">
-                <h1 className="page__title">Categories</h1>
-                <div className="page__body">
-                  <div className="categories">
-                    <ul className="categories__list">
-                      {categories.map(category => (
-                        <li key={category.fieldValue} className="categories__list-item">
-                          <Link to={`/categories/${convertToKebabCase(category.fieldValue)}/`} className="categories__list-item-link">
-                            {category.fieldValue} ({category.totalCount})
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+  return (
+    <Layout>
+      <div className="grid-wrapper">
+        <Helmet title={`All Categories - ${title}`} />
+        <Sidebar {...props} />
+        <div className="content">
+          <div className="content__inner">
+            <div className="page">
+              <h1 className="page__title">Categories</h1>
+              <div className="page__body">
+                <div className="categories">
+                  <ul className="categories__list">
+                    {categories.map(category => (
+                      <li key={category.fieldValue} className="categories__list-item">
+                        <Link to={`/categories/${convertToKebabCase(category.fieldValue)}/`} className="categories__list-item-link">
+                          {category.fieldValue} ({category.totalCount})
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </Layout>
-    );
-  }
-}
+      </div>
+    </Layout>
+  );
+};
 
 export const pageQuery = graphql`
   {

@@ -39,7 +39,7 @@ exports.createPages = ({ graphql, actions }) => {
     }
   `).then((result) => {
       if (result.errors) {
-        console.log(result.errors);
+        console.error(result.errors);
         reject(result.errors);
       }
 
@@ -111,7 +111,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     && typeof node.slug === 'undefined'
   ) {
     const fileNode = getNode(node.parent);
-    let slug = fileNode.fields.slug;
+    let { slug } = fileNode.fields;
     if (typeof node.frontmatter.path !== 'undefined') {
       slug = node.frontmatter.path;
     }

@@ -5,42 +5,40 @@ import { convertToKebabCase } from '../utils';
 import Layout from '../components/layout';
 import Sidebar from '../components/Sidebar';
 
-export default class TagsRoute extends React.Component {
-  render() {
-    const { data } = this.props;
-    const { title } = data.site.siteMetadata;
-    const tags = data.allMarkdownRemark ? data.allMarkdownRemark.group : [];
+export default (props) => {
+  const { data } = props;
+  const { title } = data.site.siteMetadata;
+  const tags = data.allMarkdownRemark ? data.allMarkdownRemark.group : [];
 
-    return (
-      <Layout>
-        <div className="grid-wrapper">
-          <Helmet title={`All Tags - ${title}`} />
-          <Sidebar {...this.props} />
-          <div className="content">
-            <div className="content__inner">
-              <div className="page">
-                <h1 className="page__title">Tags</h1>
-                <div className="page__body">
-                  <div className="tags">
-                    <ul className="tags__list">
-                      {tags.map(tag => (
-                        <li key={tag.fieldValue} className="tags__list-item">
-                          <Link to={`/tags/${convertToKebabCase(tag.fieldValue)}/`} className="tags__list-item-link">
-                            {tag.fieldValue} ({tag.totalCount})
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+  return (
+    <Layout>
+      <div className="grid-wrapper">
+        <Helmet title={`All Tags - ${title}`} />
+        <Sidebar {...props} />
+        <div className="content">
+          <div className="content__inner">
+            <div className="page">
+              <h1 className="page__title">Tags</h1>
+              <div className="page__body">
+                <div className="tags">
+                  <ul className="tags__list">
+                    {tags.map(tag => (
+                      <li key={tag.fieldValue} className="tags__list-item">
+                        <Link to={`/tags/${convertToKebabCase(tag.fieldValue)}/`} className="tags__list-item-link">
+                          {tag.fieldValue} ({tag.totalCount})
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </Layout>
-    );
-  }
-}
+      </div>
+    </Layout>
+  );
+};
 
 export const pageQuery = graphql`
   {
