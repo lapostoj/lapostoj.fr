@@ -35,7 +35,7 @@ One key benefit of these institutions is that they encourage *creative destructi
 Indeed, according to the authors, without innovation growth can't be sustained over a long period of time.
 
 The second type of systems mentioned are *extractive institutions*, they usually put in place economies where most of the benefits go only to a few selected people (usually the leaders of these countries).
-These people can then use the power and wealth to reinforce their position and create a vicious circle form which it is hard to ge out.
+These people can then use the power and wealth to reinforce their position and create a vicious circle form which it is hard to get out.
 In such context, innovation or any kind of creative destruction tends to be prevented in order to maintain the status quo as leaders fear any kind of change who would increase the likeliness of them losing some power.
 
 One side point which is mentioned is that inclusive institutions tend to appear when a centralized and participative state is in place.

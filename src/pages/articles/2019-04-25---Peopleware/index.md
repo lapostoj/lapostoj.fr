@@ -14,7 +14,7 @@ description: "The authors summarize and share their observations from years cons
 
 <figure class="float-left" style="width: 240px">
   <img src="./peopleware-cover.jpg" alt="Peopleware cover">
-  <figcaption>Peopleware by Tom DeMarco & Timothy Lister</figcaption>
+  <figcaption>Peopleware, Tom DeMarco & Timothy Lister</figcaption>
 </figure>
 
 ## Summary
@@ -73,7 +73,7 @@ That ends up with people enduring mediocre workspaces for much longer than they 
 It is hard to prove the effect of a good workspace on work quality, but it seems there is a correlation between people performing better and the office environment being favorable for work, in one direction or the other.
 So do pay attention to the office environment and any feedback about it.
 
-Saving money on space is a dangerous bet, what you spend on office space per employee is often a small percentage of wha tyou spend overall for this person.
+Saving money on space is a dangerous bet, what you spend on office space per employee is often a small percentage of what you spend overall for this person.
 If you reach a point where they feel uncomfortable or find the environment too noisy, you're at risk to make their work meaningfully worse and so lose more from the return on their salary than the savings you made on space.
 It's hard to measure what is the correct dedicated workspace per person or noise level.
 And it can vary a lot per person.
