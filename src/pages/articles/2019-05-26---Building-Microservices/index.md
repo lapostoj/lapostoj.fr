@@ -113,7 +113,8 @@ You can get started by the pieces which will provide the most value or by the on
 
 Of course, this is the simple, high level view.
 And all that get more complicated in the details.
-Is a database currently shared between two domains that you would see as two services? Is reporting relying on all the database tables being in one place to join it all?
+Is a database currently shared between two domains that you would see as two services?
+Is reporting relying on all the database tables being in one place to join it all?
 
 But overall the same high level approach can be followed, identify the issues and boundaries; refactor and split in place (getting your data from another service through "API" calls even if not fully "remote"); extract and deploy the new service.
 
@@ -132,7 +133,8 @@ That should be one of your goal in order to be able to iterate fast and identify
 
 One thing which can be necessary or at least helpful regarding this is to make sure to have a deployment tool or process as easy to use as possible, which likely means as automated as possible.
 You'd pretty much want to be able to deploy any version of any service in any environment anytime.
-Make sure the rollback case is handled as well! Overall make sure the developers are comfortable with and confident in the build and deploy tools, if not, they will be reluctant to deploy as often as you want them to.
+Make sure the rollback case is handled as well!
+Overall make sure the developers are comfortable with and confident in the build and deploy tools, if not, they will be reluctant to deploy as often as you want them to.
 
 About where these services are deployed, it is preferred to have one service per host or container.
 This has been made much easier and more standard lately thanks to Docker though.
@@ -228,7 +230,8 @@ Moreover, it's quite likely some new trend will shake things up in this area soo
 
 The main point is that whenever one of the two structures (system or teams) is considered for a change, it should not be considered in isolation, but with consideration as well for the other side of the picture.
 For example if your changing your architecture or your deployment pipeline.
-Do you have enough people to support the change? Are people adapting fast enough to the change or should it be more progressive?
+Do you have enough people to support the change?
+Are people adapting fast enough to the change or should it be more progressive?
 If your changing a team, does it out any part of the system at risk of lack of ownership or resources?
 
 > The Second Law of Consulting (Gerry Weinberg): No matter how it looks at first, it's always a people problem.

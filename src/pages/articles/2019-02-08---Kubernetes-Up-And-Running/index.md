@@ -19,9 +19,13 @@ description: "The authors provide with this book a very good practical introduct
 
 ## Summary
 
-Kubernetes is the new default choice in term of container management tool. It has proven its capacity to solve a wide range of issues around autoscaling, automated deployment without downtime, high availability and speed of iteration. Moreover, the backing it receives from most cloud providers and other big tech actors as well as the wide community of developers who get involved gives it all the chances to stick around and get even better in the coming years.
+Kubernetes is the new default choice in term of container management tool.
+It has proven its capacity to solve a wide range of issues around autoscaling, automated deployment without downtime, high availability and speed of iteration.
+Moreover, the backing it receives from most cloud providers and other big tech actors as well as the wide community of developers who get involved gives it all the chances to stick around and get even better in the coming years.
 
-This book is a great way to get to discover, understand and use the main concepts in Kubernetes while getting used to the specific way of thinking around infrastructure needed to make the most out of it. The examples are mostly basic setups, but they provide most of what is needed to get started. More resources can be found on the <a href="https://kubernetes.io/docs/home/" target="_blank" rel="noopener noreferrer">Kubernetes documentation</a>.
+This book is a great way to get to discover, understand and use the main concepts in Kubernetes while getting used to the specific way of thinking around infrastructure needed to make the most out of it.
+The examples are mostly basic setups, but they provide most of what is needed to get started.
+More resources can be found on the <a href="https://kubernetes.io/docs/home/" target="_blank" rel="noopener noreferrer">Kubernetes documentation</a>.
 
 ## Detailed Summary
 
@@ -31,10 +35,12 @@ Four main reasons to use containers and container APIs like Kubernetes.
 
 #### Velocity
 
-Based on the principle you want to ship new features while keeping high availability in order not to have losses coming from your deployments. These concepts help with keeping velocity.
+Based on the principle you want to ship new features while keeping high availability in order not to have losses coming from your deployments.
+These concepts help with keeping velocity.
 
 - Immutable infrastructure: any change is applied by creating a new container image which remains accessible in the exact same state in the registry.
-- Declarative configuration: Kubernetes job is to match the desired state describe by the configuration. You should not have to care too much of the actions taken for that.
+- Declarative configuration: Kubernetes job is to match the desired state describe by the configuration.
+You should not have to care too much of the actions taken for that.
 - Self-Healing Systems: once the desired state is achieved, Kubernetes will also take action in order to maintain it over time.
 
 #### Scaling your service and your teams
@@ -55,13 +61,18 @@ If you take a few extra step like not using cloud managed services and abstract 
 #### Efficiency
 
 Thanks to the isolation and automation, several applications can be packed on the same servers increasing the the usage ratio of the underlying hardware.
-It reduces also a lot the cost of test environment as they can just be setup from the same config as prod. That enables new options to increase velocity while keeping a high level of confidence in the releases.
+It reduces also a lot the cost of test environment as they can just be setup from the same config as prod.
+That enables new options to increase velocity while keeping a high level of confidence in the releases.
 
 ### Chapter 2 - Creating and Running Containers
 
-Images are most commonly built based on previously existing images by just adding layers on top of it. For example you take a "system image" of a Linux distribution, add a given version of the JVM to it and then add your Java application. You can then run the application making sure it will always use this same JVM version packaged with it, and also reuse the image containing the JVM for any other application.
-One thing to keep in mind is that one layer cannot "physically" change a previous one. For example if you remove a file which was created upstream, that file will still count as weight in the final image, it just won't be accessible in a straightforward way.
-One you have the image you want, you would commonly host it on a docker registry to be able to fetch it from anywhere and then run it. When running the image you can define useful resources limit as show in this command example.
+Images are most commonly built based on previously existing images by just adding layers on top of it.
+For example you take a "system image" of a Linux distribution, add a given version of the JVM to it and then add your Java application.
+You can then run the application making sure it will always use this same JVM version packaged with it, and also reuse the image containing the JVM for any other application.
+One thing to keep in mind is that one layer cannot "physically" change a previous one.
+For example if you remove a file which was created upstream, that file will still count as weight in the final image, it just won't be accessible in a straightforward way.
+One you have the image you want, you would commonly host it on a docker registry to be able to fetch it from anywhere and then run it.
+When running the image you can define useful resources limit as show in this command example.
 
 ```bash
 docker run -d --name <image-name> --publish 8080:8080 \
@@ -74,7 +85,8 @@ docker run -d --name <image-name> --publish 8080:8080 \
 To start with, probably better to use a hosted solution on your provider of choice.
 Locally you can use _minikube_, but one limitation is that it only creates a single-node cluster, preventing most of the reliability promised by Kubernetes.
 
-One the cluster created, you interact with it using the Kubernetes client _kubectl_. Some useful commands
+One the cluster created, you interact with it using the Kubernetes client _kubectl_.
+Some useful commands
 
 ```bash
 kubectl version
@@ -213,7 +225,8 @@ kubectl logs (-f) <pod-name> (-c <container-name)
 ```
 
 The `-c` flag is useful if several containers run on the same pod.
-The `--previous` flag will get the logs from the previous instance of the container. In case of unexpected shutdowns, it can be useful to investigate.
+The `--previous` flag will get the logs from the previous instance of the container.
+In case of unexpected shutdowns, it can be useful to investigate.
 
 Execute a command in a running container
 
@@ -233,18 +246,22 @@ See `kubectl help` for more details
 
 ### Chapter 5 - Pods
 
-A _Pod_ is the atomic unit in Kubernetes, it is a group of Docker containers. Everything in one _Pod_ execute in the same environment, for example they share the same IP address, port space, hostname. They also always will run on the same machine.
+A _Pod_ is the atomic unit in Kubernetes, it is a group of Docker containers.
+Everything in one _Pod_ execute in the same environment, for example they share the same IP address, port space, hostname.
+They also always will run on the same machine.
 If two containers are in different pods, they can be on different servers as far as you know.
 
 To decide what to put in one Pod, the useful question is
 > "Will these containers work correctly if they land on different machines?"
 
 If the answer is no, then they will have to be on the same Pod, if the answer is yes, you can happily decouple them and put them on different pods.
-For a typical example, a database doesn't need to be on the same _Pod_ of the application using it, you just need to indicate to the application where the database is located. But if you have several containers needing the same filesystem, they will *have to* be on the same pod.
+For a typical example, a database doesn't need to be on the same _Pod_ of the application using it, you just need to indicate to the application where the database is located.
+But if you have several containers needing the same filesystem, they will *have to* be on the same pod.
 
 You define Pods in a _Pod_ manifest where you configure the desired state, following the _declarative configuration_ advocated by Kubernetes.
 
-When you submit a _Pod_ manifest to Kubernetes, it gets persisted on the etcd storage. The scheduler places Pods which aren't already schedules on nodes with enough available resources (favoring different nodes for different instance of the same application for reliability).
+When you submit a _Pod_ manifest to Kubernetes, it gets persisted on the etcd storage.
+The scheduler places Pods which aren't already schedules on nodes with enough available resources (favoring different nodes for different instance of the same application for reliability).
 To manage multiple instance you can submit several time the same _Pod_ manifest or use _ReplicaSets_ which will be explained later.
 
 Creating a _Pod_ (through a deployment) can be done with
@@ -266,13 +283,18 @@ kubetctl port-forward <pod-name> <loalhost-port>:<pod-pord>
 ```
 
 Kubernetes defines two types of health checks for a Pod, Any of them can be `httpGet`, `tcpSocket` or even `exec`.
-The _liveness probe_ is used to know if a container is healthy. If it fails this probe, the container will be restarted.
+The _liveness probe_ is used to know if a container is healthy.
+If it fails this probe, the container will be restarted.
 
-The _readiness probe_ is used to know if a container is ready to accept traffic. If one container fails it, it gets removed from the service load balancers.
+The _readiness probe_ is used to know if a container is ready to accept traffic.
+If one container fails it, it gets removed from the service load balancers.
 
-In a _Pod_ manifest you can define how much resource each container needs and should be given. Two different types of configuration exist and the Pod's resources will be the sum of its containers' resources.
-The `requests` are the resources the container should always have. The container will not be put on a server with less than these resources available.
-The `limits` are the maximum resources the container should ever be allocated. If left undefined, the containers running on a machine will be allocated evenly all resources of the machine until more containers are scheduled to run there and request some of the resources.
+In a _Pod_ manifest you can define how much resource each container needs and should be given.
+Two different types of configuration exist and the Pod's resources will be the sum of its containers' resources.
+The `requests` are the resources the container should always have.
+The container will not be put on a server with less than these resources available.
+The `limits` are the maximum resources the container should ever be allocated.
+If left undefined, the containers running on a machine will be allocated evenly all resources of the machine until more containers are scheduled to run there and request some of the resources.
 
 If you need to persist data from a _Pod_ over containers restarts you will need to access some kind of persistent storage, it is done through `spec.volumes` and `spec.containers.volumeMounts` in order to map the mounted volume to a path for the container.
 This can be used for sharing data across containers, persisting a cache which should survive restart of the container (not pod) (with `emptyDir`), actual persistent data on remote disks to be able to access it wherever the _Pod_ is scheduled next (with `nfs` for example), or access the host filesystem with `hostPath`.
@@ -327,10 +349,13 @@ spec:
 
 ### Chapter 6 - Labels and Annotations
 
-Both are very similar key/value pairs. The key is made of a prefix <253 characters following DNS subdomain syntax and a name < 63 characters starting and ending with alphanumeric character and allowing `-`, `_`, `.`.
-For the value, in case of label it follows the same restrictions as the key name. While for annotations it is totally free text.
+Both are very similar key/value pairs.
+The key is made of a prefix <253 characters following DNS subdomain syntax and a name < 63 characters starting and ending with alphanumeric character and allowing `-`, `_`, `.`.
+For the value, in case of label it follows the same restrictions as the key name.
+While for annotations it is totally free text.
 
-Labels can be queried through _selectors_ and are used to identify objects while annotations can be used for any kind of data relevant to an object. Some uses cases of annotations is passing information to some tools and library or just  storing metadata which doesn't need to be queried.
+Labels can be queried through _selectors_ and are used to identify objects while annotations can be used for any kind of data relevant to an object.
+Some uses cases of annotations is passing information to some tools and library or just  storing metadata which doesn't need to be queried.
 
 Applying a label to a deployment can be done with a command like
 
@@ -403,16 +428,20 @@ Two main use cases are:
 
 ### Chapter 7 - Service Discovery
 
-The service discovery is based on the _Service_ objects. A Service is a named label selector.
+The service discovery is based on the _Service_ objects.
+A Service is a named label selector.
 You can create a service bu running
 
 ```bash
 kubectl expose deployment <deployment-name>
 ```
 
-It will assign a cluster (virtual) IP to the service that can is used by the system to load balance between all the pods identified by the selector. This IP is stable and  can thus be used by the Kubernetes DNS service. What will change are the pods identified by the selector.
+It will assign a cluster (virtual) IP to the service that can is used by the system to load balance between all the pods identified by the selector.
+This IP is stable and  can thus be used by the Kubernetes DNS service.
+What will change are the pods identified by the selector.
 
-The magic here is done by the _kube-proxy_ running on every node and watching for new services via the API server. It then writes iptables rules used to direct the calls to the endpoints of the target service.
+The magic here is done by the _kube-proxy_ running on every node and watching for new services via the API server.
+It then writes iptables rules used to direct the calls to the endpoints of the target service.
 
 The Kubernetes DNS service provides DNS names like `<deployment-name>.default.svc.cluster.local`.
 
@@ -420,15 +449,19 @@ The list of pods available in a service is maintained based on the responses of 
 
 To expose one node outside a cluster you will need to define `spec.type.NodePorts`, it will affect a port and every node in the cluster will forward traffic from this port to the service.
 
-Integrations with cloud services allow to automatically allocate load balancers using the `spec.type.LoadBalancer`. This will expose the service to the outside world.
+Integrations with cloud services allow to automatically allocate load balancers using the `spec.type.LoadBalancer`.
+This will expose the service to the outside world.
 
 For every Service, Kubernetes creates an _Endpoint_ object, it contains the list of IPs for the service at any given point in time.
 
 ### Chapter 8 - ReplicaSets
 
-In order to have several pods of the same type running, it would be quite error-prone to have to manage several almost identical config files. The _ReplicaSet_ objects are here exactly to fulfil this task.
+In order to have several pods of the same type running, it would be quite error-prone to have to manage several almost identical config files.
+The _ReplicaSet_ objects are here exactly to fulfil this task.
 
-One important concept, recurrent in Kubernetes, is that the pods created by a _ReplicaSet_ don't _belong_ to it. If you delete the ReplicaSet, the pods won't be deleted with it, they just won't be monitored any more in term of matching the desired state. The _ReplicaSet_ keeps track of the pods based on label selectors similarly to the Service.
+One important concept, recurrent in Kubernetes, is that the pods created by a _ReplicaSet_ don't _belong_ to it.
+If you delete the ReplicaSet, the pods won't be deleted with it, they just won't be monitored any more in term of matching the desired state.
+The _ReplicaSet_ keeps track of the pods based on label selectors similarly to the Service.
 That allows to adopt existing containers where creating a _ReplicaSet_ (rather than having to delete the _Pod_ and re-create it through the _ReplicaSet_ or keep a _Pod_ in quarantine in case It misbehaves in order to experiment more in details rather than relying just on logs.
 
 ```yaml
@@ -489,7 +522,8 @@ kubectl autoscale rs <replicaset-name> --min=2 --max=5 --cpu-percent=80
 
 It is another kind of object (accessible through `hpa` or `horizontalpodautoscalers`) so it is not strictly coupled with the ReplicaSet.
 
-As mentioned the _ReplicaSet_ is not coupled with the pods, but by default deleting it will also delete the pods it manages. You can prevent that with the flag `--cascade=false`
+As mentioned the _ReplicaSet_ is not coupled with the pods, but by default deleting it will also delete the pods it manages.
+You can prevent that with the flag `--cascade=false`
 
 ```bash
 kubectl delete rs <replicaset-name> --cascade=false
@@ -497,7 +531,9 @@ kubectl delete rs <replicaset-name> --cascade=false
 
 ### Chapter 9 - DaemonSets
 
-The DaemonSet is rather similar to the _ReplicaSet_ in a way that it manages pods matching a given label selector over the cluster. The main different is that it's purpose is to ensure the _Pod_ has a copy running on  each node of the cluster. That is useful typically for monitoring agents or other kind of services providing features to the cluster itself rather than consumer serving features.
+The DaemonSet is rather similar to the _ReplicaSet_ in a way that it manages pods matching a given label selector over the cluster.
+The main different is that it's purpose is to ensure the _Pod_ has a copy running on  each node of the cluster.
+That is useful typically for monitoring agents or other kind of services providing features to the cluster itself rather than consumer serving features.
 
 Defining a DaemonSet looks like
 
@@ -543,13 +579,15 @@ $ kubectl apply -f config.yaml
 daemonset "<daemonset-name>" created
 ```
 
-If the main use case might be to run one copy of the _Pod_ on each node you can also limit the nodes to which a DaemonSet should apply. You need to add labels to node and define a _NodeSelector_ (as shown in the example above).
+If the main use case might be to run one copy of the _Pod_ on each node you can also limit the nodes to which a DaemonSet should apply.
+You need to add labels to node and define a _NodeSelector_ (as shown in the example above).
 
 ```bash
 kubectl label nodes <node-name> <label-name>=<label-value>
 ```
 
-To define how a daemon will update the pods, use `spec.updateStrategy.type`, it defaults to `OnDelete` which creates the new _Pod_ only after a manual delete of the existing one, but `RollingUpdate` would automatically start replacing the pods ensure success of one _Pod_ between moving forwards to others. You can configure it with `spec.minReadySeconds` and `spec.updateStrategy.rollingUpdate.maxUnavailable`.
+To define how a daemon will update the pods, use `spec.updateStrategy.type`, it defaults to `OnDelete` which creates the new _Pod_ only after a manual delete of the existing one, but `RollingUpdate` would automatically start replacing the pods ensure success of one _Pod_ between moving forwards to others.
+You can configure it with `spec.minReadySeconds` and `spec.updateStrategy.rollingUpdate.maxUnavailable`.
 
 Delete a DaemonSet with
 
@@ -561,13 +599,18 @@ But it will also delete the pods unless `--cascade=false` specified.
 
 ### Chapter 10 - Jobs
 
-Kubernetes can also be used for more punctual needs with the Job object. You can run one or several pods for a given number of times (until exit 0). You would configure this with the `completions` and `parallelism` specs.
+Kubernetes can also be used for more punctual needs with the Job object.
+You can run one or several pods for a given number of times (until exit 0).
+You would configure this with the `completions` and `parallelism` specs.
 
 The mains three scenario are
 
-- One shot job: completion=1, parallelism=1. You run one _Pod_ once until it completes.
-- Parallel fixed completions: completion=1+, parallelism=1+. You run several pods, as many times as needed until they complete the number of times specified.
-- Work queue: parallel Jobs: completion=1, parallelism=2+. You run several pods, they will run as many times as needed until one completes and then all be retired as they finish their current run.
+- One shot job: completion=1, parallelism=1.
+You run one _Pod_ once until it completes.
+- Parallel fixed completions: completion=1+, parallelism=1+.
+You run several pods, as many times as needed until they complete the number of times specified.
+- Work queue: parallel Jobs: completion=1, parallelism=2+.
+You run several pods, they will run as many times as needed until one completes and then all be retired as they finish their current run.
 
 The Job config would look like
 
@@ -598,11 +641,13 @@ spec:
 ```
 
 The benefit of the Job object is that is the job fails for any reason (application bug or _Pod_ crash), it will be retried until the completion parameter is fulfilled.
-One alternative to `restartPolicy: OnFailure` is `restartPolicy: Never`. In the first case it would restart the existing _Pod_ if it failed, in the second it would create a new pod, which can pollute your cluster.
+One alternative to `restartPolicy: OnFailure` is `restartPolicy: Never`.
+In the first case it would restart the existing _Pod_ if it failed, in the second it would create a new pod, which can pollute your cluster.
 
 ### Chapter 11 - ConfigMaps and Secrets
 
-In order to keep you application decoupled with the infrastructure, you will want to pass some config to it. Kubernetes has the concept of ConfigMap for that, they are basically small filesystem combined with the _Pod_ when it is run.
+In order to keep you application decoupled with the infrastructure, you will want to pass some config to it.
+Kubernetes has the concept of ConfigMap for that, they are basically small filesystem combined with the _Pod_ when it is run.
 
 Config is meant to be create by command line as follows
 
@@ -652,7 +697,9 @@ spec:
 
 Using substitution with `$(<env-var-name>)`.
 
-Depending your setup, the main piece of config you expect to pass to you application directly through the environment are secrets. Of course these are sensitive by nature and you don't want them accessible outside of the app. Kubernetes offers the concept of Secrets to help with that.
+Depending your setup, the main piece of config you expect to pass to you application directly through the environment are secrets.
+Of course these are sensitive by nature and you don't want them accessible outside of the app.
+Kubernetes offers the concept of Secrets to help with that.
 
 Secrets are created in a similar way
 
@@ -699,9 +746,13 @@ Secrets names have to be alphanumerical characters separated by dots and or unde
 
 ### Chapter 12 - Deployments
 
-With the _ReplicaSets_ seen previously, you can have an application running in a highly available way regarding hardware or software failure. If your workers are provisioned correctly, one _Pod_ of a given _ReplicaSet_ should always be working and the other ones being restarted at worse. But what about deploying a new version, you would need to kill this _ReplicaSet_ and replace it with a new one, this would cause downtime. This is what Deployments offer to fix and automate.
+With the _ReplicaSets_ seen previously, you can have an application running in a highly available way regarding hardware or software failure.
+If your workers are provisioned correctly, one _Pod_ of a given _ReplicaSet_ should always be working and the other ones being restarted at worse.
+But what about deploying a new version, you would need to kill this _ReplicaSet_ and replace it with a new one, this would cause downtime.
+This is what Deployments offer to fix and automate.
 
-One Deployment initially creates a replica set, and when updated will create a new one. When the new one is available for service, the old one will get decommissioned (roughly, but the details can depend the exact strategy used).
+One Deployment initially creates a replica set, and when updated will create a new one.
+When the new one is available for service, the old one will get decommissioned (roughly, but the details can depend the exact strategy used).
 
 A deployment manifest would look similar to the following.
 
@@ -780,7 +831,8 @@ REVISION        CHANGE-CAUSE
 
 ### Chapter 13 - Integrating Storage Solutions and Kubernetes
 
-If you have applications running  outside of Kubernetes and want or need to migrate progressively, you can make the process smoother by using the Kubernetes concepts. For example even if a service or database lives outside Kubernetes, you can represent it inside by a Service, so that the other services calling it won't have to care if and when it moves to Kubernetes.
+If you have applications running  outside of Kubernetes and want or need to migrate progressively, you can make the process smoother by using the Kubernetes concepts.
+For example even if a service or database lives outside Kubernetes, you can represent it inside by a Service, so that the other services calling it won't have to care if and when it moves to Kubernetes.
 You replace the selector by an externalName as follows
 
 ```yaml
@@ -795,7 +847,8 @@ spec:
 
 One limitation is that no health check will be performed on external resources.
 
-You can also run a database as a singleton _Pod_ inside Kubernetes. Of course you won't have the high availability offered by having several instances, but that is often not the case either outside of Kubernetes.
+You can also run a database as a singleton _Pod_ inside Kubernetes.
+Of course you won't have the high availability offered by having several instances, but that is often not the case either outside of Kubernetes.
 
 I'm skipping the details here, but basically we need to create a _PersistentVolume_, where the actual data will be stored, a _PersistentVolumeClaim_ to enable the _Pod_ to use this volume, a _ReplicaSet_ with `replicas: 1` to have our one pod, but still have it restarted if it crashes and a _Service_  to expose it to the rest of the pods.
 
@@ -836,7 +889,8 @@ spec:
           name: peer
 ```
 
-You can then mange the DNS entries with a Service as usual. One difference is that it is headless `clusterIP: None` as each _Pod_ as their own specific identify as opposed to being identical substitutable instances.
+You can then mange the DNS entries with a Service as usual.
+One difference is that it is headless `clusterIP: None` as each _Pod_ as their own specific identify as opposed to being identical substitutable instances.
 
 ```yaml
 apiVersion: v1
@@ -854,7 +908,8 @@ spec:
 
 You could then use the pods hostname to setup the replication of MongoDB for example, it will then be able to find the pods trough these names even if they get commissioned on a different worker in the cluster.
 
-To attach _PersistentVolumes_ to _StatefulSets_, you need to use _VolumeClaimTemplates_, it will create a _VolumeClaim_ for each of the _Pod_ created by the _StatefulSet_. You would add the following in your _StatefulSet_ definition
+To attach _PersistentVolumes_ to _StatefulSets_, you need to use _VolumeClaimTemplates_, it will create a _VolumeClaim_ for each of the _Pod_ created by the _StatefulSet_.
+You would add the following in your _StatefulSet_ definition
 
 ```yaml
 volumeClaimTemplates:
