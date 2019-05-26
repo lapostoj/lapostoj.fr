@@ -14,7 +14,7 @@ description: "The authors provide with this book a very good practical introduct
 
 <figure class="float-left" style="width: 240px">
   <img src="./kubernetes-up-and-running-cover.jpg" alt="Kubernetes Up & Running cover">
-  <figcaption>Kubernetes Up & Running by Brendan Burns, Joe Beda and Kelsey Hightower</figcaption>
+  <figcaption>Kubernetes Up & Running, Brendan Burns, Joe Beda and Kelsey Hightower</figcaption>
 </figure>
 
 ## Summary
@@ -430,7 +430,7 @@ Two main use cases are:
 
 The service discovery is based on the _Service_ objects.
 A Service is a named label selector.
-You can create a service bu running
+You can create a service by running
 
 ```bash
 kubectl expose deployment <deployment-name>

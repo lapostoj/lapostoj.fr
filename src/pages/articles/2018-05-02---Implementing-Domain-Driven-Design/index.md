@@ -26,7 +26,7 @@ The book is built in order to mix both technical sections and higher level ones 
 
 ### Introduction
 
-The two pillars on which a Domain-Driven Desgin is built are:
+The two pillars on which a Domain-Driven Design is built are:
 
 - Ubiquitous Language: shared team language, from code to business.
 - Bounded Context: conceptual boundary around a whole application or finite system.
@@ -205,7 +205,7 @@ Tests should show how to use the service both in happy and unhappy flow.
 
 ### Chapter 8 - Domain Events
 
-Domain events capture an occurence of something in the domain.
+Domain events capture an occurrence of something in the domain.
 For some commands they execute, aggregates should emit a domain event (named as the past of the command) containing the relevant information about the command executed.
 Don't expose the domain events to the messaging infrastructure level!
 The publisher lives in the domain module.

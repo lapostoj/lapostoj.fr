@@ -200,7 +200,7 @@ As hard as it can be sometimes, putting in production the initial version of a p
 If you built a computing service for something it is because you will need it there for a long period of time, not for a unique use.
 Over time the requirements and goals will change and any decision taken originally is likely to be challenged and even to end up being seen as a bad decision (it was likely not too bad at that time, but with the new information available you can judge the decision in a very different way).
 
-There are mainly 3 levels where to look t to try to keep things flexible.
+There are mainly 3 levels where to look at to try to keep things flexible.
 
 **The organizational level, how teams and processes are structured.**
 
