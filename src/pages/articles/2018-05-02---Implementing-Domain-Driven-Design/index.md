@@ -158,11 +158,7 @@ Doesn't apply to TEXT and BLOB as they are stored in separate segments.*
 
 Domain should be centered around values not entities (meaning even entities should be centered around their value side).
 
-<figure>
-  <blockquote>
-    <p>Values type that measure, quantify, or describe things are easier to create, test, use, optimize and maintain..</p>
-  </blockquote>
-</figure>
+> Values type that measure, quantify, or describe things are easier to create, test, use, optimize and maintain.
 
 When you care only about the attributes of the model, it should be a value and considered immutable.
 
