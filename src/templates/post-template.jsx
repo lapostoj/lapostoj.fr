@@ -1,9 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
 import PageTemplateDetails from '../components/PageTemplateDetails';
 
-export default ({ data }) => {
+const PostTemplate = ({ data }) => {
   const { title, subtitle } = data.site.siteMetadata;
   const post = data.markdownRemark;
   const { title: postTitle, description: postDescription } = post.frontmatter;
@@ -20,6 +21,25 @@ export default ({ data }) => {
     </div>
   );
 };
+
+PostTemplate.propTypes = {
+  data: PropTypes.shape({
+    markdownRemark: PropTypes.shape({
+      frontmatter: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
+      }).isRequired,
+    }).isRequired,
+    site: PropTypes.shape({
+      siteMetadata: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        subtitle: PropTypes.string.isRequired,
+      }).isRequired,
+    }).isRequired,
+  }).isRequired,
+};
+
+export default PostTemplate;
 
 export const pageQuery = graphql`
   query($slug: String!) {

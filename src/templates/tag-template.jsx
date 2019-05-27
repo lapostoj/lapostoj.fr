@@ -1,10 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
 import Sidebar from '../components/Sidebar';
 import TagTemplateDetails from '../components/TagTemplateDetails';
 
-export default ({ data, pageContext }) => {
+const TagTemplate = ({ data, pageContext }) => {
   const { title } = data.site.siteMetadata;
   const { tag } = pageContext;
 
@@ -16,6 +17,21 @@ export default ({ data, pageContext }) => {
     </div>
   );
 };
+
+TagTemplate.propTypes = {
+  data: PropTypes.shape({
+    site: PropTypes.shape({
+      siteMetadata: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+      }).isRequired,
+    }).isRequired,
+  }).isRequired,
+  pageContext: PropTypes.shape({
+    tag: PropTypes.string.isRequired,
+  }).isRequired,
+};
+
+export default TagTemplate;
 
 export const pageQuery = graphql`
   query($tag: String) {

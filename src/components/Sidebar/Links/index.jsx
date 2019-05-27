@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './style.scss';
 import '../../../assets/fonts/fontello-771c82e0/css/fontello.css';
 
-export default ({ data: author }) => (
+const Links = ({ data: author }) => (
   <div className="links">
     <ul className="links__list">
       <li className="links__list-item">
@@ -18,3 +19,12 @@ export default ({ data: author }) => (
     </ul>
   </div>
 );
+
+Links.propTypes = {
+  data: PropTypes.shape({
+    github: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+  }).isRequired,
+};
+
+export default Links;

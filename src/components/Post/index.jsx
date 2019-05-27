@@ -1,10 +1,13 @@
-import moment from 'moment';
 import React from 'react';
+import PropTypes from 'prop-types';
+import moment from 'moment';
 import { Link } from 'gatsby';
 import './style.scss';
 
-export default ({ data }) => {
-  const { title, date, category, description } = data.node.frontmatter;
+const Post = ({ data }) => {
+  const {
+    title, date, category, description,
+  } = data.node.frontmatter;
   const { slug, categorySlug } = data.node.fields;
 
   return (
@@ -28,3 +31,22 @@ export default ({ data }) => {
     </div>
   );
 };
+
+Post.propTypes = {
+  data: PropTypes.shape({
+    node: PropTypes.shape({
+      frontmatter: PropTypes.shape({
+        date: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+        category: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
+      }).isRequired,
+      fields: PropTypes.shape({
+        categorySlug: PropTypes.string.isRequired,
+        slug: PropTypes.string.isRequired,
+      }).isRequired,
+    }).isRequired,
+  }).isRequired,
+};
+
+export default Post;

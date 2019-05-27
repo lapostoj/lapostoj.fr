@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import '../assets/scss/init.scss';
 
-export default ({ children }) => (
+const Layout = ({ children }) => (
   <div className="layout">
     <Helmet
       title="lapostoj - Jerome Lapostolet"
@@ -14,3 +15,12 @@ export default ({ children }) => (
     {children}
   </div>
 );
+
+Layout.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.element),
+    PropTypes.element,
+  ]).isRequired,
+};
+
+export default Layout;

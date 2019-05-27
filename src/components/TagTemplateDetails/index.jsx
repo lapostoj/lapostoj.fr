@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Post from '../Post';
 
-export default ({ data, tag }) => {
+const TagTemplateDetails = ({ data, tag }) => {
   const items = [];
   const posts = data.allMarkdownRemark.edges;
   posts.forEach((post) => {
@@ -23,3 +24,22 @@ export default ({ data, tag }) => {
     </div>
   );
 };
+
+TagTemplateDetails.propTypes = {
+  data: PropTypes.shape({
+    allMarkdownRemark: PropTypes.shape({
+      edges: PropTypes.arrayOf(
+        PropTypes.shape({
+          node: PropTypes.shape({
+            fields: PropTypes.shape({
+              slug: PropTypes.string.isRequired,
+            }).isRequired,
+          }).isRequired,
+        }).isRequired,
+      ).isRequired,
+    }).isRequired,
+  }).isRequired,
+  tag: PropTypes.string.isRequired,
+};
+
+export default TagTemplateDetails;

@@ -1,10 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
 import Layout from '../components/layout';
 import PageTemplateDetails from '../components/PageTemplateDetails';
 
-export default (props) => {
+const Index = (props) => {
   const { data } = props;
   const { title, subtitle } = data.site.siteMetadata;
   const page = data.markdownRemark;
@@ -22,6 +23,25 @@ export default (props) => {
     </Layout>
   );
 };
+
+Index.propTypes = {
+  data: PropTypes.shape({
+    markdownRemark: PropTypes.shape({
+      frontmatter: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        description: PropTypes.string,
+      }).isRequired,
+    }).isRequired,
+    site: PropTypes.shape({
+      siteMetadata: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        subtitle: PropTypes.string.isRequired,
+      }).isRequired,
+    }).isRequired,
+  }).isRequired,
+};
+
+export default Index;
 
 export const pageQuery = graphql`
   {

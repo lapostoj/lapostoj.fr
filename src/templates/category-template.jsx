@@ -1,10 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
 import Sidebar from '../components/Sidebar';
 import CategoryTemplateDetails from '../components/CategoryTemplateDetails';
 
-export default ({ data, pageContext }) => {
+const CategoryTemplate = ({ data, pageContext }) => {
   const { title } = data.site.siteMetadata;
   const { category } = pageContext;
 
@@ -16,6 +17,21 @@ export default ({ data, pageContext }) => {
     </div>
   );
 };
+
+CategoryTemplate.propTypes = {
+  data: PropTypes.shape({
+    site: PropTypes.shape({
+      siteMetadata: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+      }).isRequired,
+    }).isRequired,
+  }).isRequired,
+  pageContext: PropTypes.shape({
+    category: PropTypes.string.isRequired,
+  }).isRequired,
+};
+
+export default CategoryTemplate;
 
 export const pageQuery = graphql`
   query($category: String) {

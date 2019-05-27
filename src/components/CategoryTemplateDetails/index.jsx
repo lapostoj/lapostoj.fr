@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Post from '../Post';
 
-export default ({ data, category }) => {
+const CategoryTemplateDetails = ({ data, category }) => {
   const items = [];
   const posts = data.allMarkdownRemark.edges;
   posts.forEach((post) => {
@@ -23,3 +24,22 @@ export default ({ data, category }) => {
     </div>
   );
 };
+
+CategoryTemplateDetails.propTypes = {
+  data: PropTypes.shape({
+    allMarkdownRemark: PropTypes.shape({
+      edges: PropTypes.arrayOf(
+        PropTypes.shape({
+          node: PropTypes.shape({
+            fields: PropTypes.shape({
+              slug: PropTypes.string.isRequired,
+            }).isRequired,
+          }).isRequired,
+        }).isRequired,
+      ).isRequired,
+    }).isRequired,
+  }).isRequired,
+  category: PropTypes.string.isRequired,
+};
+
+export default CategoryTemplateDetails;

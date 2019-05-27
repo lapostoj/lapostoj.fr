@@ -1,10 +1,11 @@
-import moment from 'moment';
 import React from 'react';
+import PropTypes from 'prop-types';
+import moment from 'moment';
 import { Link } from 'gatsby';
 import Sidebar from '../Sidebar';
 import './style.scss';
 
-export default ({ data }) => {
+const PageTemplateDetails = ({ data }) => {
   const page = data.markdownRemark;
   const tags = page.fields ? page.fields.tagSlugs : [];
 
@@ -46,3 +47,20 @@ export default ({ data }) => {
   );
   /* eslint-enable react/no-danger */
 };
+
+PageTemplateDetails.propTypes = {
+  data: PropTypes.shape({
+    markdownRemark: PropTypes.shape({
+      fields: PropTypes.shape({
+        tagSlugs: PropTypes.arrayOf(PropTypes.string).isRequired,
+      }),
+      frontmatter: PropTypes.shape({
+        date: PropTypes.string,
+        title: PropTypes.string.isRequired,
+        tags: PropTypes.arrayOf(PropTypes.string),
+      }).isRequired,
+    }).isRequired,
+  }).isRequired,
+};
+
+export default PageTemplateDetails;

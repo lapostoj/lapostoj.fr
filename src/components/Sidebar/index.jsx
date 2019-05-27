@@ -1,11 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { graphql, Link } from 'gatsby';
 import Menu from './Menu';
 import Links from './Links';
 import profilePic from './photo.jpg';
 import './style.scss';
 
-export default ({ data }) => {
+const Sidebar = ({ data }) => {
   const { author, copyright, menu } = data.site.siteMetadata;
 
   const authorBlock = (
@@ -54,6 +55,28 @@ export default ({ data }) => {
     </div>
   );
 };
+
+Sidebar.propTypes = {
+  data: PropTypes.shape({
+    site: PropTypes.shape({
+      siteMetadata: PropTypes.shape({
+        author: PropTypes.shape({
+          github: PropTypes.string.isRequired,
+          email: PropTypes.string.isRequired,
+        }).isRequired,
+        copyright: PropTypes.string.isRequired,
+        menu: PropTypes.arrayOf(
+          PropTypes.shape({
+            path: PropTypes.string.isRequired,
+            label: PropTypes.string.isRequired,
+          }).isRequired,
+        ),
+      }).isRequired,
+    }).isRequired,
+  }).isRequired,
+};
+
+export default Sidebar;
 
 export const siteQuery = graphql`
   fragment site on Query {

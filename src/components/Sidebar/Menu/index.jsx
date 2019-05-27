@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import './style.scss';
 
-export default ({ data: menu }) => {
+const Menu = ({ data: menu }) => {
   const menuBlock = (
     <ul className="menu__list">
       {!menu ? '' : menu.map(item => (
@@ -25,3 +26,14 @@ export default ({ data: menu }) => {
     </nav>
   );
 };
+
+Menu.propTypes = {
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      path: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+    }).isRequired,
+  ).isRequired,
+};
+
+export default Menu;

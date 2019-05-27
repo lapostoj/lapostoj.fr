@@ -1,11 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { graphql, Link } from 'gatsby';
 import { convertToKebabCase } from '../utils';
 import Layout from '../components/layout';
 import Sidebar from '../components/Sidebar';
 
-export default (props) => {
+const Categories = (props) => {
   const { data } = props;
   const { title } = data.site.siteMetadata;
   const categories = data.allMarkdownRemark ? data.allMarkdownRemark.group : [];
@@ -39,6 +40,26 @@ export default (props) => {
     </Layout>
   );
 };
+
+Categories.propTypes = {
+  data: PropTypes.shape({
+    allMarkdownRemark: PropTypes.shape({
+      group: PropTypes.arrayOf(
+        PropTypes.shape({
+          fieldValue: PropTypes.string.isRequired,
+          totalCount: PropTypes.number.isRequired,
+        }).isRequired,
+      ).isRequired,
+    }).isRequired,
+    site: PropTypes.shape({
+      siteMetadata: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+      }).isRequired,
+    }).isRequired,
+  }).isRequired,
+};
+
+export default Categories;
 
 export const pageQuery = graphql`
   {
