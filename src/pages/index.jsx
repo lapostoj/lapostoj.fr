@@ -3,23 +3,26 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
 import Layout from '../components/layout';
+import Sidebar from '../components/Sidebar';
 import PageTemplateDetails from '../components/PageTemplateDetails';
 
-const Index = (props) => {
-  const { data } = props;
-  const { title, subtitle } = data.site.siteMetadata;
+const Index = ({ data }) => {
   const page = data.markdownRemark;
+  const { title, subtitle } = data.site.siteMetadata;
   const { title: pageTitle, description: pageDescription } = page.frontmatter;
   const description = pageDescription !== null ? pageDescription : subtitle;
 
   return (
     <Layout>
-      <Helmet>
-        <html lang="en" />
-        <title>{`${pageTitle} - ${title}`}</title>
-        <meta name="description" content={description} />
-      </Helmet>
-      <PageTemplateDetails {...props} />
+      <div className="grid-wrapper">
+        <Helmet>
+          <html lang="en" />
+          <title>{`${pageTitle} - ${title}`}</title>
+          <meta name="description" content={description} />
+        </Helmet>
+        <Sidebar site={data.site} />
+        <PageTemplateDetails page={page} />
+      </div>
     </Layout>
   );
 };

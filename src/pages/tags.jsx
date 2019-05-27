@@ -6,8 +6,7 @@ import { convertToKebabCase } from '../utils';
 import Layout from '../components/layout';
 import Sidebar from '../components/Sidebar';
 
-const Tags = (props) => {
-  const { data } = props;
+const Tags = ({ data }) => {
   const { title } = data.site.siteMetadata;
   const tags = data.allMarkdownRemark ? data.allMarkdownRemark.group : [];
 
@@ -15,7 +14,7 @@ const Tags = (props) => {
     <Layout>
       <div className="grid-wrapper">
         <Helmet title={`All Tags - ${title}`} />
-        <Sidebar {...props} />
+        <Sidebar site={data.site} />
         <div className="content">
           <div className="content__inner">
             <div className="page">

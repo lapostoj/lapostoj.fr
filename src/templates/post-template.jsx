@@ -2,22 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
+import Sidebar from '../components/Sidebar';
 import PageTemplateDetails from '../components/PageTemplateDetails';
 
 const PostTemplate = ({ data }) => {
-  const { title, subtitle } = data.site.siteMetadata;
   const post = data.markdownRemark;
+  const { title, subtitle } = data.site.siteMetadata;
   const { title: postTitle, description: postDescription } = post.frontmatter;
   const description = postDescription !== null ? postDescription : subtitle;
 
   return (
-    <div>
+    <div className="grid-wrapper">
       <Helmet>
         <html lang="en" />
         <title>{`${postTitle} - ${title}`}</title>
         <meta name="description" content={description} />
       </Helmet>
-      <PageTemplateDetails data={data} />
+      <Sidebar site={data.site} />
+      <PageTemplateDetails page={post} />
     </div>
   );
 };

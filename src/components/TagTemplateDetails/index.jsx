@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Post from '../Post';
 
-const TagTemplateDetails = ({ data, tag }) => {
+const TagTemplateDetails = ({ posts, tag }) => {
   const items = [];
-  const posts = data.allMarkdownRemark.edges;
-  posts.forEach((post) => {
-    items.push(<Post data={post} key={post.node.fields.slug} />);
+  posts.forEach(({ node: post }) => {
+    const { slug } = post.fields;
+    items.push(<Post post={post} key={slug} />);
   });
 
   return (
@@ -26,19 +26,15 @@ const TagTemplateDetails = ({ data, tag }) => {
 };
 
 TagTemplateDetails.propTypes = {
-  data: PropTypes.shape({
-    allMarkdownRemark: PropTypes.shape({
-      edges: PropTypes.arrayOf(
-        PropTypes.shape({
-          node: PropTypes.shape({
-            fields: PropTypes.shape({
-              slug: PropTypes.string.isRequired,
-            }).isRequired,
-          }).isRequired,
+  posts: PropTypes.arrayOf(
+    PropTypes.shape({
+      node: PropTypes.shape({
+        fields: PropTypes.shape({
+          slug: PropTypes.string.isRequired,
         }).isRequired,
-      ).isRequired,
+      }).isRequired,
     }).isRequired,
-  }).isRequired,
+  ).isRequired,
   tag: PropTypes.string.isRequired,
 };
 

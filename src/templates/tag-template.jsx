@@ -6,20 +6,33 @@ import Sidebar from '../components/Sidebar';
 import TagTemplateDetails from '../components/TagTemplateDetails';
 
 const TagTemplate = ({ data, pageContext }) => {
-  const { title } = data.site.siteMetadata;
+  const posts = data.allMarkdownRemark.edges;
+  const { site } = data;
+  const { title } = site.siteMetadata;
   const { tag } = pageContext;
 
   return (
     <div className="grid-wrapper">
       <Helmet title={`All Posts tagged as "${tag}" - ${title}`} />
-      <Sidebar data={data} />
-      <TagTemplateDetails data={data} tag={tag} />
+      <Sidebar site={site} />
+      <TagTemplateDetails posts={posts} tag={tag} />
     </div>
   );
 };
 
 TagTemplate.propTypes = {
   data: PropTypes.shape({
+    allMarkdownRemark: PropTypes.shape({
+      edges: PropTypes.arrayOf(
+        PropTypes.shape({
+          node: PropTypes.shape({
+            fields: PropTypes.shape({
+              slug: PropTypes.string.isRequired,
+            }).isRequired,
+          }).isRequired,
+        }).isRequired,
+      ).isRequired,
+    }).isRequired,
     site: PropTypes.shape({
       siteMetadata: PropTypes.shape({
         title: PropTypes.string.isRequired,

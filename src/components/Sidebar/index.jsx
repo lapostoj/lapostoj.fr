@@ -6,8 +6,8 @@ import Links from './Links';
 import profilePic from './photo.jpg';
 import './style.scss';
 
-const Sidebar = ({ data }) => {
-  const { author, copyright, menu } = data.site.siteMetadata;
+const Sidebar = ({ site }) => {
+  const { author, menu, copyright } = site.siteMetadata;
 
   const authorBlock = (
     <div>
@@ -45,8 +45,8 @@ const Sidebar = ({ data }) => {
           {authorBlock}
         </div>
         <div>
-          <Menu data={menu} />
-          <Links data={author} />
+          <Menu menu={menu} />
+          <Links author={author} />
           <p className="sidebar__copyright">
             {copyright}
           </p>
@@ -57,21 +57,27 @@ const Sidebar = ({ data }) => {
 };
 
 Sidebar.propTypes = {
-  data: PropTypes.shape({
-    site: PropTypes.shape({
-      siteMetadata: PropTypes.shape({
-        author: PropTypes.shape({
-          github: PropTypes.string.isRequired,
-          email: PropTypes.string.isRequired,
+  site: PropTypes.shape({
+    siteMetadata: PropTypes.shape({
+      author: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        github: PropTypes.string.isRequired,
+        email: PropTypes.string.isRequired,
+        job: PropTypes.shape({
+          title: PropTypes.string.isRequired,
+          company: PropTypes.string.isRequired,
+          url: PropTypes.string.isRequired,
         }).isRequired,
-        copyright: PropTypes.string.isRequired,
-        menu: PropTypes.arrayOf(
-          PropTypes.shape({
-            path: PropTypes.string.isRequired,
-            label: PropTypes.string.isRequired,
-          }).isRequired,
-        ),
+        location: PropTypes.string.isRequired,
+        subtitle: PropTypes.string.isRequired,
       }).isRequired,
+      menu: PropTypes.arrayOf(
+        PropTypes.shape({
+          path: PropTypes.string.isRequired,
+          label: PropTypes.string.isRequired,
+        }).isRequired,
+      ),
+      copyright: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
 };

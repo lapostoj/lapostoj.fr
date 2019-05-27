@@ -3,17 +3,17 @@ import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import './style.scss';
 
-const Menu = ({ data: menu }) => {
+const Menu = ({ menu }) => {
   const menuBlock = (
     <ul className="menu__list">
-      {!menu ? '' : menu.map(item => (
-        <li className="menu__list-item" key={item.path}>
+      {!menu ? '' : menu.map(({ path, label }) => (
+        <li className="menu__list-item" key={path}>
           <Link
-            to={item.path}
+            to={path}
             className="menu__list-item-link"
             activeClassName="menu__list-item-link menu__list-item-link--active"
           >
-            {item.label}
+            {label}
           </Link>
         </li>
       ))}
@@ -28,7 +28,7 @@ const Menu = ({ data: menu }) => {
 };
 
 Menu.propTypes = {
-  data: PropTypes.arrayOf(
+  menu: PropTypes.arrayOf(
     PropTypes.shape({
       path: PropTypes.string.isRequired,
       label: PropTypes.string.isRequired,

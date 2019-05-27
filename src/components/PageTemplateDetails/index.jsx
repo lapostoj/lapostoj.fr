@@ -2,11 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import { Link } from 'gatsby';
-import Sidebar from '../Sidebar';
 import './style.scss';
 
-const PageTemplateDetails = ({ data }) => {
-  const page = data.markdownRemark;
+const PageTemplateDetails = ({ page }) => {
   const tags = page.fields ? page.fields.tagSlugs : [];
 
   const dateBlock = page.frontmatter.date ? (
@@ -31,16 +29,13 @@ const PageTemplateDetails = ({ data }) => {
 
   /* eslint-disable react/no-danger */
   return (
-    <div className="grid-wrapper">
-      <Sidebar data={data} />
-      <div className="content">
-        <div className="content__inner">
-          <div className="page">
-            <h1 className="page__title">{page.frontmatter.title}</h1>
-            {tagsBlock}
-            {dateBlock}
-            <div className="page__body" dangerouslySetInnerHTML={{ __html: page.html }} />
-          </div>
+    <div className="content">
+      <div className="content__inner">
+        <div className="page">
+          <h1 className="page__title">{page.frontmatter.title}</h1>
+          {tagsBlock}
+          {dateBlock}
+          <div className="page__body" dangerouslySetInnerHTML={{ __html: page.html }} />
         </div>
       </div>
     </div>
@@ -49,16 +44,14 @@ const PageTemplateDetails = ({ data }) => {
 };
 
 PageTemplateDetails.propTypes = {
-  data: PropTypes.shape({
-    markdownRemark: PropTypes.shape({
-      fields: PropTypes.shape({
-        tagSlugs: PropTypes.arrayOf(PropTypes.string).isRequired,
-      }),
-      frontmatter: PropTypes.shape({
-        date: PropTypes.string,
-        title: PropTypes.string.isRequired,
-        tags: PropTypes.arrayOf(PropTypes.string),
-      }).isRequired,
+  page: PropTypes.shape({
+    fields: PropTypes.shape({
+      tagSlugs: PropTypes.arrayOf(PropTypes.string).isRequired,
+    }),
+    frontmatter: PropTypes.shape({
+      date: PropTypes.string,
+      title: PropTypes.string.isRequired,
+      tags: PropTypes.arrayOf(PropTypes.string),
     }).isRequired,
   }).isRequired,
 };

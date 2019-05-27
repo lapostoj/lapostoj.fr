@@ -4,11 +4,11 @@ import moment from 'moment';
 import { Link } from 'gatsby';
 import './style.scss';
 
-const Post = ({ data }) => {
+const Post = ({ post }) => {
   const {
     title, date, category, description,
-  } = data.node.frontmatter;
-  const { slug, categorySlug } = data.node.fields;
+  } = post.frontmatter;
+  const { slug, categorySlug } = post.fields;
 
   return (
     <div className="post">
@@ -33,18 +33,16 @@ const Post = ({ data }) => {
 };
 
 Post.propTypes = {
-  data: PropTypes.shape({
-    node: PropTypes.shape({
-      frontmatter: PropTypes.shape({
-        date: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired,
-        category: PropTypes.string.isRequired,
-        description: PropTypes.string.isRequired,
-      }).isRequired,
-      fields: PropTypes.shape({
-        categorySlug: PropTypes.string.isRequired,
-        slug: PropTypes.string.isRequired,
-      }).isRequired,
+  post: PropTypes.shape({
+    frontmatter: PropTypes.shape({
+      date: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      category: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+    }).isRequired,
+    fields: PropTypes.shape({
+      categorySlug: PropTypes.string.isRequired,
+      slug: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
 };

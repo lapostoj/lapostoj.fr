@@ -6,20 +6,33 @@ import Sidebar from '../components/Sidebar';
 import CategoryTemplateDetails from '../components/CategoryTemplateDetails';
 
 const CategoryTemplate = ({ data, pageContext }) => {
-  const { title } = data.site.siteMetadata;
+  const posts = data.allMarkdownRemark.edges;
+  const { site } = data;
+  const { title } = site.siteMetadata;
   const { category } = pageContext;
 
   return (
     <div className="grid-wrapper">
       <Helmet title={`${category} - ${title}`} />
-      <Sidebar data={data} />
-      <CategoryTemplateDetails data={data} category={category} />
+      <Sidebar site={site} />
+      <CategoryTemplateDetails posts={posts} category={category} />
     </div>
   );
 };
 
 CategoryTemplate.propTypes = {
   data: PropTypes.shape({
+    allMarkdownRemark: PropTypes.shape({
+      edges: PropTypes.arrayOf(
+        PropTypes.shape({
+          node: PropTypes.shape({
+            fields: PropTypes.shape({
+              slug: PropTypes.string.isRequired,
+            }).isRequired,
+          }).isRequired,
+        }).isRequired,
+      ).isRequired,
+    }).isRequired,
     site: PropTypes.shape({
       siteMetadata: PropTypes.shape({
         title: PropTypes.string.isRequired,

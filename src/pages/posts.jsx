@@ -6,13 +6,13 @@ import Layout from '../components/layout';
 import Post from '../components/Post';
 import Sidebar from '../components/Sidebar';
 
-const Posts = (props) => {
+const Posts = ({ data }) => {
   const items = [];
-  const { data } = props;
   const { title, subtitle } = data.site.siteMetadata;
   const posts = data.allMarkdownRemark ? data.allMarkdownRemark.edges : [];
-  posts.forEach((post) => {
-    items.push(<Post data={post} key={post.node.fields.slug} />);
+  posts.forEach(({ node: post }) => {
+    const { slug } = post.fields;
+    items.push(<Post post={post} key={slug} />);
   });
 
   const itemsBlock = items.length === 0 ? <h2>No post yet...</h2> : items;
@@ -25,7 +25,7 @@ const Posts = (props) => {
           <title>{title}</title>
           <meta name="description" content={subtitle} />
         </Helmet>
-        <Sidebar {...props} />
+        <Sidebar site={data.site} />
         <div className="content">
           <div className="content__inner">
             {itemsBlock}

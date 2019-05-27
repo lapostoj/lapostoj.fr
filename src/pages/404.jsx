@@ -1,12 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import Layout from '../components/layout';
 import Sidebar from '../components/Sidebar';
 
-export default props => (
+const NotFound = ({ data }) => (
   <Layout>
     <div className="grid-wrapper">
-      <Sidebar {...props} />
+      <Sidebar site={data.site} />
       <div className="content">
         <div className="content__inner">
           <div className="page">
@@ -20,6 +21,18 @@ export default props => (
     </div>
   </Layout>
 );
+
+NotFound.propTypes = {
+  data: PropTypes.shape({
+    site: PropTypes.shape({
+      siteMetadata: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+      }).isRequired,
+    }).isRequired,
+  }).isRequired,
+};
+
+export default NotFound;
 
 export const pageQuery = graphql`
   {
