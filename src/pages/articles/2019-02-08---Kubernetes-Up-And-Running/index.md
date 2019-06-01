@@ -25,9 +25,13 @@ Moreover, the backing it receives from most cloud providers and other big tech a
 
 This book is a great way to get to discover, understand and use the main concepts in Kubernetes while getting used to the specific way of thinking around infrastructure needed to make the most out of it.
 The examples are mostly basic setups, but they provide most of what is needed to get started.
+The emphasis is more on how to use a Kubernetes cluster to deploy the services or other components you might need rather than managing the cluster itself.
 More resources can be found on the <a href="https://kubernetes.io/docs/home/" target="_blank" rel="noopener noreferrer">Kubernetes documentation</a>.
 
 ## Detailed Summary
+
+_Note:_ I have updated the YAML files example taken from the book to match valid files as of the latest edit of this summary.
+If you want to experiment locally, my setup with Minikube is described in <a href="https://github.com/lapostoj/k8s-practice" target="_blank" rel="noopener noreferrer">this Github repository</a>.
 
 ### Chapter 1 - Introduction
 
@@ -301,7 +305,7 @@ This can be used for sharing data across containers, persisting a cache which sh
 
 Based on the previously mentioned concepts the _Pod_ manifest would look something like the following file.
 
-```yaml{numberLines: true}
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -313,38 +317,38 @@ spec:
         server: my.nfs.server.local
         path: "/path"
   containers:
-    - image: <image>
-        name: <image-name>
-        ports:
-          - containerPort: 8080
-            name: http
-            protocol: TCP
-        resources:
-          requests:
-            cpu: "500m"
-            memory: "128Mi"
-          limits:
-            cpu: "1000m"
-            memory: "256Mi"
-        volumeMounts:
-          - mountPath: "/path"
-            name: "<volume-name>"
-        livenessProbe:
-          httpGet:
-            path: /healthy
-            port: 8080
-          initialDelaySeconds: 5
-          timeoutSeconds: 1
-          periodSeconds: 10
-          failureThreshold: 3
-        readinessProbe:
-          httpGet:
-            path: /ready
-            port: 8080
-          initialDelaySeconds: 30
-          timeoutSeconds: 1
-          periodSeconds: 10
-          failureThreshold: 3
+    - name: <image-name>
+      image: <image>
+      ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+      resources:
+        requests:
+          cpu: "500m"
+          memory: "128Mi"
+        limits:
+          cpu: "1000m"
+          memory: "256Mi"
+      volumeMounts:
+        - mountPath: "/path"
+          name: "<volume-name>"
+      livenessProbe:
+        httpGet:
+          path: /healthy
+          port: 8080
+        initialDelaySeconds: 5
+        timeoutSeconds: 1
+        periodSeconds: 10
+        failureThreshold: 3
+      readinessProbe:
+        httpGet:
+          path: /ready
+          port: 8080
+        initialDelaySeconds: 30
+        timeoutSeconds: 1
+        periodSeconds: 10
+        failureThreshold: 3
 ```
 
 ### Chapter 6 - Labels and Annotations
@@ -429,7 +433,7 @@ Two main use cases are:
 ### Chapter 7 - Service Discovery
 
 The service discovery is based on the _Service_ objects.
-A Service is a named label selector.
+A _Service_ is a named label selector.
 You can create a service by running
 
 ```bash
@@ -452,7 +456,7 @@ To expose one node outside a cluster you will need to define `spec.type.NodePort
 Integrations with cloud services allow to automatically allocate load balancers using the `spec.type.LoadBalancer`.
 This will expose the service to the outside world.
 
-For every Service, Kubernetes creates an _Endpoint_ object, it contains the list of IPs for the service at any given point in time.
+For every _Service_, Kubernetes creates an _Endpoint_ object, it contains the list of IPs for the service at any given point in time.
 
 ### Chapter 8 - ReplicaSets
 
@@ -461,7 +465,7 @@ The _ReplicaSet_ objects are here exactly to fulfil this task.
 
 One important concept, recurrent in Kubernetes, is that the pods created by a _ReplicaSet_ don't _belong_ to it.
 If you delete the ReplicaSet, the pods won't be deleted with it, they just won't be monitored any more in term of matching the desired state.
-The _ReplicaSet_ keeps track of the pods based on label selectors similarly to the Service.
+The _ReplicaSet_ keeps track of the pods based on label selectors similarly to the _Service_.
 That allows to adopt existing containers where creating a _ReplicaSet_ (rather than having to delete the _Pod_ and re-create it through the _ReplicaSet_ or keep a _Pod_ in quarantine in case It misbehaves in order to experiment more in details rather than relying just on logs.
 
 ```yaml
@@ -471,11 +475,14 @@ metadata:
   name: <replicaset-name>
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      <label-to-select1-name>: <label-to-select1-value>
   template:
     metadata:
       labels:
-        <label-name-to-select>: <label-value-to-select>
-        <label-name-to-select>: <label-value-to-select>
+        <label1-name>: <label1-value>
+        <label2-name>: <label1-value>
     spec:
       containers:
         - name: <container-name>
@@ -538,19 +545,21 @@ That is useful typically for monitoring agents or other kind of services providi
 Defining a DaemonSet looks like
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   name: <daemonset-name>
-  namespace: kube-system
+  namespace: <namespace>
   labels:
-    <label-name>: <label-value>
+    <label1-name>: <label1-value>
 spec:
+  selector:
+    matchLabels:
+      <label-to-select-name>: <label-to-select-value>
   template:
     metadata:
       labels:
-        <label-name-to-select>: <label-value-to-select>
-        <node-label-name-to-select>: <node-label-value-to-select>??
+        <label2-name>: <label2-value>
     spec:
       nodeSelector:
         <node-label-name-to-select>: <node-label-value-to-select>
@@ -757,20 +766,20 @@ When the new one is available for service, the old one will get decommissioned (
 A deployment manifest would look similar to the following.
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
     deployment.kubernetes.io/revision: "1"
   labels:
-    run: nginx
-  name: nginx
+    <lavel1-name>: <label1-value>
+  name: <name>
   namespace: default
 spec:
   replicas: 2
   selector:
     matchLabels:
-      run: nginx
+      <label-to-select-name>: <label-to-select-value>
   strategy:
     rollingUpdate:
       maxSurge: 1
@@ -779,12 +788,13 @@ spec:
   template:
     metadata:
       labels:
-        run: nginx
+        <label2-name>: <label2-value>
       annotations:
         kubernetes.io/change-cause: "Initial deployment"
     spec:
       containers:
-      - image: nginx:1.15.10
+      - name: <container-name>
+        image: <image>
         imagePullPolicy: Always
       dnsPolicy: ClusterFirst
       restartPolicy: Always
@@ -832,11 +842,11 @@ REVISION        CHANGE-CAUSE
 ### Chapter 13 - Integrating Storage Solutions and Kubernetes
 
 If you have applications running  outside of Kubernetes and want or need to migrate progressively, you can make the process smoother by using the Kubernetes concepts.
-For example even if a service or database lives outside Kubernetes, you can represent it inside by a Service, so that the other services calling it won't have to care if and when it moves to Kubernetes.
+For example even if a service or database lives outside Kubernetes, you can represent it inside by a _Service_, so that the other services calling it won't have to care if and when it moves to Kubernetes.
 You replace the selector by an externalName as follows
 
 ```yaml
-ind: Service
+kind: Service
 apiVersion: v1
 metadata:
   name: external-database
@@ -865,13 +875,16 @@ Differences compared to a _ReplicaSet_
 A _StatefulSet_ deploying MongoDb would look like the following:
 
 ```yaml
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: mongo
 spec:
   serviceName: "mongo"
   replicas: 3
+  selector:
+    matchLabels:
+      app: mongo
   template:
     metadata:
       labels:
@@ -889,7 +902,7 @@ spec:
           name: peer
 ```
 
-You can then mange the DNS entries with a Service as usual.
+You can then mange the DNS entries with a _Service_ as usual.
 One difference is that it is headless `clusterIP: None` as each _Pod_ as their own specific identify as opposed to being identical substitutable instances.
 
 ```yaml
