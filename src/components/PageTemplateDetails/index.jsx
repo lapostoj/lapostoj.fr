@@ -53,6 +53,7 @@ PageTemplateDetails.propTypes = {
       title: PropTypes.string.isRequired,
       tags: PropTypes.arrayOf(PropTypes.string),
     }).isRequired,
+    html: PropTypes.string,
   }).isRequired,
 };
 
