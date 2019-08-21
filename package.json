@@ -10,7 +10,7 @@
     "deploy": "firebase deploy --token $FIREBASE_TOKEN",
     "lint": "./node_modules/.bin/eslint --cache --ext .js,.jsx --ignore-pattern public .",
     "start": "npm run clean:public && gatsby develop",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 0"
   },
   "repository": "git+https://github.com/lapostoj/lapostoj.fr.git",
   "keywords": [
