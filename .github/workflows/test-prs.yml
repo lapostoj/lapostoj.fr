@@ -1,9 +1,12 @@
-name: Test Pull Requests
+name: Pull Requests Checks
 
-on: pull-request
+on: 
+  pull_request:
+    branches:
+    - master
 
 jobs:
-  test:
+  checks:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -12,8 +15,12 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: 12.x
-    - name: npm install, lint and test
+    - name: Install Dependencies
       run: |
-        npm install
+        npm ci
+    - name: Linting Check
+      run: |
         npm run lint
+    - name: Run Tests
+      run: |
         npm test
