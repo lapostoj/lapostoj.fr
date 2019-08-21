@@ -6,7 +6,7 @@ on:
     - master
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -26,3 +26,5 @@ jobs:
     - name: Deploy
       run: |
         npm run deploy
+      env:
+        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
