@@ -1,12 +1,9 @@
 name: Test Pull Requests
 
-on: 
-  pull-request:
-    branches:
-    - master
+on: pull-request
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
