@@ -122,7 +122,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     });
 
     if (node.frontmatter.tags) {
-      const tagSlugs = node.frontmatter.tags.map(tag => `/tags/${convertToKebabCase(tag)}/`);
+      const tagSlugs = node.frontmatter.tags.map((tag) => `/tags/${convertToKebabCase(tag)}/`);
       createNodeField({ node, name: 'tagSlugs', value: tagSlugs });
     }
 
