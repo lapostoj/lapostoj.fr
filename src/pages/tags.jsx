@@ -22,7 +22,7 @@ const Tags = ({ data }) => {
               <div className="page__body">
                 <div className="tags">
                   <ul className="tags__list">
-                    {tags.map(tag => (
+                    {tags.map((tag) => (
                       <li key={tag.fieldValue} className="tags__list-item">
                         <Link to={`/tags/${convertToKebabCase(tag.fieldValue)}/`} className="tags__list-item-link">
                           {tag.fieldValue} ({tag.totalCount})
