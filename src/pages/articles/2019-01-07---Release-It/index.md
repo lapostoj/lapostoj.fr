@@ -148,7 +148,7 @@ For the metrics mentioned, display some overall values and then some success/fai
 ### Chapter 11: Security
 
 Mostly going over the OWASP top 10 security risks list from 2013 providing concrete examples about the risk they can involve for companies.
-For the latest version of the top 10, see <a href="https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project#tab=Main" target="_blank" rel="noopener noreferrer">OWASP Top Ten Project</a>.
+For the latest version of the top 10, see [OWASP Top Ten Project](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project#tab=Main).
 As for robustness, it also emphasize on the fact security needs to be continuously part of the process to have a chance to reach meaningful result.
 It can't just be an occasional concern.
 

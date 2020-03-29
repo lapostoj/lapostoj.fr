@@ -9,6 +9,7 @@
     "clean": "npm run clean:public",
     "deploy": "firebase deploy --token $FIREBASE_TOKEN",
     "lint": "eslint --cache --ext .js,.jsx --ignore-pattern public .",
+    "markdownlint": "markdownlint 'src/**/*.md'",
     "start": "npm run clean:public && gatsby develop",
     "test": "echo \"Error: no test specified\" && exit 0"
   },
@@ -35,6 +36,7 @@
     "gatsby-plugin-sharp": "^2.5.3",
     "gatsby-plugin-sitemap": "^2.3.1",
     "gatsby-remark-copy-linked-files": "^2.2.1",
+    "gatsby-remark-external-links": "^0.0.4",
     "gatsby-remark-images": "^3.2.1",
     "gatsby-remark-prismjs": "^3.4.1",
     "gatsby-remark-responsive-iframe": "^2.3.1",
