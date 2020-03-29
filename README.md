@@ -1,6 +1,6 @@
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/lapostoj/lapostoj.fr/master/LICENSE)
-
 # lapostoj.fr
+
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/lapostoj/lapostoj.fr/master/LICENSE)
 
 Author: lapostoj
 
@@ -13,7 +13,7 @@ The goals is to have a lightweight, fast website where adding content is relativ
 
 I ended up using [Gatsby](https://www.gatsbyjs.org/) and the [Lumen](https://github.com/alxshelepenok/gatsby-starter-lumen) starter kit.
 
-Expected URL: www.lapostoj.fr
+Expected URL: [lapostoj.fr](https://www.lapostoj.fr)
 
 ## Features
 
@@ -49,7 +49,7 @@ Expected URL: www.lapostoj.fr
 `firebase deploy`
 
 To generate a favicon.ico based on png files of different sizes
-Generate the png files with the desired sizes (for example using an online tool like https://cloudconvert.com/svg-to-png), then run:
+Generate the png files with the desired sizes (for example using an online tool like <https://cloudconvert.com/svg-to-png>), then run:
 
 ```bash
 convert favicon16.png favicon32.png favicon152.png favicon.ico
