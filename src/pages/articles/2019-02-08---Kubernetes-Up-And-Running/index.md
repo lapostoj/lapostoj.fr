@@ -134,7 +134,7 @@ kubectl get services --namespace--kube-system kube-dashboard
 
 Gives the dashboard and of the service performing the load-balancing for the dashboard
 
-To access the UI `kubectl proxy` and http://localhost:8001/ui
+To access the UI `kubectl proxy` and <http://localhost:8001/ui>
 
 ### Chapter 4 - Common _kubectl_ Commands
 

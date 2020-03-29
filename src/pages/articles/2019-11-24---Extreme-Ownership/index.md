@@ -9,7 +9,7 @@ tags:
   - "Management"
   - "Leadership"
 
-description: "Jocko Willink & Leif Babin describe the leadership technique they developed as SEALs in the US army and then used to helped many businessed through the consultancy they formed. They called the overall framework Extreme Ownership."
+description: "Jocko Willink & Leif Babin describe the leadership technique they developed as SEALs in the US army and then used to helped many businesses through the consultancy they formed. They called the overall framework Extreme Ownership."
 ---
 
 <figure class="float-left" style="width: 240px">
