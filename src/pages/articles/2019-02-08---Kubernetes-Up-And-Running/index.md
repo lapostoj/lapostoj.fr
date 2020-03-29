@@ -26,12 +26,12 @@ Moreover, the backing it receives from most cloud providers and other big tech a
 This book is a great way to get to discover, understand and use the main concepts in Kubernetes while getting used to the specific way of thinking around infrastructure needed to make the most out of it.
 The examples are mostly basic setups, but they provide most of what is needed to get started.
 The emphasis is more on how to use a Kubernetes cluster to deploy the services or other components you might need rather than managing the cluster itself.
-More resources can be found on the <a href="https://kubernetes.io/docs/home/" target="_blank" rel="noopener noreferrer">Kubernetes documentation</a>.
+More resources can be found on the [Kubernetes documentation](https://kubernetes.io/docs/home/).
 
 ## Detailed Summary
 
 _Note:_ I have updated the YAML files example taken from the book to match valid files as of the latest edit of this summary.
-If you want to experiment locally, my setup with Minikube is described in <a href="https://github.com/lapostoj/k8s-practice" target="_blank" rel="noopener noreferrer">this Github repository</a>.
+If you want to experiment locally, my setup with Minikube is described in [this Github repository](https://github.com/lapostoj/k8s-practice).
 
 ### Chapter 1 - Introduction
 

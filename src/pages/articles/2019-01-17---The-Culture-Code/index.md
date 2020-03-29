@@ -71,7 +71,7 @@ It doesn't have to be a formal process, but just setting it as the norm to be ok
 Some popular examples of leaders making themselves as vulnerable as their team are from the army where a leader would endure the same exercises as the team rather than just telling them to do it while watching from the side.
 
 Obviously that is not reproducible in every context.
-One very interesting exercise which seem to be a good alternative is the improvisation game called <a href="https://en.wikipedia.org/wiki/Harold_(improvisation)" target="_blank" rel="noopener noreferrer">"The Harold"</a>.
+One very interesting exercise which seem to be a good alternative is the improvisation game called ["The Harold"](https://en.wikipedia.org/wiki/Harold_(improvisation)).
 It is supposed to be a hard game among the improvisation ones, but taken with the right approach, it can make everyone "failing together" in a productive way for the group relationships.
 
 The building rules of the Harold are sharing a surprisingly big common part with the principles of the book:

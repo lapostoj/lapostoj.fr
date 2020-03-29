@@ -20,7 +20,7 @@ jobs:
         npm ci
     - name: Linting Check
       run: |
-        npm run lint
+        npm run lint && npm run markdownlint
     - name: Run Tests
       run: |
         npm test
