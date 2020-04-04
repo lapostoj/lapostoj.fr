@@ -44,7 +44,7 @@ Then they will give the same to everyone else in the group.
 Actions and principles to keep in mind related to building safety:
 
 - Over-communicate Your Listening: Of course you want to listen to people in your group because they have very valuable insights, but you also want to make sure you show them you're listening, that will create a virtuous circle encouraging them to share more ideas and so more good ones.
-- Spotlight Your Fallibility Early On—Especially If You’re a Leader
+- Spotlight Your Fallibility Early On—Especially If You're a Leader
 - Embrace the Messenger
 - Preview Future Connection: Show people how the future of the group looks like if everyone keeps pushing for its success, find examples of past successes from the group or similar groups which have already succeeded.
 - Overdo Thank-Yous
@@ -79,7 +79,7 @@ The building rules of the Harold are sharing a surprisingly big common part with
 1. You are all supporting actors.
 2. Always check your impulses.
 3. Never enter a scene unless you are needed.
-4. Save your fellow actor, don’t worry about the piece.
+4. Save your fellow actor, don't worry about the piece.
 5. Your prime responsibility is to support.
 6. Work at the top of your brains at all times.
 7. Never underestimate or condescend to the audience.
