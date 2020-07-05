@@ -37,7 +37,7 @@ Here are the ones I've watched over time. To be fair, at any point in time, most
 
 [AWS re:Invent 2018: Amazon DynamoDB Deep Dive: Advanced Design Patterns for DynamoDB (DAT401)](https://www.youtube.com/watch?v=HaEPXoXVf2k)
 
-[AWS re:Invent 2019: Amazon DynamoDB deep dive: Advanced design patterns (DAT403-R1)](https://www.youtube.com/watch?v=HaEPXoXVf2k)
+[AWS re:Invent 2019: Amazon DynamoDB deep dive: Advanced design patterns (DAT403-R1)](https://www.youtube.com/watch?v=6yqfmXiZTlM)
 
 ### Others
 
