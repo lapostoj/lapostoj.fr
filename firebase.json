@@ -32,7 +32,7 @@
           },
           {
             "key": "Feature-Policy",
-            "value": "accelerometer 'none'; battery 'none'; camera 'none'; geolocation 'none'; microphone 'none'; payment 'none';"
+            "value": "accelerometer 'none'; camera 'none'; geolocation 'none'; microphone 'none'; payment 'none';"
           }
         ]
       },
