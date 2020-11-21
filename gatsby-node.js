@@ -1,5 +1,4 @@
 const path = require('path');
-const slash = require('slash');
 
 function convertToKebabCase(string) {
   return string.replace(/([a-z])([A-Z])/g, '$1-$2')
@@ -11,12 +10,6 @@ exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
 
   return new Promise((resolve, reject) => {
-    const index = path.resolve('./src/pages/index.jsx');
-    const postTemplate = path.resolve('./src/templates/post-template.jsx');
-    const pageTemplate = path.resolve('./src/templates/page-template.jsx');
-    const tagTemplate = path.resolve('./src/templates/tag-template.jsx');
-    const categoryTemplate = path.resolve('./src/templates/category-template.jsx');
-
     graphql(`
     {
       allMarkdownRemark(
@@ -47,18 +40,18 @@ exports.createPages = ({ graphql, actions }) => {
         if (edge.node.frontmatter.layout === 'index') {
           createPage({
             path: edge.node.fields.slug,
-            component: slash(index),
+            component: path.resolve('./src/pages/index.jsx'),
           });
         } else if (edge.node.frontmatter.layout === 'page') {
           createPage({
             path: edge.node.fields.slug,
-            component: slash(pageTemplate),
+            component: path.resolve('./src/templates/page-template.jsx'),
             context: { slug: edge.node.fields.slug },
           });
         } else if (edge.node.frontmatter.layout === 'post') {
           createPage({
             path: edge.node.fields.slug,
-            component: slash(postTemplate),
+            component: path.resolve('./src/templates/post-template.jsx'),
             context: { slug: edge.node.fields.slug },
           });
 
@@ -72,7 +65,7 @@ exports.createPages = ({ graphql, actions }) => {
             const tagPath = `/tags/${convertToKebabCase(tag)}/`;
             createPage({
               path: tagPath,
-              component: tagTemplate,
+              component: path.resolve('./src/templates/tag-template.jsx'),
               context: { tag },
             });
           });
@@ -87,7 +80,7 @@ exports.createPages = ({ graphql, actions }) => {
             const categoryPath = `/categories/${convertToKebabCase(category)}/`;
             createPage({
               path: categoryPath,
-              component: categoryTemplate,
+              component: path.resolve('./src/templates/category-template.jsx'),
               context: { category },
             });
           });
@@ -111,10 +104,10 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     && typeof node.slug === 'undefined'
   ) {
     const fileNode = getNode(node.parent);
-    let { slug } = fileNode.fields;
-    if (typeof node.frontmatter.path !== 'undefined') {
-      slug = node.frontmatter.path;
-    }
+    const slug = typeof node.frontmatter.path !== 'undefined'
+      ? node.frontmatter.path
+      : fileNode.fields.slug;
+
     createNodeField({
       node,
       name: 'slug',

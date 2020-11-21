@@ -43,14 +43,13 @@ module.exports = {
     },
     'gatsby-plugin-offline',
     {
-      resolve: 'gatsby-plugin-prefetch-google-fonts',
+      resolve: 'gatsby-plugin-google-fonts',
       options: {
         fonts: [
-          {
-            family: 'Roboto',
-            variants: ['400', '400i', '500', '700'],
-          },
+          'Roboto',
+          '400,400i,500,700',
         ],
+        display: 'swap',
       },
     },
     'gatsby-plugin-sharp',
