@@ -28,7 +28,7 @@ This book look into a wide range of groups in different areas (sport teams, mili
 
 ## Detailed Summary
 
-### Skill 1 - Build Safety
+### Skill 1 - Build Safety
 
 People kind of naturally want to feel like they belong to groups and are ready to give a lot to a group they feel good in.
 Of course, anyone is part of a lots of groups at any given time, from family to friend to country, etc.
@@ -59,7 +59,7 @@ So don't let them in, or if you do, get them out as soon as possible as per the 
 This way you can keep focus on the action points in the first part and take away the full positivity of the second one.
 - Embrace Fun
 
-### Skill 2 - Share Vulnerability
+### Skill 2 - Share Vulnerability
 
 After making sure people feel safe and good in the group, you want to make sure they can share their vulnerabilities.
 That will make bonds between people even stronger as time goes by as they will share their problems, getting a better understanding of each other and helping each other.
@@ -107,7 +107,7 @@ Or, if you have to suggest it yourself plainly, do wait to have the shown as muc
 - Use Flash Mentoring
 - Make the Leader Occasionally Disappear
 
-### Skill 3 - Establish Purpose
+### Skill 3 - Establish Purpose
 
 The two first skill are mostly about making people belong to the group or team, but once you have these great creative people in the team, you want to make sure they are aligned about where to go, otherwise the group as a whole might not evolve very well.
 You need to give them a purpose to follow and they will achieve great things in this direction.
