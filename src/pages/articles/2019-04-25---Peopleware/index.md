@@ -30,7 +30,7 @@ If you help your team in the right way they are anyway more likely to reach any 
 
 ## Detailed Summary
 
-### Part 1 - Managing The Human Resource
+### Part 1 - Managing The Human Resource
 
 Most failed software projects end up as they do not because of technical difficulty or lack of skills of the people involved, but because of organizational or relational failure in the team.
 

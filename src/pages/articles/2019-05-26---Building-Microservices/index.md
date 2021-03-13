@@ -170,7 +170,7 @@ If your business permits it, consider as well "testing in production" to some ex
 Either with canary releases or simple rolling deploys with easy rollback available.
 It will allow you to leave the Di of edge cases to customers rather than spending lots of time thinking about it to still miss some in the end.
 
-### 8- Monitoring
+### 8- Monitoring
 
 Different kind of metrics might have different requirements but current levels of tooling mostly allow you to push your tech and business metrics through the same pipeline, and sometimes even logs.
 Do consider it, as it can reduce the maintenance overhead quite a bit.
@@ -192,7 +192,7 @@ In case of doubt it's usually better to publish a metric rather than not.
 Do invest time in standardizing your logs and metrics between services or risk to have a much higher maintenance cost around the tools for that.
 And consider linking logs through correlation IDs to make them even more powerful and ease digging down a chain of events.
 
-### 9- Security
+### 9- Security
 
 As always with security, basic common principles apply.
 Don't try to implement your own version of some protocol or algorithm and use wildly used, tested and fixed versions.
