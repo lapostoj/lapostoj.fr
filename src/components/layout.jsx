@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import '../assets/scss/init.scss';
 
 const Layout = ({ children }) => (
   <div className="layout">

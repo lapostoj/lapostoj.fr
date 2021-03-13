@@ -4,7 +4,7 @@ import { graphql, Link } from 'gatsby';
 import Menu from './Menu';
 import Links from './Links';
 import profilePic from './photo.jpg';
-import './style.scss';
+import './sidebar.scss';
 
 const Sidebar = ({ site }) => {
   const { author, menu, copyright } = site.siteMetadata;

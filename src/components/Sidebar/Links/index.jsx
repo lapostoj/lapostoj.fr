@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './style.scss';
+import './links.scss';
 import '../../../assets/fonts/fontello-771c82e0/css/fontello.css';
 
 const Links = ({ author: { github, email } }) => (

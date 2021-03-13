@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import { Link } from 'gatsby';
-import './style.scss';
+import './page-template-details.scss';
 
 const PageTemplateDetails = ({ page }) => {
   const tags = page.fields ? page.fields.tagSlugs : [];

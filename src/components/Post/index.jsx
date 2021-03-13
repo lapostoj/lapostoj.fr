@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import { Link } from 'gatsby';
-import './style.scss';
+import './post.scss';
 
 const Post = ({ post }) => {
   const {
