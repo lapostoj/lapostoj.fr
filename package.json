@@ -12,7 +12,8 @@
     "lint:markdown": "markdownlint 'src/**/*.md'",
     "lint:scss": "stylelint \"src/**/*.scss\"",
     "start": "npm run clean:public && gatsby develop",
-    "test": "echo \"Error: no test specified\" && exit 0"
+    "test": "echo \"Error: no test specified\" && exit 0",
+    "prepare": "husky install"
   },
   "repository": "git+https://github.com/lapostoj/lapostoj.fr.git",
   "keywords": [
@@ -63,11 +64,6 @@
     "husky": "^6.0.0",
     "lint-staged": "^10.5.4",
     "markdownlint-cli": "^0.27.1"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   },
   "lint-staged": {
     "src/**/*.{js,jsx}": [
