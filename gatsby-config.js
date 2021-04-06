@@ -68,7 +68,7 @@ module.exports = {
             }
           }
         }`,
-        output: '/sitemap.xml',
+        output: '/sitemap',
       },
     },
     'gatsby-plugin-react-helmet',
