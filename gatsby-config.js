@@ -19,11 +19,11 @@ module.exports = {
       email: 'jerome.lapostolet@gmail.com',
       github: 'lapostoj',
       subtitle: '',
-      location: 'London',
+      location: 'Paris',
       job: {
         title: 'Software Engineer',
         company: 'Marshmallow',
-        url: 'https://marshmallow.com',
+        url: 'https://www.marshmallow.com',
       },
     },
   },
