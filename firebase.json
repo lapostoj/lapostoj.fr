@@ -31,7 +31,7 @@
             "value": "default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com/; script-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data: https://fonts.gstatic.com"
           },
           {
-            "key": "Feature-Policy",
+            "key": "Permissions-Policy",
             "value": "accelerometer 'none'; camera 'none'; geolocation 'none'; microphone 'none'; payment 'none';"
           }
         ]
