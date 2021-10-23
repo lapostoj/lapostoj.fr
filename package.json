@@ -28,7 +28,7 @@
   "author": "lapostoj <jerome.lapostolet@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "gatsby": "^3.14.3",
+    "gatsby": "^3.14.4",
     "gatsby-core-utils": "^2.14.0",
     "gatsby-plugin-catch-links": "^3.14.0",
     "gatsby-plugin-google-fonts": "^1.0.1",
