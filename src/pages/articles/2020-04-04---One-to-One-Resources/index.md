@@ -39,12 +39,12 @@ Here are some resources I found useful over time to help with one-to-one meeting
 
 ### Templates
 
-[Template for one-to-one meeting looking back at the year](https://www.signalvnoise.com/the-one-on-one-meeting-template-for-your-end-of-the-year-review/)
+[Template for one-to-one meeting looking back at the year](https://m.signalvnoise.com/the-one-on-one-meeting-template-for-your-end-of-the-year-review/)
 
 [Template for one-to-one meeting from an Engineering Manager at Monzo](https://monzo.com/blog/an-engineering-managers-guide-to-the-one-to-one)
 
 ### Overall advice
 
-[Common mistakes with one-to-one meetings](https://www.signalvnoise.com/the-5-mistakes-youre-likely-making-in-your-one-on-one-meetings-with-direct-reports/)
+[Common mistakes with one-to-one meetings](https://m.signalvnoise.com/the-5-mistakes-youre-likely-making-in-your-one-on-one-meetings-with-direct-reports/)
 
 [Advice to improve your one-to-one meetings](https://www.fastcompany.com/90437946/your-one-on-one-meetings-are-broken-heres-how-to-fix-them)
