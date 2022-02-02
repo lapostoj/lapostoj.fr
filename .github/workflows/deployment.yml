@@ -12,10 +12,10 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    - name: Use Node.js 16.x
+    - name: Use Node.js 17.x
       uses: actions/setup-node@v2.5.1
       with:
-        node-version: '16'
+        node-version: '17'
         cache: 'npm'
     - name: Install Firebase
       run: |
@@ -31,7 +31,6 @@ jobs:
         npm run build
     - name: Deploy
       run: |
-        echo "Deploying"
         npm run deploy
       env:
         FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
