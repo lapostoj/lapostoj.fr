@@ -65,7 +65,7 @@
     "eslint-plugin-react": "^7.28.0",
     "husky": "^7.0.4",
     "lint-staged": "^12.3.2",
-    "markdownlint-cli": "^0.30.0"
+    "markdownlint-cli": "^0.31.0"
   },
   "lint-staged": {
     "src/**/*.{js,jsx}": [
