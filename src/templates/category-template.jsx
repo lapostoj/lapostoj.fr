@@ -51,7 +51,9 @@ export const pageQuery = graphql`
     ...site
     allMarkdownRemark(
       limit: 50
-      filter: { frontmatter: { category: { eq: $category }, layout: { eq: "post" }, draft: { ne: true } } }
+      filter: { 
+        frontmatter: { category: { eq: $category }, layout: { eq: "post" }, draft: { ne: true } }
+      }
       sort: { order: DESC, fields: [frontmatter___date] }
     ) {
       edges {
