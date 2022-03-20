@@ -260,7 +260,7 @@ To decide what to put in one Pod, the useful question is
 
 If the answer is no, then they will have to be on the same Pod, if the answer is yes, you can happily decouple them and put them on different pods.
 For a typical example, a database doesn't need to be on the same _Pod_ of the application using it, you just need to indicate to the application where the database is located.
-But if you have several containers needing the same filesystem, they will *have to* be on the same pod.
+But if you have several containers needing the same filesystem, they will _have to_ be on the same pod.
 
 You define Pods in a _Pod_ manifest where you configure the desired state, following the _declarative configuration_ advocated by Kubernetes.
 

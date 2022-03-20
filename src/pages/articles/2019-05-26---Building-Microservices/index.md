@@ -244,7 +244,7 @@ Then, any source of failure present in one service is now present N times in you
 
 One of the main principles, as described as well in [Release It!](/books/release-it), is to isolate the failures so that one service going rogue doesn't have to mean other services will suffer.
 Obviously they might lose the feature provided by this service, but they could overall remains available.
-Always put in place *timeouts* on remote calls and consider strongly *circuit breakers* and *bulkheads*.
+Always put in place _timeouts_ on remote calls and consider strongly _circuit breakers_ and _bulkheads_.
 
 On scaling, use the independence of services wisely, maybe only some services need to scale, or maybe they don't all need to scale in the same way.
 Analyzing the details for each case can both save you money and trouble by keeping some services as simple as possible.
