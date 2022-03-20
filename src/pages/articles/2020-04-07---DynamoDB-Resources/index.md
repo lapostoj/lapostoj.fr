@@ -46,3 +46,5 @@ Here are the ones I've watched over time. To be fair, at any point in time, most
 [How DynamoDB scales where relational databases don't](https://www.alexdebrie.com/posts/dynamodb-no-bad-queries/)
 
 [How to model one-to-many relationships in DynamoDB](https://www.alexdebrie.com/posts/dynamodb-one-to-many/)
+
+[Refactoring to single-table design in Amazon DynamoDB](https://emshea.com/post/part-1-dynamodb-single-table-design)
