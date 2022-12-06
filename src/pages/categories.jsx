@@ -1,42 +1,37 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
 import { graphql, Link } from 'gatsby';
 import { convertToKebabCase } from '../utils';
-import Layout from '../components/layout';
+import SEO from '../components/seo';
 import Sidebar from '../components/Sidebar';
 
 const Categories = ({ data }) => {
-  const { title } = data.site.siteMetadata;
   const categories = data.allMarkdownRemark ? data.allMarkdownRemark.group : [];
 
   return (
-    <Layout>
-      <div className="grid-wrapper">
-        <Helmet title={`All Categories - ${title}`} />
-        <Sidebar site={data.site} />
-        <div className="content">
-          <div className="content__inner">
-            <div className="page">
-              <h1 className="page__title">Categories</h1>
-              <div className="page__body">
-                <div className="categories">
-                  <ul className="categories__list">
-                    {categories.map((category) => (
-                      <li key={category.fieldValue} className="categories__list-item">
-                        <Link to={`/categories/${convertToKebabCase(category.fieldValue)}/`} className="categories__list-item-link">
-                          {category.fieldValue} ({category.totalCount})
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+    <div className="grid-wrapper">
+      <Sidebar site={data.site} />
+      <div className="content">
+        <div className="content__inner">
+          <div className="page">
+            <h1 className="page__title">Categories</h1>
+            <div className="page__body">
+              <div className="categories">
+                <ul className="categories__list">
+                  {categories.map((category) => (
+                    <li key={category.fieldValue} className="categories__list-item">
+                      <Link to={`/categories/${convertToKebabCase(category.fieldValue)}/`} className="categories__list-item-link">
+                        {category.fieldValue} ({category.totalCount})
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </Layout>
+    </div>
   );
 };
 
@@ -60,6 +55,24 @@ Categories.propTypes = {
 
 export default Categories;
 
+export const Head = ({ data }) => {
+  const { title } = data.site.siteMetadata;
+
+  return (
+    <SEO title={`All Categories - ${title}`} />
+  );
+};
+
+Head.propTypes = {
+  data: PropTypes.shape({
+    site: PropTypes.shape({
+      siteMetadata: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+      }).isRequired,
+    }).isRequired,
+  }).isRequired,
+};
+
 export const pageQuery = graphql`
   {
     ...site
@@ -67,7 +80,7 @@ export const pageQuery = graphql`
       limit: 50
       filter: { frontmatter: { layout: { eq: "post" }, draft: { ne: true } } }
     ) {
-      group(field: frontmatter___category) {
+      group(field: { frontmatter: { category: SELECT } }) {
         fieldValue
         totalCount
       }

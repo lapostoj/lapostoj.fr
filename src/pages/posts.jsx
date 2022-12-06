@@ -1,14 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
-import Layout from '../components/layout';
 import Post from '../components/Post';
+import SEO from '../components/seo';
 import Sidebar from '../components/Sidebar';
 
 const Posts = ({ data }) => {
   const items = [];
-  const { title, subtitle } = data.site.siteMetadata;
   const posts = data.allMarkdownRemark ? data.allMarkdownRemark.edges : [];
   posts.forEach(({ node: post }) => {
     const { slug } = post.fields;
@@ -18,21 +16,14 @@ const Posts = ({ data }) => {
   const itemsBlock = items.length === 0 ? <h2>No post yet...</h2> : items;
 
   return (
-    <Layout>
-      <div className="grid-wrapper">
-        <Helmet>
-          <html lang="en" />
-          <title>{title}</title>
-          <meta name="description" content={subtitle} />
-        </Helmet>
-        <Sidebar site={data.site} />
-        <div className="content">
-          <div className="content__inner">
-            {itemsBlock}
-          </div>
+    <div className="grid-wrapper">
+      <Sidebar site={data.site} />
+      <div className="content">
+        <div className="content__inner">
+          {itemsBlock}
         </div>
       </div>
-    </Layout>
+    </div>
   );
 };
 
@@ -52,7 +43,6 @@ Posts.propTypes = {
     site: PropTypes.shape({
       siteMetadata: PropTypes.shape({
         title: PropTypes.string.isRequired,
-        subtitle: PropTypes.string.isRequired,
       }).isRequired,
     }).isRequired,
   }).isRequired,
@@ -60,13 +50,32 @@ Posts.propTypes = {
 
 export default Posts;
 
+export const Head = ({ data }) => {
+  const { title, subtitle } = data.site.siteMetadata;
+
+  return (
+    <SEO title={title} description={subtitle} />
+  );
+};
+
+Head.propTypes = {
+  data: PropTypes.shape({
+    site: PropTypes.shape({
+      siteMetadata: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        subtitle: PropTypes.string.isRequired,
+      }).isRequired,
+    }).isRequired,
+  }).isRequired,
+};
+
 export const pageQuery = graphql`
   {
     ...site
     allMarkdownRemark(
       limit: 50
       filter: { frontmatter: { layout: { eq: "post" }, draft: { ne: true } } }
-      sort: { order: DESC, fields: [frontmatter___date] }
+      sort: { frontmatter: { date: DESC } }
     ) {
       edges {
         node {
