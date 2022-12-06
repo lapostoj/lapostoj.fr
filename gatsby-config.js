@@ -71,7 +71,6 @@ module.exports = {
         output: '/sitemap',
       },
     },
-    'gatsby-plugin-react-helmet',
     'gatsby-plugin-sass',
     {
       resolve: 'gatsby-source-filesystem',

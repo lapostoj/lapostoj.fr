@@ -1,19 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
+import SEO from '../components/seo';
 import Sidebar from '../components/Sidebar';
 import CategoryTemplateDetails from '../components/CategoryTemplateDetails';
 
 const CategoryTemplate = ({ data, pageContext }) => {
   const posts = data.allMarkdownRemark.edges;
   const { site } = data;
-  const { title } = site.siteMetadata;
   const { category } = pageContext;
 
   return (
     <div className="grid-wrapper">
-      <Helmet title={`${category} - ${title}`} />
       <Sidebar site={site} />
       <CategoryTemplateDetails posts={posts} category={category} />
     </div>
@@ -46,15 +44,37 @@ CategoryTemplate.propTypes = {
 
 export default CategoryTemplate;
 
+export const Head = ({ data, pageContext }) => {
+  const { title } = data.site.siteMetadata;
+  const { category } = pageContext;
+
+  return (
+    <SEO title={`All Posts about ${category} - ${title}`} />
+  );
+};
+
+Head.propTypes = {
+  data: PropTypes.shape({
+    site: PropTypes.shape({
+      siteMetadata: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+      }).isRequired,
+    }).isRequired,
+  }).isRequired,
+  pageContext: PropTypes.shape({
+    category: PropTypes.string.isRequired,
+  }).isRequired,
+};
+
 export const pageQuery = graphql`
   query($category: String) {
     ...site
     allMarkdownRemark(
       limit: 50
-      filter: { 
+      filter: {
         frontmatter: { category: { eq: $category }, layout: { eq: "post" }, draft: { ne: true } }
       }
-      sort: { order: DESC, fields: [frontmatter___date] }
+      sort: { frontmatter: { date: DESC } }
     ) {
       edges {
         node {
