@@ -442,3 +442,9 @@ Here again immutability can be a good starting point but doesn't do everything.
 
 On a moral aspect engineers have to hold themselves accountable for what they build and how it is used and how it affects people in the world.
 It's not just about solving a technical problem!
+
+## Links
+
+### Other database relates resources
+
+[Things You Should Know About Databases](https://architecturenotes.co/things-you-should-know-about-databases/)
