@@ -54,3 +54,5 @@ Here are the ones I've watched over time. To be fair, at any point in time, most
 [Single-table vs. multi-table design in Amazon DynamoDB](https://aws.amazon.com/blogs/database/single-table-vs-multi-table-design-in-amazon-dynamodb/)
 
 [Use parallelism to optimize querying large amounts of data in Amazon DynamoDB](https://aws.amazon.com/blogs/database/use-parallelism-to-optimize-querying-large-amounts-of-data-in-amazon-dynamodb/)
+
+[Understanding Amazon DynamoDB latency](https://aws.amazon.com/blogs/database/understanding-amazon-dynamodb-latency/)
