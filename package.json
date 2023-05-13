@@ -31,7 +31,7 @@
     "gatsby": "^5.9.1",
     "gatsby-plugin-catch-links": "^5.8.0",
     "gatsby-plugin-google-fonts": "^1.0.1",
-    "gatsby-plugin-manifest": "^5.8.0",
+    "gatsby-plugin-manifest": "^5.9.0",
     "gatsby-plugin-offline": "^6.8.0",
     "gatsby-plugin-sass": "^6.8.0",
     "gatsby-plugin-sharp": "^5.8.1",
