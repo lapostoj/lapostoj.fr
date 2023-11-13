@@ -5,10 +5,26 @@ updates:
     schedule:
       interval: 'weekly'
       day: 'saturday'
-
+    groups:
+      github-actions:
+        patterns:
+          - "*"
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
       interval: "weekly"
       day: "saturday"
     open-pull-requests-limit: 15
+    groups:
+      babel-dependencies:
+        patterns:
+          - "@babel/*"
+      eslint-dependencies:
+        patterns:
+          - "eslint*"
+      gatsby-dependencies:
+        patterns:
+          - "gatsby*"
+      react-dependencies:
+        patterns:
+          - "react*"
