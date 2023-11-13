@@ -53,8 +53,8 @@
     "sass": "^1.64.1"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.22.9",
-    "@babel/preset-react": "^7.22.5",
+    "@babel/eslint-parser": "^7.23.3",
+    "@babel/preset-react": "^7.23.3",
     "eslint": "^8.45.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-import": "^2.27.5",
