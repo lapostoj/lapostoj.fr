@@ -1,5 +1,5 @@
-.cache/
+.astro/
 .eslintcache
 .firebase/
 node_modules/
-public/
+dist/

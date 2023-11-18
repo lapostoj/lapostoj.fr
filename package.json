@@ -1,75 +1,30 @@
 {
-  "version": "0.2.0",
-  "name": "lapostoj-website",
-  "description": "CV and Portfolio and Blog website for lapostoj",
-  "main": "n/a",
+  "name": "astro",
+  "type": "module",
+  "version": "0.0.1",
   "scripts": {
-    "build": "npm run clean:public && gatsby build",
-    "clean:public": "rm -rf public && rm -rf .cache",
-    "clean": "npm run clean:public",
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "clean:dist": "rm -rf dist",
+    "clean": "npm run clean:dist",
     "deploy": "firebase deploy --token $FIREBASE_TOKEN",
-    "lint": "eslint --cache --ext .js,.jsx --ignore-pattern public .",
+    "lint": "npm run lint:markdown",
     "lint:markdown": "markdownlint 'src/**/*.md'",
-    "lint:scss": "stylelint \"src/**/*.scss\"",
-    "start": "npm run clean:public && gatsby develop",
-    "test": "echo \"Error: no test specified\" && exit 0",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "test": "echo \"Error: no test specified\" && exit 0"
   },
-  "repository": "git+https://github.com/lapostoj/lapostoj.fr.git",
-  "keywords": [
-    "gatsby",
-    "react",
-    "lapostoj",
-    "blog",
-    "cv",
-    "portfolio",
-    "resume"
-  ],
-  "author": "lapostoj <jerome.lapostolet@gmail.com>",
-  "license": "MIT",
   "dependencies": {
-    "gatsby": "^5.12.9",
-    "gatsby-plugin-catch-links": "^5.12.0",
-    "gatsby-plugin-google-fonts": "^1.0.1",
-    "gatsby-plugin-manifest": "^5.12.3",
-    "gatsby-plugin-offline": "^6.12.3",
-    "gatsby-plugin-sass": "^6.12.3",
-    "gatsby-plugin-sharp": "^5.12.3",
-    "gatsby-plugin-sitemap": "^6.12.3",
-    "gatsby-remark-autolink-headers": "^6.12.3",
-    "gatsby-remark-copy-linked-files": "^6.12.0",
-    "gatsby-remark-external-links": "^0.0.4",
-    "gatsby-remark-images": "^7.12.3",
-    "gatsby-remark-prismjs": "^7.12.0",
-    "gatsby-remark-responsive-iframe": "^6.12.0",
-    "gatsby-remark-smartypants": "^6.12.0",
-    "gatsby-source-filesystem": "^5.12.1",
-    "gatsby-transformer-remark": "^6.12.3",
-    "gatsby-transformer-sharp": "^5.12.3",
-    "prismjs": "^1.29.0",
-    "prop-types": "^15.8.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "sass": "^1.69.5"
+    "@astrojs/check": "^0.3.1",
+    "@fontsource/roboto": "^5.0.8",
+    "astro": "^3.5.5",
+    "sass": "^1.69.5",
+    "typescript": "^5.2.2"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.23.3",
-    "@babel/preset-react": "^7.23.3",
-    "eslint": "^8.53.0",
-    "eslint-config-airbnb": "^19.0.4",
-    "eslint-plugin-import": "^2.29.0",
-    "eslint-plugin-jsx-a11y": "^6.8.0",
-    "eslint-plugin-react": "^7.33.2",
     "husky": "^8.0.3",
-    "lint-staged": "^15.1.0",
     "markdownlint-cli": "^0.37.0"
-  },
-  "lint-staged": {
-    "src/**/*.{js,jsx}": [
-      "eslint --cache --ignore-pattern public"
-    ],
-    "src/**/*.md": [
-      "markdownlint"
-    ]
   }
 }

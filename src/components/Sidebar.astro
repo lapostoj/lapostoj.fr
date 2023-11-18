@@ -1,0 +1,143 @@
+---
+import { Image } from 'astro:assets';
+import profilPicture from "../images/photo.jpg";
+import SidebarMenu from './SidebarMenu.astro';
+import SidebarLinks from './SidebarLinks.astro';
+
+const author = {
+  name: 'Jerome Lapostolet - lapostoj',
+  email: 'jerome.lapostolet@gmail.com',
+  github: 'lapostoj',
+  subtitle: '',
+  location: 'Paris',
+  job: {
+    title: 'Software Engineer',
+    company: 'Marshmallow',
+    url: 'https://www.marshmallow.com',
+  },
+};
+---
+
+<div class="sidebar">
+  <div class="sidebar__inner">
+    <div class="sidebar__author">
+        <a href="/">
+          <Image
+            src={profilPicture}
+            class="sidebar__author-photo"
+            alt={author.name}
+          />
+        </a>
+        <h2 class="sidebar__author-title">
+          <a class="sidebar__author-title-link" href="/">
+            {author.name}
+          </a>
+        </h2>
+        <div class="sidebar__author-details">
+          <div class="sidebar__author-details-job">
+            {`${author.job.title} at `}
+            <a
+              class="sidebar__author-details-job-link"
+              href={author.job.url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {author.job.company}</a
+            >.
+          </div>
+          <div class="sidebar__author-details-location">
+            Currently in {author.location}.
+          </div>
+          <p class="sidebar__author-details-subtitle">{author.subtitle}</p>
+      </div>
+    </div>
+    <div>
+      <SidebarMenu />
+      <SidebarLinks />
+      <p class="sidebar__copyright">© All rights reserved.</p>
+    </div>
+  </div>
+</div>
+
+<style lang="scss">
+  @import '../styles/scss/variables';
+  @import '../styles/scss/mixins';
+
+  .sidebar {
+    grid-area: sidebar;
+    width: 100%;
+    &__inner {
+      position: relative;
+      padding: 25px 20px 0;
+    }
+    &__author {
+      &-photo {
+        display: inline-block;
+        width: 100px;
+        height: 100px;
+        margin-bottom: 0;
+        border-radius: 50%;
+        background-clip: padding-box;
+      }
+      &-title {
+        font-size: $typographic-base-font-size * 1.125;
+        font-weight: 500;
+        @include line-height(1.125);
+        @include margin(0.5, 0, 0.5, 0);
+        &-link {
+          color: $color-base;
+          &:hover,
+          &:focus {
+            color: $color-base;
+          }
+        }
+      }
+      &-details {
+        color: $color-gray;
+        @include line-height(1);
+        @include margin-bottom(1);
+        &-subtitle {
+          color: $color-gray;
+          @include line-height(1);
+          @include margin-bottom(1);
+        }
+      }
+    }
+    &__copyright {
+      color: $color-gray;
+      font-size: $typographic-small-font-size;
+    }
+  }
+
+  @include breakpoint-sm {
+    .sidebar {
+      &__inner {
+        padding: 30px 20px 0;
+        &:after {
+          background: $color-gray-border;
+          background: linear-gradient(
+            to bottom,
+            $color-gray-border 0%,
+            $color-gray-border 48%,
+            $color-white 100%
+          );
+          position: absolute;
+          content: '';
+          width: 1px;
+          height: 540px;
+          top: 30px;
+          right: -10px;
+          bottom: 0;
+        }
+      }
+    }
+  }
+
+  @include breakpoint-md {
+    .sidebar {
+      &__inner {
+        padding: 40px;
+      }
+    }
+  }
+</style>

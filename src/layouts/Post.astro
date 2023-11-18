@@ -1,0 +1,100 @@
+---
+import { dateFormat, convertToKebabCase } from '../utils';
+import Head from '../components/Head.astro';
+import Sidebar from '../components/Sidebar.astro';
+
+const { title, date, description, tags } = Astro.props.frontmatter;
+---
+
+<Head title={`${title}`} description={description} />
+<div class="grid-wrapper">
+  <Sidebar />
+  <div class="content">
+    <div class="content__inner">
+      <div class="page">
+        <h1 class="page__title">{title}</h1>
+        <div class="page__tags">
+          <ul class="page__tags-list">
+            {
+              tags &&
+                tags.map((tag: string, i: number) => (
+                  <li class="page__tags-list-item">
+                    <a
+                      href={`/tags/${convertToKebabCase(tag)}`}
+                      class="page__tags-list-item-link"
+                    >
+                      {tags[i]}
+                    </a>
+                  </li>
+                ))
+            }
+          </ul>
+        </div>
+        {
+          date && (
+            <div class="page__date">
+              <em>Published {dateFormat.format(new Date(date))}</em>
+            </div>
+          )
+        }
+        <slot />
+      </div>
+    </div>
+  </div>
+</div>
+
+<style lang="scss" is:global>
+  @import '../styles/scss/init';
+  @import '../styles/scss/variables';
+  @import '../styles/scss/mixins';
+
+  .page {
+    @include margin-bottom(2);
+    &__title {
+      font-size: $typographic-base-font-size * 2.5;
+      font-weight: 500;
+      @include line-height(2);
+      @include margin-top(0);
+      @include margin-bottom(1);
+    }
+    &__body {
+      font-size: $typographic-base-font-size;
+      @include line-height(1);
+      @include margin(0, 0, 1);
+    }
+    &__image {
+      width: 100%;
+    }
+    &__tags {
+      &-list {
+        list-style: none;
+        margin: 0 -5px;
+        padding: 0;
+        &-item {
+          display: inline-block;
+          margin: 10px 5px;
+          &-link {
+            background: $color-gray-bg;
+            text-decoration: none;
+            border: 0;
+            border-radius: 3px;
+            color: lighten($color-base, 20%);
+            line-height: $typographic-base-line-height;
+            padding: 8px 16px;
+            &:hover,
+            &:focus {
+              color: $color-base;
+              background: darken($color-gray-bg, 5%);
+              border: 0;
+            }
+          }
+        }
+      }
+    }
+    &__date {
+      @include margin-bottom(0.5);
+      max-width: $layout-post-single-width;
+      margin-left: 5px;
+    }
+  }
+</style>

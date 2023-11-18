@@ -1,0 +1,64 @@
+---
+import '../styles/fonts/fontello-7e35d509/css/fontello.css';
+
+const githubUsername = 'lapostoj';
+const email = 'jerome.lapostolet@gmail.com';
+---
+
+<div class="links">
+  <ul class="links__list">
+    <li class="links__list-item">
+      <a
+        href={`https://www.github.com/${githubUsername}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Github profile page"
+      >
+        <i class="icon-github-circled"></i>
+      </a>
+    </li>
+    <li class="links__list-item">
+      <a href={`mailto:${email}`} aria-label="Mailto link">
+        <i class="icon-mail"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<style lang="scss">
+  @import '../styles/scss/variables';
+  @import '../styles/scss/mixins';
+
+  .links {
+    @include margin-bottom(1);
+    &__list {
+      display: flex;
+      list-style: none;
+      padding: 0;
+      margin: 10px -3px;
+      &-item {
+        padding: 0;
+        margin: 0 3px;
+        height: 24px;
+        width: 24px;
+        line-height: 24px;
+        border-radius: 3px;
+        text-align: center;
+        background: $color-gray-bg;
+        & a {
+          border: 0;
+          & i {
+            font-size: 14px;
+            color: lighten($color-base, 20%);
+          }
+          &:hover,
+          &:focus {
+            & i {
+              color: $color-base;
+            }
+          }
+        }
+      }
+    }
+  }
+</style>

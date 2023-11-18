@@ -1,0 +1,60 @@
+---
+import type { MarkdownInstance } from 'astro';
+import { frontmatterSortByDate } from '../utils';
+import Head from '../components/Head.astro';
+import Sidebar from '../components/Sidebar.astro';
+import Post from '../components/Post.astro';
+
+interface Frontmatter {
+  date: string;
+}
+
+const posts = (
+  (await Astro.glob('./posts/*/*.md')) as MarkdownInstance<Frontmatter>[]
+)
+  .sort((post1, post2) =>
+    frontmatterSortByDate(post1.frontmatter, post2.frontmatter),
+  )
+  .reverse();
+---
+
+<Head title="Posts" />
+<div class="grid-wrapper">
+  <Sidebar />
+  <div class="content">
+    <div class="content__inner">
+      {
+        posts.length === 0 ? (
+          <h2>No post yet...</h2>
+        ) : (
+          posts.map((post) => <Post post={post} />)
+        )
+      }
+    </div>
+  </div>
+</div>
+
+<style lang="scss" is:global>
+  @import '../styles/scss/init';
+  @import '../styles/scss/variables';
+  @import '../styles/scss/mixins';
+
+  .page {
+    @include margin-bottom(2);
+    &__title {
+      font-size: $typographic-base-font-size * 2.5;
+      font-weight: 500;
+      @include line-height(2);
+      @include margin-top(0);
+      @include margin-bottom(1);
+    }
+    &__body {
+      font-size: $typographic-base-font-size;
+      @include line-height(1);
+      @include margin(0, 0, 1);
+    }
+    &__image {
+      width: 100%;
+    }
+  }
+</style>
