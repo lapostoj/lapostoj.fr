@@ -1,0 +1,84 @@
+---
+import type { MarkdownInstance } from 'astro';
+import { convertToKebabCase, frontmatterSortByDate } from '../../utils';
+import Head from '../../components/Head.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import Post from '../../components/Post.astro';
+
+interface Frontmatter {
+  tags: string[];
+}
+
+export async function getStaticPaths() {
+  const posts = (await Astro.glob(
+    '../posts/*/*.md',
+  )) as MarkdownInstance<Frontmatter>[];
+  const tags = [
+    ...new Set(posts.flatMap((article) => article.frontmatter.tags)),
+  ];
+  return tags.map((tag) => ({
+    params: {
+      tag: convertToKebabCase(tag),
+    },
+  }));
+}
+
+const posts = (await Astro.glob(
+  '../posts/*/*.md',
+)) as MarkdownInstance<Frontmatter>[];
+const { tag } = Astro.params;
+const items = posts
+  .filter((post) =>
+    post.frontmatter.tags.map((tag) => convertToKebabCase(tag)).includes(tag),
+  )
+  .sort((post1, post2) =>
+    frontmatterSortByDate(post1.frontmatter, post2.frontmatter),
+  )
+  .reverse();
+
+const formattedTag = items[0].frontmatter.tags.find(
+  (localTag) => convertToKebabCase(localTag) === tag,
+);
+---
+
+<Head title={`All posts tagged as "${formattedTag}"`} />
+<div class="grid-wrapper">
+  <Sidebar />
+  <div class="content">
+    <div class="content__inner">
+      <div class="page">
+        <h1 class="page__title">
+          All posts tagged as &quot;{formattedTag}&quot;
+        </h1>
+        <div class="page__body">
+          {items.map((post) => <Post post={post} />)}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style lang="scss" is:global>
+  @import '../../styles/scss/init';
+  @import '../../styles/scss/variables';
+  @import '../../styles/scss/mixins';
+
+  .page {
+    @include margin-bottom(2);
+    &__title {
+      font-size: $typographic-base-font-size * 2.5;
+      font-weight: 500;
+      @include line-height(2);
+      @include margin-top(0);
+      @include margin-bottom(1);
+    }
+    &__body {
+      font-size: $typographic-base-font-size;
+      @include line-height(1);
+      @include margin(0, 0, 1);
+    }
+    &__image {
+      width: 100%;
+    }
+  }
+</style>

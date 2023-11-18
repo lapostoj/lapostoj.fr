@@ -1,0 +1,75 @@
+---
+import { convertToKebabCase } from '../utils';
+import Head from '../components/Head.astro';
+import Sidebar from '../components/Sidebar.astro';
+
+// Example { Resources: 2, Books: 14 }
+const tagsCountMap: Map<string, number> = (await Astro.glob('./posts/*/*.md'))
+  .reverse()
+  .flatMap((article) => article.frontmatter.tags)
+  .reduce(
+    (category, count) => (
+      category[count] ? ++category[count] : (category[count] = 1), category
+    ),
+    {},
+  );
+// Example [ [ 'Books', 14 ], [ 'Resources', 2 ] ]
+const tagsCount = Object.entries(tagsCountMap).sort(
+  (tagCountA, tagCountB) => tagCountB[1] - tagCountA[1],
+);
+---
+
+<Head title="All Tags" />
+<div class="grid-wrapper">
+  <Sidebar />
+  <div class="content">
+    <div class="content__inner">
+      <div class="page">
+        <h1 class="page__title">Tags</h1>
+        <div class="page__body">
+          <div class="tags">
+            <ul class="tags__list">
+              {
+                tagsCount.map((tagCount) => (
+                  <li class="tags__list-item">
+                    <a
+                      href={`/tags/${convertToKebabCase(tagCount[0])}/`}
+                      class="tags__list-item-link"
+                    >
+                      {tagCount[0]} ({tagCount[1]})
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style lang="scss" is:global>
+  @import '../styles/scss/init';
+  @import '../styles/scss/variables';
+  @import '../styles/scss/mixins';
+
+  .page {
+    @include margin-bottom(2);
+    &__title {
+      font-size: $typographic-base-font-size * 2.5;
+      font-weight: 500;
+      @include line-height(2);
+      @include margin-top(0);
+      @include margin-bottom(1);
+    }
+    &__body {
+      font-size: $typographic-base-font-size;
+      @include line-height(1);
+      @include margin(0, 0, 1);
+    }
+    &__image {
+      width: 100%;
+    }
+  }
+</style>

@@ -11,8 +11,6 @@ Contact: jerome.lapostolet@gmail.com
 Personal website used as an online CV, portfolio and blog.
 The goals is to have a lightweight, fast website where adding content is relatively easy and straightforward.
 
-I ended up using [Gatsby](https://www.gatsbyjs.org/) and the [Lumen](https://github.com/alxshelepenok/gatsby-starter-lumen) starter kit.
-
 Expected URL: [lapostoj.fr](https://www.lapostoj.fr)
 
 ## Features
@@ -24,19 +22,18 @@ Expected URL: [lapostoj.fr](https://www.lapostoj.fr)
 
 ## Technology
 
-* [Gatsby](https://www.gatsbyjs.org/)
-* [React](https://reactjs.org/)
+* [Astro](https://astro.build/)
 * [Firebase](https://firebase.google.com/)
 
 ## How To Use
 
 ### Running in Development
 
-`gatsby develop`
+`npm run dev`
 
 ### Building
 
-`gatsby build`
+`npm run build`
 
 ### Deploy with Firebase
 

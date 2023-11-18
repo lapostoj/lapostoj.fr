@@ -1,0 +1,75 @@
+---
+import marshmallowLanding from '../images/marshmallow.png';
+import Head from '../components/Head.astro';
+import Sidebar from '../components/Sidebar.astro';
+---
+
+<Head />
+<div class="grid-wrapper">
+  <Sidebar />
+  <div class="content">
+    <div class="content__inner">
+      <div class="page">
+        <h1 class="page__title">About me</h1>
+        <p>I am currently a tech lead at Marshmallow.</p>
+        <p>
+          We are working on improving the car insurance experience in the United
+          Kingdom. <a
+            href="https://www.marshmallow.com/car-insurance-quote/start-quote"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Check your quote on our website</a
+          >, you might be interested!
+        </p>
+        <p>
+          We want to allow people to get fairer access to insurance and
+          financial services, and there is still a lot to do to see some
+          meaningful change there! <br />If you want to take part of it, <a
+            href="https://www.marshmallow.com/jobs"
+            target="_blank"
+            rel="noopener noreferrer">we're hiring!</a
+          >
+        </p>
+        <img
+          src={marshmallowLanding.src}
+          class="page__image"
+          alt="Marshmallow, Car insurance with a conscience."
+        />
+      </div>
+    </div>
+  </div>
+</div>
+
+<style lang="scss" is:global>
+  @import '../styles/scss/init';
+  @import '../styles/scss/variables';
+  @import '../styles/scss/mixins';
+
+  .page {
+    @include margin-bottom(2);
+    &__title {
+      font-size: $typographic-base-font-size * 2.5;
+      font-weight: 500;
+      @include line-height(2);
+      @include margin-top(0);
+      @include margin-bottom(1);
+    }
+    &__body {
+      font-size: $typographic-base-font-size;
+      @include line-height(1);
+      @include margin(0, 0, 1);
+    }
+    &__image {
+      width: 100%;
+    }
+  }
+</style>
+
+<style lang="scss">
+  .page {
+    &__image {
+      width: 100%;
+    }
+  }
+</style>

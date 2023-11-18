@@ -1,0 +1,44 @@
+---
+import Head from '../components/Head.astro';
+import Sidebar from '../components/Sidebar.astro';
+---
+
+<Head title="Page not found" />
+<div class="grid-wrapper">
+  <Sidebar />
+  <div class="content">
+    <div class="content__inner">
+      <div class="page">
+        <h1 class="page__title">Page Not Found</h1>
+        <div class="page__body">
+          <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style lang="scss" is:global>
+  @import '../styles/scss/init';
+  @import '../styles/scss/variables';
+  @import '../styles/scss/mixins';
+
+  .page {
+    @include margin-bottom(2);
+    &__title {
+      font-size: $typographic-base-font-size * 2.5;
+      font-weight: 500;
+      @include line-height(2);
+      @include margin-top(0);
+      @include margin-bottom(1);
+    }
+    &__body {
+      font-size: $typographic-base-font-size;
+      @include line-height(1);
+      @include margin(0, 0, 1);
+    }
+    &__image {
+      width: 100%;
+    }
+  }
+</style>
