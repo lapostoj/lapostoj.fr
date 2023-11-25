@@ -21,7 +21,7 @@
     "@fontsource/roboto": "^5.0.8",
     "astro": "^3.5.5",
     "sass": "^1.69.5",
-    "typescript": "^5.2.2"
+    "typescript": "^5.3.2"
   },
   "devDependencies": {
     "husky": "^8.0.3",
