@@ -17,7 +17,7 @@
     "test": "echo \"Error: no test specified\" && exit 0"
   },
   "dependencies": {
-    "@astrojs/check": "^0.5.10",
+    "@astrojs/check": "^0.6.0",
     "@astrojs/sitemap": "^3.1.1",
     "@fontsource/roboto": "^5.0.12",
     "astro": "^3.5.5",
